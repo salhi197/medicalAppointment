@@ -54,3 +54,17 @@ Route::group(['prefix' => 'rendezvous', 'as' => 'rendezvous'], function () {
     Route::get('/annuler/{id_rdv}', ['as' => '.annuler', 'uses' => 'RendezvousController@annuler']);
     
 });
+
+/**
+ * les routes pour les soins (motifs)
+ */
+Route::group(['prefix' => 'soins', 'as' => 'soin'], function () {
+    Route::get('/', ['as' => '.index', 'uses' => 'SoinController@index']);
+    Route::post('/create', ['as' => '.create', 'uses' => 'SoinController@store']);
+    Route::get('/show/create',['as'=>'.show.create', 'uses' => 'SoinController@create']);
+    Route::get('/delete/{id_rdv}', ['as' => '.delete', 'uses' => 'SoinController@destroy']);
+    Route::post('/update/{id_rdv}', ['as' => '.update', 'uses' => 'SoinController@update']);
+    Route::get('/show/update/{id_rdv}', ['as' => '.show', 'uses' => 'SoinController@show']);
+    
+});
+
