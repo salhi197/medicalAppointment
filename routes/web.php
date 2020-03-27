@@ -58,7 +58,7 @@ Route::group(['prefix' => 'rendezvous', 'as' => 'rendezvous'], function () {
 /**
  * les routes pour les soins (motifs)
  */
-Route::group(['prefix' => 'soins', 'as' => 'soin'], function () {
+Route::group(['prefix' => 'soins', 'as' => 'soin', 'middleware' => 'auth:admin'], function () {
     Route::get('/', ['as' => '.index', 'uses' => 'SoinController@index']);
     Route::post('/create', ['as' => '.create', 'uses' => 'SoinController@store']);
     Route::get('/show/create',['as'=>'.show.create', 'uses' => 'SoinController@create']);
