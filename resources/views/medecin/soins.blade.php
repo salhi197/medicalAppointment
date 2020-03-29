@@ -80,46 +80,7 @@
                                             </td>
 
                                             <td> 
-
-                                                @if ($soins[$i]->id!=0)                                                    
-                                                    <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModalsup-{{$soins[$i]->id}}" style="color: #fff;"> supprimer</a>
-
-                                                    
-                                                    <div class="modal custom-modal fade" id="myModalsup-{{$soins[$i]->id}}"  role="dialog">
-
-                                                      <div class="modal-dialog modal-lg">
-
-                                                            <!-- Modal content-->
-
-                                                            <div class="modal-content">
-
-                                                               <div class="modal-header">
-
-                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-                                                                    <h4 class="modal-title">Voulez-vous vraiment supprimer ce soin</h4>
-                                                              </div>
-
-                                                              <div class="modal-body">
-
-                                                                    <button class="col-md-5 btn btn-success" onclick="supprimersoin(event,this)" data-dismiss="modal" id="mod{{$soins[$i]->id}}">OUI,je supprime</button>
-
-                                                                    <a data-dismiss="modal" class="col-md-6 btn btn-danger">NON,je ne veux pas supprimer</a>
-                                                                    
-                                                              </div>
-
-                                                              
-
-                                                              <div class="modal-footer">
-
-                                                                    <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
-                                                              </div>
-                                                            </div>
-                                                            
-                                                      </div>
-                                                    </div>                    
-                                                    
-                                                @endif
+                                                <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModalsup" style="color: #fff;"> supprimer</a>
                                             </td>
                                         </form>
                                         
@@ -175,6 +136,29 @@
         </div>
 
     </div>                    
+
+    <div class="modal fade custom-modal" id="myModalsup" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+            <div class="modal-body">
+            <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Voulez-vous vraiment supprimer ce soin</h4>
+                </div>
+                <div class="modal-body">
+                    <button class="col-md-5 btn btn-success" onclick="supprimersoin(event,this)" data-dismiss="modal" id="">OUI,je supprime</button>
+                    <a data-dismiss="modal" class="col-md-6 btn btn-danger">NON,je ne veux pas supprimer</a>                                                                    
+                </div>                                                           
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
+                </div>
+            
+            </div>
+            </div>
+        </div>
+
+    </div>                    
+
 
 
 
