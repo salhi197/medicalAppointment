@@ -10,10 +10,7 @@
 
                 <div class="card-body">
 
-                    <h4 class="card-title">Table des soins</h4>
-
-                    <h6 class="card-subtitle">soins disponibles</code></h6>
-
+                    <h4 class="card-title">Affichage des tous les soins : </h4>
                     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Ajouter un soins </button>
 
 
@@ -29,15 +26,9 @@
                                 <tr>
 
                                     <th>numéro</th>
-
                                     <th>nom</th>
-
-                                    <th style="visibility: hidden;">gggggg</th>
-
                                     <th>description</th>
-
-                                    <th style="visibility: hidden;">ggggggggggggg</th>
-
+                                    <th>actions</th>
                                 </tr>
 
                             </thead>
@@ -59,31 +50,24 @@
                                                 {{ $i+1 }}                                                
                                             </td>
 
-                                            <td colspan="2"> 
+                                            <td > 
 
-                                                <div class="form-group col-md-12 col-sm-12">
-
-                                                  <label><textarea type="text" rows="4" name="nom" class=" form-control" id="nomsoin{{$soins[$i]->id}}" value="{!! $soins[$i]->nom !!}">{!! $soins[$i]->nom !!}</textarea></label>
-                                                </div>                                                    
-
+                                                  <label><textarea type="text"  name="nom" class=" form-control" id="nomsoin{{$soins[$i]->id}}" value="{!! $soins[$i]->nom !!}">{!! $soins[$i]->nom !!}</textarea></label>
                                                 
                                             </td>
 
-                                            <td colspan="2"> 
+                                            <td > 
 
-                                                <textarea type="text" rows="10" class="form-control" name="description" id="description{{$soins[$i]->id}}" value="{!! ($soins[$i]->description) !!}">{!! ($soins[$i]->description) !!}</textarea> 
+                                                <textarea type="text"  class="form-control" name="description" id="description{{$soins[$i]->id}}" value="{!! ($soins[$i]->description) !!}">{!! ($soins[$i]->description) !!}</textarea> 
 
                                                 
                                             </td>
 
                                             <td> 
 
-                                                <button class="btn btn-success btn-sm" id="{{$soins[$i]->id}}" onclick="modifiersoin(event,this)"> Enregistrer</button> 
-                                            </td>
+                                                <button class="btn btn-success btn-sm" id="{{$soins[$i]->id}}" onclick="modifiersoin(event,this)"> <i class="fa fa-save"></i> Enregistrer</button> 
 
-                                            <td>
-
-                                                <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModalsup-{{$soins[$i]->id}}" style="color: #fff;"> supprimer</a>
+                                                <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModalsup-{{$soins[$i]->id}}" style="color: #fff;"> <i class="fa fa-trash"> </i> supprimer</a>
                                                             
                                                 {{--  --}}
                                             </td>
@@ -156,7 +140,7 @@
 
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-                        <h4 class="modal-title">Voulez-vous vraiment supprimer ce soin</h4>
+                        <h4 class="modal-title">Voulez-vous vraiment supprimer ce soin ?</h4>
                   </div>
 
                   <div class="modal-body">
