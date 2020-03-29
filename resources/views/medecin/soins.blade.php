@@ -102,20 +102,21 @@
             <div class="modal-content">
             <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Nouveau soin</h4>
+                    <h4 class="modal-title">Ajouter un nouveau soin :</h4>
             </div>
                 <div class="modal-body">
-                    <form class="form-inline">
+                    <form >
                         {{ csrf_field() }}  
                         <div class="form-group col-md-4">
-                            <label for="nom">nom </label>
+                            <label for="nom">Intitulé de soin :  </label>
                             <textarea type="text" id="nomdusoin" required name="nom" class="form-control" id="nom"></textarea>
                         </div>
-                        <div class="form-group col-md-4">
-                            <label for="description">description </label>
-                            <textarea type="text" id="descdusoin" rows="10" cols="50" required name="description" class="form-control" id="description"></textarea>
+                        <div class="form-group col-md-6">
+                            <label for="description">description de motif : </label>
+                            <textarea type="text" id="descdusoin" required name="description" class="form-control" id="description"></textarea>
                         </div>
-                    <button style="margin-top: 5%;" id="ajout{{ $last_id }}" data-dismiss="modal" onclick="ajoutersoin(event,this)" class="btn btn-success col-md-6">Ajouter</button>
+                    <button id="ajout{{ $last_id }}" data-dismiss="modal" onclick="ajoutersoin(event,this)" 
+                    class="btn btn-success col-md-2">Ajouter</button>
                     </form>
             </div>
             <div class="modal-footer">
