@@ -93,7 +93,7 @@ function ajoutersoin(event,ojbet)
 
 	console.log(new_id);
 	
-	var to_append = '<tr id="soin'+new_id+'"><form>{{ csrf_field() }} <td></td><td colspan="2"><div class="form-group col-md-12 col-sm-12">'                                                
+	var to_append = '<tr class="alert alert-success" id="soin'+new_id+'"><form>{{ csrf_field() }} <td></td><td colspan="2"><div class="form-group col-md-12 col-sm-12">'                                                
 
 	to_append+='<label><textarea type="text" rows="4" name="nom" class=" form-control" id="nomsoin'+new_id+'" value="'+$nom+'">'+$nom+'</textarea></label>'
 

@@ -64,3 +64,12 @@ Route::post('/medecin/soins/ajouter/ajax', 'SoinController@ajoutersoins');
 Route::post('/medecin/soins/modifier/ajax', 'SoinController@modifiersoins');
 Route::post('/medecin/soins/supprimer/ajax', 'SoinController@supprimersoins');
 
+
+/**
+ * les routes pour les créneaux
+ */
+
+Route::get('/medecin/creneaux','CreneauController@creneau');
+Route::post('/medecin/modifiercreneau/ajax','CreneauController@modifiercreneau');
+Route::get('/medecin/creneaux/supprimer/{id}','CreneauController@supprimercreneau');
+Route::post('/medecin/creneaux/ajouter', 'CreneauController@ajoutercreneau');

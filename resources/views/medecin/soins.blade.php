@@ -2,8 +2,6 @@
 
 @section('content')         
 
-
-
 <div class="col-md-7 col-lg-8 col-xl-9">
 
             <div class="card">
@@ -83,13 +81,11 @@
 
                                             <td> 
 
-                                                @if ($soins[$i]->id!=0)
-
-    
-
+                                                @if ($soins[$i]->id!=0)                                                    
                                                     <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModalsup-{{$soins[$i]->id}}" style="color: #fff;"> supprimer</a>
 
-                                                    <div id="myModalsup-{{$soins[$i]->id}}" class="modal fade" role="dialog">
+                                                    
+                                                    <div class="modal custom-modal fade" id="myModalsup-{{$soins[$i]->id}}"  role="dialog">
 
                                                       <div class="modal-dialog modal-lg">
 
