@@ -15,7 +15,13 @@ class CreateCreneausTable extends Migration
     {
         Schema::create('creneaus', function (Blueprint $table) {
             $table->increments('id');
+            $table->time('debut');
+            $table->time('fin');
+            $table->integer('max_visite');
+            $table->unsignedInteger('id_medecin');
+            $table->foreign('id_medecin')->references('id')->on('medecins');
             $table->timestamps();
+            $table->engine = 'InnoDB';
         });
     }
 

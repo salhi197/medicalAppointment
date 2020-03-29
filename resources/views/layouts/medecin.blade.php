@@ -561,7 +561,7 @@
         <script src="{{asset('plugins/jquery-ui/jquery-ui.min.js')}}"></script>
         <script src="{{asset('plugins/fullcalendar/fullcalendar.min.js')}}"></script>
         <script src="{{asset('plugins/fullcalendar/jquery.fullcalendar.js')}}"></script>
-
+        <script src="{{ asset('js/creneaus.js') }}"></script>
 		<!-- Custom JS -->
 		<script src="{{asset('js/script.js')}}"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>

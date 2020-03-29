@@ -67,9 +67,9 @@ Route::post('/medecin/soins/supprimer/ajax', 'SoinController@supprimersoins');
 
 /**
  * les routes pour les créneaux
- */
+*/
 
-Route::get('/medecin/creneaux','CreneauController@creneau');
+Route::get('/medecin/creneaus','CreneauController@index');
 Route::post('/medecin/modifiercreneau/ajax','CreneauController@modifiercreneau');
-Route::get('/medecin/creneaux/supprimer/{id}','CreneauController@supprimercreneau');
-Route::post('/medecin/creneaux/ajouter', 'CreneauController@ajoutercreneau');
+Route::get('/medecin/creneaus/supprimer/{id}','CreneauController@supprimercreneau');
+Route::post('/medecin/creneaus/ajouter', 'CreneauController@ajoutercreneau');
