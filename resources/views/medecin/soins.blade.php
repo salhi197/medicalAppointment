@@ -80,7 +80,7 @@
                                             </td>
 
                                             <td> 
-                                                <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModalsup" style="color: #fff;"> supprimer</a>
+                                                <a class="btn btn-danger btn-sm supp_model" data-toggle="modal" data-target="#myModalsup" id="{{$soins[$i]->id}}" style="color: #fff;"> supprimer</a>
                                             </td>
                                         </form>
                                         
@@ -103,6 +103,21 @@
 
 @section('scripts')
     <script src="{{ asset('js/modifierlessoins.js') }}"></script>    
+    <script>		
+        $(function(){
+            $(".supp_model").click(function(){
+                var data =$(this).attr('id');
+                console.log(data)
+
+                $('.id_soin').attr('id',data)
+
+                $("#rdv_detail").modal("show");
+
+
+            });
+        });	
+</script>
+
 @endsection
 
 
@@ -146,7 +161,7 @@
                     <h4 class="modal-title">Voulez-vous vraiment supprimer ce soin</h4>
                 </div>
                 <div class="modal-body">
-                    <button class="col-md-5 btn btn-success" onclick="supprimersoin(event,this)" data-dismiss="modal" id="">OUI,je supprime</button>
+                    <button class="col-md-5 btn btn-success id_soin" onclick="supprimersoin(event,this)" data-dismiss="modal" id="" >OUI,je supprime</button>
                     <a data-dismiss="modal" class="col-md-6 btn btn-danger">NON,je ne veux pas supprimer</a>                                                                    
                 </div>                                                           
                 <div class="modal-footer">
