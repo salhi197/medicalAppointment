@@ -47,7 +47,7 @@ function supprimersoin (event,objet)
 
 	$id=(objet.getAttribute('id'));
 
-	//$id=($id.substr(3));
+	$id=($id.substr(3));
 
 	var id_hide="#soin"+$id;
 
