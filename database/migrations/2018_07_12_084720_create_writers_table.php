@@ -21,6 +21,7 @@ class CreateWritersTable extends Migration
             $table->boolean('is_editor')->default(false);
             $table->rememberToken();
             $table->timestamps();
+            $table->engine = 'InnoDB';
         });
     }
 

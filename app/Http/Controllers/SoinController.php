@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Soin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
+
 
 class SoinController extends Controller
 {
@@ -14,10 +20,10 @@ class SoinController extends Controller
      */
     public function index()
     {
-        $soins = [
-            ['id'=>1,'description'=>'test','nom'=>"salhi"]
-        ];
+        $soins = DB::select("select * from soins");
+        
         $last_id = 2;
+        
         return view('medecin.soins',compact('soins','last_id'));
     }
 
@@ -25,65 +31,60 @@ class SoinController extends Controller
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
-     */
-    public function create()
+    */
+
+
+    public function modifiersoins(Request $request)
     {
-        //
+
+
+
+        if ($request->ajax()) 
+        {
+
+            (DB::update("update soins c set c.nom=\"$request->nom\",c.description=\"$request->description\" where (c.id=$request->id) "));
+
+            return response()->json();
+        }
+        
+        # code...
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function supprimersoins(Request $request)
     {
-        //
+
+        if ($request->ajax()) 
+        {
+
+            DB::delete("delete from soins where id=\"$request->id\"");
+
+            return response()->json();
+
+            # code...
+        }
+
+        # code...
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Soin  $soin
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Soin $soin)
+    public function ajoutersoins(Request $request)
     {
-        //
+
+        if ($request->ajax()) 
+        {
+    
+            DB::insert("insert into soins (nom,description,id_medecin) values(\"$request->nom\",\"$request->description\",1) ");        
+
+            return response()->json();
+
+            # code...
+        }
+
+
+
+        # code...
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Soin  $soin
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Soin $soin)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Soin  $soin
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Soin $soin)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Soin  $soin
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Soin $soin)
-    {
-        //
-    }
+    /**/    
 }

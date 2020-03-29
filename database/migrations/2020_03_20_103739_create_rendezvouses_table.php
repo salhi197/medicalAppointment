@@ -33,6 +33,7 @@ class CreateRendezvousesTable extends Migration
              * date et heure sans dans le timestamps
              */
             $table->timestamps();
+            $table->engine = 'InnoDB';
         });
     }
 

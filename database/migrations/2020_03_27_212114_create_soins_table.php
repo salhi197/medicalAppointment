@@ -13,9 +13,15 @@ class CreateSoinsTable extends Migration
      */
     public function up()
     {
-        Schema::create('soins', function (Blueprint $table) {
+        Schema::create('soins', function (Blueprint $table) 
+        {
             $table->increments('id');
+            $table->string('nom', 100);
+            $table->text('description');
+            $table->unsignedInteger('id_medecin');
+            $table->foreign('id_medecin')->references('id')->on('medecins');
             $table->timestamps();
+            $table->engine = 'InnoDB';
         });
     }
 

@@ -28,7 +28,7 @@ function modifiersoin(event,objet)
            'X-CSRF-TOKEN': $('input[name="_token"]').val()
         },                    
         type:"POST",
-        url:"/admin/soins/modifier/ajax",
+        url:"/medecin/soins/modifier/ajax",
         data:{id:$id,nom:$nom,description:$description},
 
         success:function(data) 
@@ -61,7 +61,7 @@ function supprimersoin (event,objet)
            'X-CSRF-TOKEN': $('input[name="_token"]').val()
         },                    
         type:"POST",
-        url:"/admin/soins/supprimer/ajax",
+        url:"/medecin/soins/supprimer/ajax",
         data:{id:$id},
 
         success:function(data) 
@@ -137,7 +137,7 @@ function ajoutersoin(event,ojbet)
            'X-CSRF-TOKEN': $('input[name="_token"]').val()
         },                    
         type:"POST",
-        url:"/admin/soins/ajouter/ajax",
+        url:"/medecin/soins/ajouter/ajax",
         data:{nom:$nom,description:$desc},
 
         success:function(data) 

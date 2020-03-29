@@ -14,7 +14,7 @@ class CreateMedecinsTable extends Migration
     public function up()
     {
         Schema::create('medecins', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->string('nom')->nullable();
             $table->string('prenom')->nullable();
             $table->date('date_naissance')->nullable();
@@ -35,6 +35,7 @@ class CreateMedecinsTable extends Migration
             $table->boolean('etat_payment')->default(false); //de payement
             $table->boolean('etat_compte')->default(false); //de payement
             $table->timestamps();
+            $table->engine = 'InnoDB';
         });
     }
 
