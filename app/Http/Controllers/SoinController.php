@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Soin;
+use App\Medecin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
-
+use Auth;
 
 class SoinController extends Controller
 {
@@ -30,6 +31,11 @@ class SoinController extends Controller
 
     public function index()
     {
+
+        $id = Auth::id();
+
+        $actuel=Medecin::findOrFail($id); 
+
         $soins=(DB::select("select * from soins order by id"));
 
         $last_id = array_last($soins)->id;
@@ -47,6 +53,9 @@ class SoinController extends Controller
     public function modifiersoins(Request $request)
     {
 
+        $id = Auth::id();
+
+        $actuel=Medecin::findOrFail($id); 
 
 
         if ($request->ajax()) 
@@ -62,6 +71,10 @@ class SoinController extends Controller
 
     public function supprimersoins(Request $request)
     {
+
+        $id = Auth::id();
+
+        $actuel=Medecin::findOrFail($id); 
 
         if ($request->ajax()) 
         {
@@ -79,10 +92,15 @@ class SoinController extends Controller
     public function ajoutersoins(Request $request)
     {
 
+        $id = Auth::id();
+
+        $actuel=Medecin::findOrFail($id); 
+
+
         if ($request->ajax()) 
         {
     
-            DB::insert("insert into soins (nom,description,id_medecin) values(\"$request->nom\",\"$request->description\",1) ");        
+            DB::insert("insert into soins (nom,description,id_medecin) values(\"$request->nom\",\"$request->description\",$id) ");        
 
             return response()->json();
 

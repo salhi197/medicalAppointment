@@ -1,3 +1,0 @@
-git fetch 
-
-git pull origin lotfi_develop

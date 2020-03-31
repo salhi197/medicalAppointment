@@ -74,10 +74,11 @@ Route::post('/medecin/modifiercreneau/ajax','CreneauController@modifiercreneau')
 Route::get('/medecin/creneaus/supprimer/{id}','CreneauController@supprimercreneau');
 Route::post('/medecin/creneaus/ajouter', 'CreneauController@ajoutercreneau');
 
-Route::get('/fff', function() 
-{
 
-    dd(Hash::make(111111));
+/**
+ * les routes pour les journées
+*/
 
-    //
-});
+
+Route::get('/medecin/journées','JourneeController@index');
+Route::post('/medecin/journées/modifier/post/ajax','JourneeController@modifierjour2');
