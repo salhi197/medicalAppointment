@@ -73,3 +73,11 @@ Route::get('/medecin/creneaus','CreneauController@index');
 Route::post('/medecin/modifiercreneau/ajax','CreneauController@modifiercreneau');
 Route::get('/medecin/creneaus/supprimer/{id}','CreneauController@supprimercreneau');
 Route::post('/medecin/creneaus/ajouter', 'CreneauController@ajoutercreneau');
+
+Route::get('/fff', function() 
+{
+
+    dd(Hash::make(111111));
+
+    //
+});

@@ -6,5 +6,13 @@ use Illuminate\Http\Request;
 
 class MedecinController extends Controller
 {
+    
+    public function __construct()
+    {
+
+        $this->middleware('auth:medecin');
+    }
+
+
     //
 }

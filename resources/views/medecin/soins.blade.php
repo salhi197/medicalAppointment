@@ -4,7 +4,7 @@
 
 
 
-<div class="col-md-7 col-lg-8 col-xl-9">
+<div class="col-md-7 col-lg-8 col-xl-9" id="tous_les_soins">
 
             <div class="card">
 
@@ -127,45 +127,50 @@
 
     </div>                    
 
-    @for ($i = 0; $i < count($soins) ; $i++)
-        
-        <div class="modal fade custom-modal" id="myModalsup-{{$soins[$i]->id}}"  role="dialog">
 
-          <div class="modal-dialog modal-lg">
-
-                <!-- Modal content-->
-
-                <div class="modal-content">
-
-                   <div class="modal-header">
-
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-                        <h4 class="modal-title">Voulez-vous vraiment supprimer ce soin ?</h4>
-                  </div>
-
-                  <div class="modal-body">
-
-                        <button class="col-md-5 btn btn-success" onclick="supprimersoin(event,this)" data-dismiss="modal" id="mod{{$soins[$i]->id}}">OUI,je supprime</button>
-
-                        <a data-dismiss="modal" class="col-md-6 btn btn-danger" style="color: #fff;">NON,je ne veux pas supprimer</a>
-                        
-                  </div>
-
-                  
-
-                  <div class="modal-footer">
-
-                        <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
-                  </div>
-                </div>
-                
-          </div>
-        </div>                    
+    <div id="les_modals_supp">
 
 
-        {{-- expr --}}
-    @endfor
+        @for ($i = 0; $i < count($soins) ; $i++)
+            
+            <div class="modal fade custom-modal" id="myModalsup-{{$soins[$i]->id}}"  role="dialog">
 
+              <div class="modal-dialog modal-lg">
+
+                    <!-- Modal content-->
+
+                    <div class="modal-content">
+
+                       <div class="modal-header">
+
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                            <h4 class="modal-title">Voulez-vous vraiment supprimer ce soin ?</h4>
+                      </div>
+
+                      <div class="modal-body">
+
+                            <button class="col-md-5 btn btn-success" onclick="supprimersoin(event,this)" data-dismiss="modal" id="mod{{$soins[$i]->id}}">OUI,je supprime</button>
+
+                            <a data-dismiss="modal" class="col-md-6 btn btn-danger" style="color: #fff;">NON,je ne veux pas supprimer</a>
+                            
+                      </div>
+
+                      
+
+                      <div class="modal-footer">
+
+                            <button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button>
+                      </div>
+                    </div>
+                    
+              </div>
+            </div>                    
+
+
+            {{-- expr --}}
+        @endfor
+
+    </div>
     
 @endsection

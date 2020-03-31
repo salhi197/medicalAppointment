@@ -99,24 +99,32 @@ function ajoutersoin(event,ojbet)
 
 	to_append+='</td>'
 
-	to_append+='<td > <textarea type="text"  class="form-control" name="description" id="description'+new_id+'" value="'+$desc+'">'+$desc+'</textarea></td>'
+	to_append+='<td > <textarea type="text" class="form-control" name="description" id="description'+new_id+'" value="'+$desc+'">'+$desc+'</textarea></td>'
 
-	to_append+='<td><button class="btn btn-success btn-sm" id="'+new_id+'" onclick="modifiersoin(event,this)"> Enregistrer</button>'
+	to_append+='<td style="margin-right:1%;"><button class="btn btn-success btn-sm" id="'+new_id+'" onclick="modifiersoin(event,this)"> <i class="fa fa-save"></i> Enregistrer </button>'
 
-	to_append+='<a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModalsup-'+new_id+'" style="color: #fff;"> supprimer</a><div id="myModalsup-'+new_id+'" class="modal fade" role="dialog">'
-
-	to_append+='<div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Voulez-vous vraiment supprimer ce soin</h4></div>'
-
-	to_append+='<div class="modal-body"><button class="col-md-5 btn btn-success" onclick="supprimersoin(event,this)" data-dismiss="modal" id="mod'+new_id+'">OUI,je supprime</button><a data-dismiss="modal" class="col-md-6 btn btn-danger">NON,je ne veux pas supprimer</a></div><div class="modal-footer"><button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button></div></div></div></div></td></form></tr>'
-
+	to_append+='<a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModalsup-'+new_id+'" style="color: #fff;"> <i class="fa fa-trash"> </i> supprimer</a></td></form></tr>'
+	
 	to_append=$(to_append)	
 
 	to_append.hide(0);
 
-
 	$("#all_the_soins").append(to_append).show(1500);
 
 	to_append.show(1500)
+
+
+	var to_append2='<div id="myModalsup-'+new_id+'" class="modal fade" role="dialog">'
+
+	to_append2+='<div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h4 class="modal-title">Voulez-vous vraiment supprimer ce soin</h4></div>'
+
+	to_append2+='<div class="modal-body"><button class="col-md-5 btn btn-success" onclick="supprimersoin(event,this)" data-dismiss="modal" id="mod'+new_id+'">OUI,je supprime</button><a data-dismiss="modal" class="col-md-6 btn btn-danger">NON,je ne veux pas supprimer</a></div><div class="modal-footer"><button type="button" class="btn btn-warning" data-dismiss="modal">Fermer</button></div></div></div></div>'
+
+	to_append2=$(to_append2)
+
+	$("body").append(to_append2);
+
+
 
 	var newest=new_id+1;
 
@@ -126,7 +134,7 @@ function ajoutersoin(event,ojbet)
 	
 	$(xxx).attr('id',newest);
 
-	$('html, body').animate({scrollTop:$(document).height()}, 'slow');
+	$('html,#tous_les_soins').animate({scrollTop:$(document).height()}, 'slow');
 
 	$("#nomdusoin").val("");
 	

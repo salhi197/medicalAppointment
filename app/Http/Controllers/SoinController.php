@@ -18,11 +18,21 @@ class SoinController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    public function __construct()
+    {
+
+        $this->middleware('auth:medecin');
+    }
+    
+
+
     public function index()
     {
-        $soins = DB::select("select * from soins");
-        
-        $last_id = 2;
+        $soins=(DB::select("select * from soins order by id"));
+
+        $last_id = array_last($soins)->id;
         
         return view('medecin.soins',compact('soins','last_id'));
     }
