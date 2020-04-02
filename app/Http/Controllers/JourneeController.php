@@ -63,12 +63,10 @@ class JourneeController extends Controller
         dump($request->heuredeb);
         
         dump($request->heurefin);
-        
-        dd(($request->heuredeb<$request->heurefin));
-        
-        if ($request->heuredeb<$request->heurefin && $request->dispo!=0) 
+                
+        if ($request->heuredeb<$request->heurefin) 
         {
-
+            
             (DB::update("update journees set disponible=\"$request->dispo\",heuredeb=\"$request->heuredeb\",heurefin=\"$request->heurefin\" where id=$request->id and id_medecin = $id"));
 
             # code...

@@ -1,4 +1,3 @@
-    
 function registerjournee(event,objet) 
 {
 
@@ -25,6 +24,16 @@ function registerjournee(event,objet)
     console.log($debutcreneau)
 
     console.log($fincreneau)
+
+    if ($disponibilite==0) 
+    {
+
+        $(debutselected).text("--:--");        
+
+        $(finselected).text("--:--");
+
+        //
+    }
 
 
     var id_to_hide="#j"+$id;
