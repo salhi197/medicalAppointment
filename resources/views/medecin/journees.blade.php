@@ -2,9 +2,9 @@
 
 @section('content')         
 
-    <div class="row">
+  
 
-        <div class="col-lg-12 col-md-12">
+    <div class="col-md-7 col-lg-8 col-xl-9">
 
             <div class="card">
 
@@ -161,7 +161,6 @@
                     </div>
                 </div>
             </div>
-        </div>
 
         <script src="{{ asset('js/enregistrerjournee.js') }}"></script>
         {{--  --}}

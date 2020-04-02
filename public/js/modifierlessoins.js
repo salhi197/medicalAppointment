@@ -134,7 +134,7 @@ function ajoutersoin(event,ojbet)
 	
 	$(xxx).attr('id',newest);
 
-	$('html,#tous_les_soins').animate({scrollTop:$(document).height()}, 'slow');
+	$('html,#tous_les_soins').animate({scrollTop:$(document).height('300px')}, 'slow');
 
 	$("#nomdusoin").val("");
 	

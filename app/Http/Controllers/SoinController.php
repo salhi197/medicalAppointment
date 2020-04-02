@@ -37,8 +37,12 @@ class SoinController extends Controller
         $actuel=Medecin::findOrFail($id); 
 
         $soins=(DB::select("select * from soins order by id"));
+        if (count($soins) > 0) {
+            $last_id = array_last($soins)->id;
+        }else{
+            $last_id = 0 ;
+        }
 
-        $last_id = array_last($soins)->id;
         
         return view('medecin.soins',compact('soins','last_id'));
     }
