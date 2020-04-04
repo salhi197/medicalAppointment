@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Medecin;
 class HomeController extends Controller
 {
     /**
@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**
@@ -25,4 +25,25 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+
+
+    /**
+     * Search for medecins .
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+        /*
+        * la méthode de recherche
+        */
+        $medecins =Medecin::where(['specialite' => $request->get('specialite'),'wilaya' => $request->get('wilaya')])->get();
+        return view('results',compact(
+            'medecins'
+        ));
+    }
+
+
+
 }

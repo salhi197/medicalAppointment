@@ -153,12 +153,7 @@
 			<!-- /Header -->
 			
 			<!-- Page Content -->
-			<div class="content">
-				<div class="container-fluid">
 					@yield('content')
-				</div>
-
-			</div>		
 			<!-- /Page Content -->
    
 			<!-- Footer -->

@@ -165,7 +165,7 @@
                          
 						<!-- Search -->
 						<div class="search-box">
-							<form action="https://dreamguys.co.in/demo/doccure/template/search.html">
+							<form action="{{route('search.medecins')}}" method="get">
 								<div class="form-group search-location">
 									<input type="text" class="form-control" placeholder="Search Location">
 									<span class="form-text">Based on your Location</span>

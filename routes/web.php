@@ -82,3 +82,12 @@ Route::post('/medecin/creneaus/ajouter', 'CreneauController@ajoutercreneau');
 
 Route::get('/medecin/journées','JourneeController@index');
 Route::post('/medecin/journées/modifier/post/ajax','JourneeController@modifierjour2');
+
+
+
+/**
+* les routes liées à la recherche . . . 
+*/
+
+Route::get('/search/medecins','HomeController@search')->name('search.medecins');
+Route::get('/reservation','HomeController@search')->name('search.medecins');
