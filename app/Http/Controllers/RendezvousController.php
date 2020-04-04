@@ -17,8 +17,6 @@ class RendezvousController extends Controller
 
     public function __construct()
     {
-
-        $this->middleware('auth:medecin');
     }
 
 
@@ -54,7 +52,22 @@ class RendezvousController extends Controller
      */
     public function create()
     {
-        return view('rendez-vous.create');
+
+        if (Auth::guard('medecin')->check()) {   
+            $medecin = Auth::guard('medecin')->user();
+            $rdvs = Rendezvous::where('id_medecin',$medecin->id)->paginate(10);
+            return view('rendez-vous.index', compact('rdvs'));
+    
+        }
+        
+        if (Auth::user()) {   
+            $user = Auth::user();
+            $rdvs = Rendezvous::where('id_user',$user->id)->paginate(10);
+            return view('patient.rendez-vous.create');
+    
+        }
+
+
     }
 
     /**
