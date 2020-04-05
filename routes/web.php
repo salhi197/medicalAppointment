@@ -40,6 +40,21 @@ Route::group(['middleware' => 'auth:medecin'], function () {
     
 });
 
+/**
+ * cette partie est trés importante , puisque c le crud de medecin et il se fait au niveau d'admin 
+ */
+Route::group(['prefix' => 'medecin', 'as' => 'medecin'], function () {
+    Route::get('/', ['as' => '.index', 'uses' => 'MedecinController@index']);
+    Route::post('/create', ['as' => '.create', 'uses' => 'MedecinController@store']);
+    Route::get('/show/create',['as'=>'.show.create', 'uses' => 'MedecinController@create']);
+    Route::get('/delete/{id_rdv}', ['as' => '.delete', 'uses' => 'MedecinController@destroy']);
+    Route::post('/update/{id_rdv}', ['as' => '.update', 'uses' => 'MedecinController@update']);
+    Route::get('/show/{id_rdv}', ['as' => '.show', 'uses' => 'MedecinController@show']);
+    
+});
+
+
+
 
 /**
  * les routes pour rendez-vous
@@ -47,7 +62,8 @@ Route::group(['middleware' => 'auth:medecin'], function () {
 Route::group(['prefix' => 'rendezvous', 'as' => 'rendezvous'], function () {
     Route::get('/', ['as' => '.index', 'uses' => 'RendezvousController@index']);
     Route::post('/create', ['as' => '.create', 'uses' => 'RendezvousController@store']);
-    Route::get('/show/create',['as'=>'.show.create', 'uses' => 'RendezvousController@create']);
+    Route::get('/show/create/medecin/{id_medecin}',['as'=>'.show.create.patient', 'uses' => 'RendezvousController@create']);
+    Route::get('/show/create',['as'=>'.show.create.medecin', 'uses' => 'RendezvousController@create']);
     Route::get('/delete/{id_rdv}', ['as' => '.delete', 'uses' => 'RendezvousController@destroy']);
     Route::post('/update/{id_rdv}', ['as' => '.update', 'uses' => 'RendezvousController@update']);
     Route::get('/show/update/{id_rdv}', ['as' => '.show', 'uses' => 'RendezvousController@show']);

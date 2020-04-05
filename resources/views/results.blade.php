@@ -178,8 +178,7 @@
 												</ul>
 											</div>
 											<div class="clinic-booking">
-												<a class="view-pro-btn" href="doctor-profile.html">View Profile</a>
-												<a class="apt-btn" href="booking.html">Book Appointment</a>
+													<a class="apt-btn" href="{{route('rendezvous.show.create.patient',['id_medecin'=> $s])}}">Prendre Rendez-vous</a>
 											</div>
 										</div>
 									</div>

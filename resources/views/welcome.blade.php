@@ -167,12 +167,12 @@
 						<div class="search-box">
 							<form action="{{route('search.medecins')}}" method="get">
 								<div class="form-group search-location">
-									<input type="text" class="form-control" placeholder="Search Location">
+									<input name="wilaya" type="text" class="form-control" placeholder="Wilaya ..">
 									<span class="form-text">Based on your Location</span>
 								</div>
 								<div class="form-group search-info">
-									<input type="text" class="form-control" placeholder="Search Doctors, Clinics, Hospitals, Diseases Etc">
-									<span class="form-text">Ex : Dental or Sugar Check up etc</span>
+									<input name="specialite " type="text" class="form-control" placeholder="Search Doctors, Clinics, Hospitals, Diseases Etc">
+									<span class="form-text">Ex : Chirurgie Dentaire</span>
 								</div>
 								<button type="submit" class="btn btn-primary search-btn"><i class="fas fa-search"></i> <span>Search</span></button>
 							</form>

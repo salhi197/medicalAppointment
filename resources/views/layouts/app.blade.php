@@ -20,6 +20,8 @@
 		<!-- Main CSS -->
 		<link rel="stylesheet" href="{{asset('css/style.css')}}">
 		
+		<link rel="stylesheet" href="{{asset('plugins/daterangepicker/daterangepicker.css')}}">
+
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
 			<script src="{{asset('js/html5shiv.min.js')}}"></script>
@@ -129,6 +131,19 @@
 							<li>
 								<a href="admin/index.html" target="_blank">Admin</a>
 							</li>
+							<li>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+
+                            </li>
+
 							<li class="login-link">
 								<a href="login.html">Login / Signup</a>
 							</li>
@@ -301,13 +316,17 @@
 		<!-- jQuery -->
 		<script src="{{asset('js/jquery.min.js')}}"></script>
 		
+		<script src="{{asset('js/moment.min.js')}}"></script>
+		<script src="{{asset('plugins/daterangepicker/daterangepicker.js')}}"></script>
+
+
 		<!-- Bootstrap Core JS -->
 		<script src="{{asset('js/popper.min.js')}}"></script>
 		<script src="{{asset('js/bootstrap.min.js')}}"></script>
 		
 		<!-- Custom JS -->
 		<script src="{{asset('js/script.js')}}"></script>
-		
+		@yield('scripts')
 	</body>
 
 <!-- Mirrored from dreamguys.co.in/demo/doccure/template/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 20 Mar 2020 10:57:41 GMT -->

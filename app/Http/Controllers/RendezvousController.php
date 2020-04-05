@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Rendezvous;
 use Illuminate\Http\Request;
 use App\User;
+use App\Soin;
+
 use App\Http\Requests\StoreRdv;
 use Auth;
 class RendezvousController extends Controller
@@ -17,6 +19,7 @@ class RendezvousController extends Controller
 
     public function __construct()
     {
+
     }
 
 
@@ -50,8 +53,9 @@ class RendezvousController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id_medecin)
     {
+
 
         if (Auth::guard('medecin')->check()) {   
             $medecin = Auth::guard('medecin')->user();
@@ -59,13 +63,15 @@ class RendezvousController extends Controller
             return view('rendez-vous.index', compact('rdvs'));
     
         }
-        
-        if (Auth::user()) {   
-            $user = Auth::user();
-            $rdvs = Rendezvous::where('id_user',$user->id)->paginate(10);
-            return view('patient.rendez-vous.create');
+        if (Auth::user()== null) {   
     
+        }else{
+            $user = Auth::user();
+            $soins =Soin::where('id_medecin',$id_medecin)->get(); 
+            return view('patient.rendez-vous.create',compact('soins'));
+
         }
+        return view('patient.rendez-vous.create');
 
 
     }
@@ -78,6 +84,28 @@ class RendezvousController extends Controller
      */
     public function store(StoreRdv $request)
     {
+        if (Auth::user()) {   
+            dd('ssssssssssssssssss');
+            /**
+             * rediriger ves le dashboard , where all of his appointments are there . . . . .
+             */
+            $rdv = new Rendezvous([
+                'id_user'=>$request->get('id_patient'),
+                'id_medecin'=>$medecin->id,
+                'remarque'=>$request->get('remarque'),
+                'montant'=>'2000',
+                'motif'=>json_encode($request->get('motifs')),
+                'etat_payment'=>false,//$request->get('etat_payment'),
+                'date_rdv'=>$request->get('date_rdv'),
+                'status'=>'en attente',
+                'creneau'=>$request->get('crenau')
+            ]);
+            $rdv->save();
+            //$rdv->motifs()->attach($request->get('motifs'));
+
+            //return redirect()->route('patient.dashboard')->with('success', 'le rendez-vosu a été crée avec succée -_- ');
+                
+        }        
         $medecin = Auth::guard('medecin')->user();
         $validated = $request->validated();
          //converts an array to JSON string

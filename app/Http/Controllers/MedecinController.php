@@ -13,6 +13,17 @@ class MedecinController extends Controller
         $this->middleware('auth:medecin');
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Medecin  $medecin
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id_medecin)
+    {   
+        dd('oir medecin ...');
+    }
+
 
     //
 }

@@ -38,7 +38,8 @@ class HomeController extends Controller
         /*
         * la méthode de recherche
         */
-        $medecins =Medecin::where(['specialite' => $request->get('specialite'),'wilaya' => $request->get('wilaya')])->get();
+        //$medecins =Medecin::where(['specialite' => $request->get('specialite'),'wilaya' => $request->get('wilaya')])->get();
+        $medecins= ['12','4'];
         return view('results',compact(
             'medecins'
         ));

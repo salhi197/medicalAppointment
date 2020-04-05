@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
 		            'disponible' => 1,
 					'heuredeb'=>'05:00:00',
 					'heurefin'=>'18:00:00',
-					'id_medecin'=>1							            	
+					'id_medecin'=>3							            	
 		     ]);
 
 		 DB::table('journees')->insert([
@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
 		            'disponible' => 1,
 					'heuredeb'=>'05:00:00',
 					'heurefin'=>'18:00:00',
-					'id_medecin'=>1							            	
+					'id_medecin'=>3							            	
 
 		     ]);
 		 DB::table('journees')->insert([
@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
 		            'disponible' => 1,
 					'heuredeb'=>'05:00:00',
 					'heurefin'=>'18:00:00',
-					'id_medecin'=>1							            	
+					'id_medecin'=>3							            	
 
 		     ]);
 		 DB::table('journees')->insert([
@@ -44,7 +44,7 @@ class DatabaseSeeder extends Seeder
 		            'disponible' => 1,
 					'heuredeb'=>'05:00:00',
 					'heurefin'=>'18:00:00',
-					'id_medecin'=>1							            	
+					'id_medecin'=>3							            	
 
 		     ]);
 		 DB::table('journees')->insert([
@@ -53,7 +53,7 @@ class DatabaseSeeder extends Seeder
 		            'disponible' => 1,
 					'heuredeb'=>'05:00:00',
 					'heurefin'=>'18:00:00',
-					'id_medecin'=>1							            	
+					'id_medecin'=>3							            	
 
 		     ]);
 		 DB::table('journees')->insert([
@@ -62,7 +62,7 @@ class DatabaseSeeder extends Seeder
 		            'disponible' => 1,
 					'heuredeb'=>'05:00:00',
 					'heurefin'=>'18:00:00',
-					'id_medecin'=>1							            	
+					'id_medecin'=>3							            	
 
 		     ]);
 		 DB::table('journees')->insert([
@@ -71,7 +71,7 @@ class DatabaseSeeder extends Seeder
 		            'disponible' => 1,
 					'heuredeb'=>'05:00:00',
 					'heurefin'=>'18:00:00',
-					'id_medecin'=>1							            	
+					'id_medecin'=>3							            	
 		     ]);
 
 

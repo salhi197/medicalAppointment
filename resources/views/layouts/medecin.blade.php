@@ -30,7 +30,7 @@
 		<!--[if lt IE 9]>
 		<![endif]-->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
-	
+		@yield('styles')	
 	</head>
 	<body>
 
