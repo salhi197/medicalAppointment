@@ -22,6 +22,10 @@
 		
 		<link rel="stylesheet" href="{{asset('plugins/daterangepicker/daterangepicker.css')}}">
 
+	    <link href="{{asset('fullcalendar/core/main.min.css')}}" rel="stylesheet" />
+	    <link href="{{asset('fullcalendar/daygrid/main.min.css')}}" rel="stylesheet" />
+	    <link href="{{asset('fullcalendar/timegrid/main.min.css')}}" rel="stylesheet" />
+
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
 			<script src="{{asset('js/html5shiv.min.js')}}"></script>

@@ -30,7 +30,6 @@
 								<div class="card-body">
 									<div class="booking-doc-info">
 										<a href="doctor-profile.html" class="booking-doc-img">
-											<img src="assets/img/doctors/doctor-thumb-02.jpg" alt="User Image">
 										</a>
 										<div class="booking-info">
 											<h4><a href="doctor-profile.html">Dr. Darren Elder</a></h4>
@@ -129,89 +128,7 @@
 									<div class="schedule-cont">
 										<div class="row">
 											<div class="col-md-12">
-												<div class="time-slot">
-													<ul class="clearfix">
-														<li>
-															<a class="timing" href="javascript:void(0);">
-																<span>9:00</span> <span>AM</span>
-															</a>
-															<a class="timing" href="javascript:void(0);">
-																<span>10:00</span> <span>AM</span>
-															</a>
-															<a class="timing" href="javascript:void(0);">
-																<span>11:00</span> <span>AM</span>
-															</a>
-														</li>
-														<li>
-															<a class="timing" href="javascript:void(0);">
-																<span>9:00</span> <span>AM</span>
-															</a>
-															<a class="timing" href="javascript:void(0);">
-																<span>10:00</span> <span>AM</span>
-															</a>
-															<a class="timing" href="javascript:void(0);">
-																<span>11:00</span> <span>AM</span>
-															</a>
-														</li>
-														<li>
-															<a class="timing" href="javascript:void(0);">
-																<span>9:00</span> <span>AM</span>
-															</a>
-															<a class="timing" href="javascript:void(0);">
-																<span>10:00</span> <span>AM</span>
-															</a>
-															<a class="timing" href="javascript:void(0);">
-																<span>11:00</span> <span>AM</span>
-															</a>
-														</li>
-														<li>
-															<a class="timing" href="javascript:void(0);">
-																<span>9:00</span> <span>AM</span>
-															</a>
-															<a class="timing" href="javascript:void(0);">
-																<span>10:00</span> <span>AM</span>
-															</a>
-															<a class="timing" href="javascript:void(0);">
-																<span>11:00</span> <span>AM</span>
-															</a>
-														</li>
-														<li>
-															<a class="timing" href="javascript:void(0);">
-																<span>9:00</span> <span>AM</span>
-															</a>
-															<a class="timing" href="#">
-																<span>10:00</span> <span>AM</span>
-															</a>
-															<a class="timing" href="javascript:void(0);">
-																<span>11:00</span> <span>AM</span>
-															</a>
-														</li>
-														<li>
-															<a class="timing" href="javascript:void(0);">
-																<span>9:00</span> <span>AM</span>
-															</a>
-															<a class="timing" href="javascript:void(0);">
-																<span>10:00</span> <span>AM</span>
-															</a>
-															<a class="timing" href="javascript:void(0);">
-																<span>11:00</span> <span>AM</span>
-															</a>
-														</li>
-														<li>
-															<a class="timing" href="javascript:void(0);">
-																<span>9:00</span> <span>AM</span>
-															</a>
-															<a class="timing" href="javascript:void(0);">
-																<span>10:00</span> <span>AM</span>
-															</a>
-															<a class="timing" href="javascript:void(0);">
-																<span>11:00</span> <span>AM</span>
-															</a>
-														</li>
-													</ul>
-												</div>
-
-												
+					                            <div id="calendar"></div>
 											</div>
 										</div>
 									</div>
@@ -235,7 +152,40 @@
 
 			@endsection
 @section('scripts')
+<script src="{{asset('fullcalendar/core/main.min.js')}}"></script>
+<script src="{{asset('fullcalendar/daygrid/main.min.js')}}"></script>
+<script src="{{asset('fullcalendar/timegrid/main.min.js')}}"></script>
+
 <script>		
+
+document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                plugins: [ 'bootstrap', 'interaction', 'timeGridWeek', 'timeGrid' ],
+                header    : {
+                    left  : 'prev,next today',
+                    center: 'title',
+                    right : 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events    : [
+                    {
+                        title          : "omar",
+                        url            :"omar",
+                        start          : "11/02/2020",
+                        end          : "11/03/2020",
+                        backgroundColor: "#000000",
+                    },
+                ],
+                eventClick: function(info) {
+
+                },
+            });
+
+            calendar.render();
+        });
+
+
         $(function(){
             $(".timing").click(function(){
 				$(".timing").removeClass('selected')
@@ -247,7 +197,8 @@
             * On change function  .. 
             */
             $('#date').on('change',function(){
-            	console.log($(this).val())
+            	var date = $(this).val()
+            	console.log(date)
             })
 
         });	
