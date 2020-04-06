@@ -61,12 +61,9 @@
 									</select>
 								</div>
 								
-								<div class="col-12 col-sm-8 col-md-6 text-sm-right">
-									<div class="bookingrange btn btn-white btn-sm mb-3">
-										<i class="far fa-calendar-alt mr-2"></i>
-										<span></span>
-										<i class="fas fa-chevron-down ml-2"></i>
-									</div>
+								<div class="col-12 col-sm-8 col-md-3 text-sm-right">
+									<input type="date" name="date" class="form-control" id="date">
+
 								</div>
                             </div>
 							<!-- Schedule Widget -->
@@ -246,6 +243,13 @@
                 $(this).addClass('selected');
                 $('#crenau').val($(this).text())
             });
+            /*
+            * On change function  .. 
+            */
+            $('#date').on('change',function(){
+            	console.log($(this).val())
+            })
+
         });	
 </script>
 	

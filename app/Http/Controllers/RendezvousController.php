@@ -64,7 +64,7 @@ class RendezvousController extends Controller
     
         }
         if (Auth::user()== null) {   
-    
+            dd('s');    
         }else{
             $user = Auth::user();
             $soins =Soin::where('id_medecin',$id_medecin)->get(); 
