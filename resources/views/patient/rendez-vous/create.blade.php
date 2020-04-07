@@ -46,12 +46,16 @@
 									</div>
 								</div>
 							</div>
-							<div class="row">
+							<div class="row">								
 							<div class="col-12 col-sm-4 col-md-2">
 									<h4 class="mb-1">11 November 2019</h4>
 									<p class="text-muted">Monday</p>
 								</div>
+
 								<div class="col-12 col-sm-4 col-md-3">
+																	<form action="{{route('rendezvous.create')}}" method='post'>
+									@csrf
+
 									<select class="form-control" name="motif">
 										<option value="">Choisissez un motif</option>
 										@foreach($soins as $soin)
@@ -61,14 +65,12 @@
 								</div>
 								
 								<div class="col-12 col-sm-8 col-md-3 text-sm-right">
-									<input type="date" name="date" class="form-control" id="date">
+									<input type="hidden" name="date" class="form-control" id="date">
 
 								</div>
                             </div>
 							<!-- Schedule Widget -->
 							<div class="card booking-schedule schedule-widget">
-								<form action="{{route('rendezvous.create')}}" method='post'>
-									@csrf
 								<!-- Schedule Header -->
 									<div class="schedule-header">
 										<div class="row">
@@ -159,32 +161,49 @@
 <script>		
 
 document.addEventListener('DOMContentLoaded', function() {
+    var defaultEvents =  [
+             	@foreach($crenaux as $crenau)
+                     {
+                    uid: "{{$crenau->id}}",
+                    title: "rendez-vous N ",
+                    start: "2020-04-05 {{$crenau->debut}}",
+					duration:  { minutes: "170"},
+                    className: "",
+                    level : "",
+                    price : "32000",
+                    status : "0",
+                    full : "0"
+             },
+             	@endforeach
+            ];
+
+    console.log(defaultEvents)
+
+
             var calendarEl = document.getElementById('calendar');
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
+                locale: 'fr',
+                timeFormat: 'HH:mm',
+                slotDuration: '00:15:00', /* If we want to split day time each 15minutes */
+                minTime: '08:00:00',
+                maxTime: '21:00:00',                                	
                 plugins: [ 'bootstrap', 'interaction', 'timeGridWeek', 'timeGrid' ],
                 header    : {
                     left  : 'prev,next today',
                     center: 'title',
-                    right : 'dayGridMonth,timeGridWeek,timeGridDay'
+                    right : 'timeGridMonth,timeGridWeek,timeGridDay'
                 },
-                events    : [
-                    {
-                        title          : "omar",
-                        url            :"omar",
-                        start          : "11/02/2020",
-                        end          : "11/03/2020",
-                        backgroundColor: "#000000",
-                    },
-                ],
-                eventClick: function(info) {
-
+				events: defaultEvents,
+				eventClick: function(info) {
+	            	var date = info.event.start
+	            	console.log(date)
+	                $('#date').val(date)
                 },
             });
 
             calendar.render();
         });
-
 
         $(function(){
             $(".timing").click(function(){

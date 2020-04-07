@@ -6,6 +6,7 @@ use App\Rendezvous;
 use Illuminate\Http\Request;
 use App\User;
 use App\Soin;
+use App\Creneau;
 
 use App\Http\Requests\StoreRdv;
 use Auth;
@@ -67,8 +68,10 @@ class RendezvousController extends Controller
             dd('s');    
         }else{
             $user = Auth::user();
+            $crenaux = Creneau::where('id_medecin',$id_medecin)->get();
+
             $soins =Soin::where('id_medecin',$id_medecin)->get(); 
-            return view('patient.rendez-vous.create',compact('soins'));
+            return view('patient.rendez-vous.create',compact('soins','crenaux'));
 
         }
         return view('patient.rendez-vous.create');
@@ -84,47 +87,7 @@ class RendezvousController extends Controller
      */
     public function store(StoreRdv $request)
     {
-        if (Auth::user()) {   
-            dd('ssssssssssssssssss');
-            /**
-             * rediriger ves le dashboard , where all of his appointments are there . . . . .
-             */
-            $rdv = new Rendezvous([
-                'id_user'=>$request->get('id_patient'),
-                'id_medecin'=>$medecin->id,
-                'remarque'=>$request->get('remarque'),
-                'montant'=>'2000',
-                'motif'=>json_encode($request->get('motifs')),
-                'etat_payment'=>false,//$request->get('etat_payment'),
-                'date_rdv'=>$request->get('date_rdv'),
-                'status'=>'en attente',
-                'creneau'=>$request->get('crenau')
-            ]);
-            $rdv->save();
-            //$rdv->motifs()->attach($request->get('motifs'));
-
-            //return redirect()->route('patient.dashboard')->with('success', 'le rendez-vosu a été crée avec succée -_- ');
-                
-        }        
-        $medecin = Auth::guard('medecin')->user();
-        $validated = $request->validated();
-         //converts an array to JSON string
-        $rdv = new Rendezvous([
-            'id_user'=>$request->get('id_patient'),
-            'id_medecin'=>$medecin->id,
-            'remarque'=>$request->get('remarque'),
-            'montant'=>'2000',
-            'motif'=>json_encode($request->get('motifs')),
-            'etat_payment'=>false,//$request->get('etat_payment'),
-            'date_rdv'=>$request->get('date_rdv'),
-            'status'=>'en attente',
-            'creneau'=>$request->get('crenau')
-        ]);
-        $rdv->save();
-        //$rdv->motifs()->attach($request->get('motifs'));
-
-        return redirect()->route('rendezvous.index')->with('success', 'le rendez-vosu a été enregostré avec succée -_- ');
-
+        dd($request['motif']);
 
     }
 

@@ -31,6 +31,7 @@
 			<script src="{{asset('js/html5shiv.min.js')}}"></script>
 			<script src="{{asset('js/respond.min.js')}}"></script>
 		<![endif]-->
+		@yield('styles')
 	
 	</head>
 	<body class="account-page">
