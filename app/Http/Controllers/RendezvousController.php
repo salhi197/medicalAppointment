@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Soin;
 use App\Creneau;
+use App\Journee;
 
 use App\Http\Requests\StoreRdv;
 use Auth;
@@ -69,9 +70,9 @@ class RendezvousController extends Controller
         }else{
             $user = Auth::user();
             $crenaux = Creneau::where('id_medecin',$id_medecin)->get();
-
+            $journees = Journee::where(['id_medecin'=>$id_medecin,'disponible'=>1])->get();
             $soins =Soin::where('id_medecin',$id_medecin)->get(); 
-            return view('patient.rendez-vous.create',compact('soins','crenaux'));
+            return view('patient.rendez-vous.create',compact('soins','crenaux','journees'));
 
         }
         return view('patient.rendez-vous.create');

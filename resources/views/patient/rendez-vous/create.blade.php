@@ -159,45 +159,91 @@
 <script src="{{asset('fullcalendar/timegrid/main.min.js')}}"></script>
 
 <script>		
+  const weekday = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi","Samedi", "Dimanche"];
+
+function day_of_week(input) {
+//  var input = document.getElementById("input").value;
+
+  var date = new Date(input).getUTCDay();
+  
+  var array= []
+	array.push(weekday[date])
+	array.push(date)
+	return array;
+}
+
 
 document.addEventListener('DOMContentLoaded', function() {
-    var defaultEvents =  [
-             	@foreach($crenaux as $crenau)
-                     {
-                    uid: "{{$crenau->id}}",
-                    title: "rendez-vous N ",
-                    start: "2020-04-05 {{$crenau->debut}}",
-					duration:  { minutes: "170"},
-                    className: "",
-                    level : "",
-                    price : "32000",
-                    status : "0",
-                    full : "0"
-             },
-             	@endforeach
-            ];
+var today = new Date();
+var dd = 20;//String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+today = mm + '/' + 20 + '/' + yyyy;
+var defaultEvents =  [];
+var journees = <?php echo json_encode($journees); ?>;
+var crenaux = <?php echo json_encode($crenaux); ?>;
+var aujourdhui = day_of_week(today)
 
-    console.log(defaultEvents)
+journees.forEach(jour=>{
+
+	var index = weekday.indexOf(jour['jour'])
+	console.log(jour['jour']+' '+ index+' '+aujourdhui[1])
+	if (index<aujourdhui[1]) {
+		var d = parseInt(dd)+parseInt(index)+6-parseInt(aujourdhui[1])+1
+
+	} 
+	if(index>aujourdhui[1]){		
+	var d = parseInt(dd)+index-parseInt(aujourdhui[1])
+	}
+	if (index==aujourdhui[1]) {
+		d =dd
+	}
+		console.log(d)
+
+	crenaux.forEach(crenau=>{
+		var event={
+            uid: jour['jour'],
+            title: "rendez-vous N ",
+            start: yyyy+"-"+mm+"-"+d +" "+crenau['debut'],
+            end: yyyy+"-"+mm+"-"+d +" "+crenau['fin'],
+            className: "",	
+            level : "",
+            price : "32000",
+            status : "0",
+            full : "0"
+
+		};    		
+		defaultEvents.push(event)
+	})
+	d++;
+})
+	
+console.log(defaultEvents)
+
 
 
             var calendarEl = document.getElementById('calendar');
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 locale: 'fr',
+                firstDay :aujourdhui[1]+1,
+                defaultDate: yyyy+'-'+mm + '-' + 20,// + '-' +,
                 timeFormat: 'HH:mm',
                 slotDuration: '00:15:00', /* If we want to split day time each 15minutes */
                 minTime: '08:00:00',
-                maxTime: '21:00:00',                                	
+                maxTime: '16:00:00',                                	
                 plugins: [ 'bootstrap', 'interaction', 'timeGridWeek', 'timeGrid' ],
                 header    : {
-                    left  : 'prev,next today',
+                    left  : 'next today',
                     center: 'title',
-                    right : 'timeGridMonth,timeGridWeek,timeGridDay'
+                    right : 'timeGridMonth,timeGridWeek'
                 },
 				events: defaultEvents,
 				eventClick: function(info) {
 	            	var date = info.event.start
-	            	console.log(date)
+	            	console.log($(this))
+					info.el.style.borderColor = 'red';
+					info.el.style.backgroundColor = 'red';
 	                $('#date').val(date)
                 },
             });
