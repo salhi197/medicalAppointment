@@ -40,10 +40,11 @@ class RendezvousController extends Controller
     
         }
         
-        if (Auth::guard('user')->check()) {   
-            $user = Auth::guard('user')->user();
+        if (Auth::user()!= null) {   
+            $user = Auth::user();
             $rdvs = Rendezvous::where('id_user',$user->id)->paginate(10);
-            return view('rendez-vous.index', compact('rdvs'));
+            
+            return view('patient.rendez-vous.index', compact('rdvs'));
     
         }
         
@@ -72,6 +73,7 @@ class RendezvousController extends Controller
             $crenaux = Creneau::where('id_medecin',$id_medecin)->get();
             $journees = Journee::where(['id_medecin'=>$id_medecin,'disponible'=>1])->get();
             $soins =Soin::where('id_medecin',$id_medecin)->get(); 
+
             return view('patient.rendez-vous.create',compact('soins','crenaux','journees'));
 
         }
@@ -88,7 +90,32 @@ class RendezvousController extends Controller
      */
     public function store(StoreRdv $request)
     {
-        dd($request['motif']);
+        if (Auth::guard('medecin')->check()) {   
+            $id_medecin = Auth::guard('medecin')->user()->id;
+            $id_patient = $request->get('id_patient');
+        }
+        if (Auth::user()!= null) {   
+            $user = Auth::user();
+            $id_patient = $user->id;
+            $id_medecin = 1;//$request['id_medecin'];
+        }
+        //$validated = $request->validated();
+         //converts an array to JSON string
+        $rdv = new Rendezvous([
+            'id_user'=>$id_patient,
+            'id_medecin'=>$id_medecin,
+            'remarque'=>'null',//set this to null in db $request->get('remarque'),
+            'montant'=>'2000',
+            'motif'=>$request->get('motif'),
+            'etat_payment'=>false,//$request->get('etat_payment'),
+            'date_rdv'=>$request->get('date'),
+            'status'=>'en attente',
+            'creneau'=>$request->get('crenau')
+        ]);
+        $rdv->save();
+        //$rdv->motifs()->attach($request->get('motifs'));
+            echo "done";
+        return redirect()->route('rendezvous.index')->with('success', 'le rendez-vosu a été enregostré avec succée -_- ');
 
     }
 

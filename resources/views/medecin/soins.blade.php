@@ -10,7 +10,7 @@
 
                 <div class="card-body">
 
-                    <h4 class="card-title">Affichage des tous les soins : </h4>
+                    <h4 class="card-title">Affichage des tous les soins : {{Auth::guard('medecin')->user()->id}}</h4>
                     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Ajouter un soins </button>
 
 

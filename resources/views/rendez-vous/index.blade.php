@@ -72,7 +72,6 @@
 												<a class="nav-link" href="#today-appointments" data-toggle="tab">Today</a>
 											</li> 
 											<li class="nav-item">
-												<a class="nav-link" href="{{route('rendezvous.show.create')}}">Créer un R.D.V</a>
 											</li> 
 										</ul>
 										<!-- /Appointment Tab -->

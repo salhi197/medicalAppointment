@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('patient.app')
 
 @section('content')
 			<!-- Breadcrumb -->
@@ -74,58 +74,9 @@
 								<!-- Schedule Header -->
 									<div class="schedule-header">
 										<div class="row">
-											<div class="col-md-12">
-											
-												<!-- Day Slot -->
-												<div class="day-slot">
-													<ul>
-														<li class="left-arrow">
-															<a href="#">
-																<i class="fa fa-chevron-left"></i>
-															</a>
-														</li>
-														<li>
-															<span>Mon</span>
-															<span class="slot-date">11 Nov <small class="slot-year">2019</small></span>
-														</li>
-														<li>
-															<span>Tue</span>
-															<span class="slot-date">12 Nov <small class="slot-year">2019</small></span>
-														</li>
-														<li>
-															<span>Wed</span>
-															<span class="slot-date">13 Nov <small class="slot-year">2019</small></span>
-														</li>
-														<li>
-															<span>Thu</span>
-															<span class="slot-date">14 Nov <small class="slot-year">2019</small></span>
-														</li>
-														<li>
-															<span>Fri</span>
-															<span class="slot-date">15 Nov <small class="slot-year">2019</small></span>
-														</li>
-														<li>
-															<span>Sat</span>
-															<span class="slot-date">16 Nov <small class="slot-year">2019</small></span>
-														</li>
-														<li>
-															<span>Sun</span>
-															<span class="slot-date">17 Nov <small class="slot-year">2019</small></span>
-														</li>
-														<li class="right-arrow">
-															<a href="#">
-																<i class="fa fa-chevron-right"></i>
-															</a>
-														</li>
-													</ul>
-												</div>
-												<!-- /Day Slot -->
-												
-											</div>
 										</div>
 									</div>
-									<!-- /Schedule Header -->
-									
+									<!-- /Schedule Header -->									
 									<!-- Schedule Content -->
 									<div class="schedule-cont">
 										<div class="row">
@@ -210,8 +161,10 @@ journees.forEach(jour=>{
             level : "",
             price : "32000",
             status : "0",
-            full : "0"
-
+            full : "0",
+			debut_crenau :crenau['debut'],
+			fin_crenau: crenau['fin'],
+			date_crenau :yyyy+"-"+mm+"-"+d
 		};    		
 		defaultEvents.push(event)
 	})
@@ -219,11 +172,7 @@ journees.forEach(jour=>{
 })
 	
 console.log(defaultEvents)
-
-
-
             var calendarEl = document.getElementById('calendar');
-
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 locale: 'fr',
                 firstDay :aujourdhui[1]+1,
@@ -240,11 +189,15 @@ console.log(defaultEvents)
                 },
 				events: defaultEvents,
 				eventClick: function(info) {
-	            	var date = info.event.start
-	            	console.log($(this))
+	            	var date = info.event._def.extendedProps.date_crenau
+					var heur = info.event._def.extendedProps.debut_crenau
+	            	console.log(info.event._def.extendedProps.debut_crenau)
+					console.log(info.event._def.extendedProps.date_crenau)
 					info.el.style.borderColor = 'red';
 					info.el.style.backgroundColor = 'red';
-	                $('#date').val(date)
+	                $('#date').val(date)	
+					$('#crenau').val(heur)
+					
                 },
             });
 
