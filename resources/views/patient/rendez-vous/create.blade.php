@@ -59,7 +59,7 @@
 									<select class="form-control" name="motif">
 										<option value="">Choisissez un motif</option>
 										@foreach($soins as $soin)
-											<option value="Consultation d'implantologie-1">Consultation d'implantologie</option>
+											<option value="Consultation d'implantologie-1">{{$soin->nom}}</option>
 										@endforeach
 									</select>
 								</div>
