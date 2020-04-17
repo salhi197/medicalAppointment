@@ -32,7 +32,7 @@
 										<a href="doctor-profile.html" class="booking-doc-img">
 										</a>
 										<div class="booking-info">
-											<h4><a href="doctor-profile.html">Dr. Darren Elder</a></h4>
+											<h4><a href="doctor-profile.html">Dr</a></h4>
 											<div class="rating">
 												<i class="fas fa-star filled"></i>
 												<i class="fas fa-star filled"></i>
@@ -126,10 +126,10 @@ function day_of_week(input) {
 
 document.addEventListener('DOMContentLoaded', function() {
 var today = new Date();
-var dd = 20;//String(today.getDate()).padStart(2, '0');
+var dd = String(today.getDate()).padStart(2, '0');
 var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 var yyyy = today.getFullYear();
-today = mm + '/' + 15 + '/' + yyyy;
+today = mm + '/' + dd + '/' + yyyy;
 var defaultEvents =  [];
 var journees = <?php echo json_encode($journees); ?>;
 var crenaux = <?php echo json_encode($crenaux); ?>;
@@ -176,14 +176,14 @@ console.log(defaultEvents)
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 locale: 'fr',
                 firstDay :aujourdhui[1]+1,
-                defaultDate: yyyy+'-'+mm + '-' + 20,// + '-' +,
+                defaultDate: yyyy+'-'+mm + '-' + dd,// + '-' +,
                 timeFormat: 'HH:mm',
                 slotDuration: '00:15:00', /* If we want to split day time each 15minutes */
                 minTime: '08:00:00',
                 maxTime: '16:00:00',                                	
                 plugins: [ 'bootstrap', 'interaction', 'timeGridWeek', 'timeGrid' ],
                 header    : {
-                    left  : 'next today',
+                    left  : 'prev,next today',
                     center: 'title',
                     right : 'timeGridMonth,timeGridWeek'
                 },

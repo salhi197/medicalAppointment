@@ -94,25 +94,6 @@ class LoginController extends Controller
     protected function guardLogin(Request $request, $guard)
     {
 
-        $user = User::where('email', '=', $request->get('email'))->first();
-        if ($user === null) {
-           dd('error');
-        }else{
-            $rdv = new Rendezvous([
-                'id_user'=>$user->id,
-                'id_medecin'=>$request->get('id_medecin'),
-                'remarque'=>'null',//set this to null in db $request->get('remarque'),
-                'montant'=>'2000',
-                'motif'=>$request->get('motif'),
-                'etat_payment'=>false,//$request->get('etat_payment'),
-                'date_rdv'=>$request->get('date'),
-                'status'=>'en attente',
-                'creneau'=>$request->get('crenau')
-            ]);
-            $rdv->save();
-        }
-    
-
         return Auth::guard($guard)->attempt(
             [
                 'email' => $request->email,

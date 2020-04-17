@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Soin;
 use App\Creneau;
+use App\Medecin;
+
 use App\Journee;
 
 use App\Http\Requests\StoreRdv;
@@ -66,7 +68,20 @@ class RendezvousController extends Controller
     
         }
             $user = Auth::user();
-            $crenaux = Creneau::where('id_medecin',$id_medecin)->get();
+            $medecin = Medecin::find($id_medecin);
+            if($medecin->type_creneaux == 0){
+                $crenaux =[
+                    ['id' => 1, 'debut' => "08:00:00", "fin" =>"09:00:00"],
+                    ['id' => 2, 'debut' => "09:00:00", "fin" =>"10:00:00"],
+                    ['id' => 3, 'debut' => "10:00:00", "fin" =>"11:00:00"],
+                    ['id' => 4, 'debut' => "11:00:00", "fin" =>"12:00:00"],
+                    ['id' => 5, 'debut' => "12:00:00", "fin" =>"13:00:00"],
+                    ['id' => 6, 'debut' => "13:00:00", "fin" =>"14:00:00"],
+                    
+                ];                
+            }else{
+                $crenaux = Creneau::where('id_medecin',$id_medecin)->get();
+            }
             $journees = Journee::where(['id_medecin'=>$id_medecin,'disponible'=>1])->get();
             $soins =Soin::where('id_medecin',$id_medecin)->get(); 
 

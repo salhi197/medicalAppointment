@@ -13,21 +13,16 @@
             <div class="card">
 
                 <div class="card-body">
+                    <h4 class="card-title">Table des créneaux :</h4>
+                    <label class="switch">
+                      <input type="checkbox" checked>
+                      <span class="slider round"></span>
+                    </label>
+                    <label>
+                      Mettre les crénuax statiques , un écart d'une heure de 8 jusqué 5 
+                      </label>
 
-<label class="switch">
-  <input type="checkbox" checked>
-  <span class="slider round"></span>
-</label>
-                    
-
-                    <h4 class="card-title">Table des créneaux</h4>
-
-                    
-
-
-
-                    <!-- Trigger the modal with a button -->
-
+                    <br>
                     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Ajouter un créneau </button>
 
 
