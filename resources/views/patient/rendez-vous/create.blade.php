@@ -1,4 +1,4 @@
-@extends('patient.app')
+@extends('layouts.app')
 
 @section('content')
 			<!-- Breadcrumb -->
@@ -129,7 +129,7 @@ var today = new Date();
 var dd = 20;//String(today.getDate()).padStart(2, '0');
 var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 var yyyy = today.getFullYear();
-today = mm + '/' + 20 + '/' + yyyy;
+today = mm + '/' + 15 + '/' + yyyy;
 var defaultEvents =  [];
 var journees = <?php echo json_encode($journees); ?>;
 var crenaux = <?php echo json_encode($crenaux); ?>;

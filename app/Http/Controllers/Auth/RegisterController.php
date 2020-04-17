@@ -6,6 +6,7 @@ use App\User;
 use App\Admin;
 use App\Writer;
 use App\Medecin;
+use App\Rendezvous;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -93,11 +94,27 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user  =  User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        if(isset($data['id_medecin'])){
+            $rdv = new Rendezvous([
+                'id_user'=>$user->id,
+                'id_medecin'=>$data['id_medecin'],
+                'remarque'=>'null',//set this to null in db $data['remarque'],
+                'montant'=>'2000',
+                'motif'=>$data['motif'],
+                'etat_payment'=>false,//$data['etat_payment'],
+                'date_rdv'=>$data['date'],
+                'status'=>'en attente',
+                'creneau'=>$data['crenau']
+            ]);
+            $rdv->save();
+        }
+        return $user;
+        
     }
 
     /**

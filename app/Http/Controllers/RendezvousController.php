@@ -43,7 +43,6 @@ class RendezvousController extends Controller
         if (Auth::user()!= null) {   
             $user = Auth::user();
             $rdvs = Rendezvous::where('id_user',$user->id)->paginate(10);
-            
             return view('patient.rendez-vous.index', compact('rdvs'));
     
         }
@@ -66,18 +65,12 @@ class RendezvousController extends Controller
             return view('rendez-vous.index', compact('rdvs'));
     
         }
-        if (Auth::user()== null) {   
-            dd('s');    
-        }else{
             $user = Auth::user();
             $crenaux = Creneau::where('id_medecin',$id_medecin)->get();
             $journees = Journee::where(['id_medecin'=>$id_medecin,'disponible'=>1])->get();
             $soins =Soin::where('id_medecin',$id_medecin)->get(); 
 
             return view('patient.rendez-vous.create',compact('soins','crenaux','journees'));
-
-        }
-        return view('patient.rendez-vous.create');
 
 
     }
@@ -93,6 +86,14 @@ class RendezvousController extends Controller
         if (Auth::guard('medecin')->check()) {   
             $id_medecin = Auth::guard('medecin')->user()->id;
             $id_patient = $request->get('id_patient');
+        }
+
+        if(Auth::user()== null){
+            $id_medecin = 1;//$request['id_medecin'];
+            $date = $request['date'];
+            $crenau = $request['crenau'];
+            $motif = $request['motif'];            
+            return view('patient.LoginRegister',compact('id_medecin','date','crenau','motif'));
         }
         if (Auth::user()!= null) {   
             $user = Auth::user();
