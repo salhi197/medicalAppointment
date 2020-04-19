@@ -70,9 +70,9 @@
 								<a href="#">Doctors <i class="fas fa-chevron-down"></i></a>
 								<ul class="submenu">
 									<li class="active"><a href="doctor-dashboard.html">Doctor Dashboard</a></li>
-									<li><a href="appointments.html">Appointments</a></li>
-									<li><a href="schedule-timings.html">Schedule Timing</a></li>
-									<li><a href="my-patients.html">Patients List</a></li>
+									<li><a href="/medecin/rendez_vous">Rendez-Vous</a></li>
+									<li><a href="/medecin/journées">Journées</a></li>
+									<li><a href="/medecin/creneaus">Patients List</a></li>
 									<li><a href="patient-profile.html">Patients Profile</a></li>
 									<li><a href="chat-doctor.html">Chat</a></li>
 									<li><a href="invoices.html">Invoices</a></li>
@@ -236,21 +236,21 @@
 									<nav class="dashboard-menu">
 										<ul>
 											<li class="active">
-												<a href="doctor-dashboard.html">
+												<a href="/medecin/rendez_vous">
 													<i class="fas fa-columns"></i>
-													<span>Dashboard</span>
+													<span>Rendez_vous</span>
 												</a>
 											</li>
 											<li>
-												<a href="appointments.html">
+												<a href="/medecin/journées">
 													<i class="fas fa-calendar-check"></i>
-													<span>Appointments</span>
+													<span>Journées</span>
 												</a>
 											</li>
 											<li>
-												<a href="my-patients.html">
+												<a href="/medecin/creneaus">
 													<i class="fas fa-user-injured"></i>
-													<span>My Patients</span>
+													<span>Créneaux</span>
 												</a>
 											</li>
 											<li>
