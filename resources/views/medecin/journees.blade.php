@@ -2,8 +2,6 @@
 
 @section('content')         
 
-  
-
     <div class="col-md-7 col-lg-8 col-xl-9">
 
             <div class="card">
@@ -26,9 +24,6 @@
                         
                     </div>
                     
-                    
-                    
-
 
                     <h6 class="card-subtitle">jour de travail</code></h6>
 
@@ -70,7 +65,10 @@
 
                                             <td> 
 
-                                            <label><input class="form-control" type="number" min="0" max="1" name="dispo" id="dispo{{$journees[$i]->id}}" value="{!! $journees[$i]->disponible !!}"></label>
+                                            <label>
+                                            
+                                                <input class="form-control" type="number" min="0" max="1" name="dispo" id="dispo{{$journees[$i]->id}}" value="{!! $journees[$i]->disponible !!}">
+                                            </label>
 
                                                 {{--  --}}
                                             </td>

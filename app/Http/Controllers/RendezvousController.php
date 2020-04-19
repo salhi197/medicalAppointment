@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use App\Rendezvous;
 use Illuminate\Http\Request;
 use App\User;
@@ -60,6 +61,8 @@ class RendezvousController extends Controller
     public function create($id_medecin)
     {
 
+        dd(DB::select("select j.id as id_jour,j.jour,cr.debut,cr.fin from journees j ,creneaus cr where cr.id_medecin=j.id_medecin and cr.id_medecin=\"$id_medecin\" and (cr.debut>=j.heuredeb and cr.debut<=j.heurefin) and j.disponible=1 order by j.id,cr.debut"));
+
 
         if (Auth::guard('medecin')->check()) {   
             $medecin = Auth::guard('medecin')->user();
@@ -71,6 +74,7 @@ class RendezvousController extends Controller
             $medecin = Medecin::find($id_medecin);
             if($medecin->type_creneaux == "false"){
                 $crenaux = Creneau::where('id_medecin',$id_medecin)->get();
+                
 
             }else{
                 /**

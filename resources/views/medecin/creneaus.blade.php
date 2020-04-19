@@ -4,9 +4,7 @@
 
 @section('content')         
      
-
     <div class="row">
-
 
         <div class="col-lg-12">
 
@@ -16,8 +14,6 @@
                     <h4 class="card-title">Table des créneaux :</h4>
                     <br>
                     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Ajouter un créneau </button>
-
-
 
                     <!-- Modal -->
 
@@ -95,12 +91,7 @@
 
                                             </td>
 
-
-
-                                            
-
                                             <td> 
-
                                                     
 
                                                 <input type="time" name="fin" class="form-control" value="{!! substr($creneaus[$i]->fin,0,5) !!}"> 
