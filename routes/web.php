@@ -1,4 +1,7 @@
 <?php
+use Illuminate\Http\Request;
+use App\Medecin;
+
 Route::view('/', 'welcome');
 Auth::routes();
 
@@ -107,3 +110,15 @@ Route::post('/medecin/journées/modifier/post/ajax','JourneeController@modifierj
 
 Route::get('/search/medecins','HomeController@search')->name('search.medecins');
 Route::get('/reservation','HomeController@search')->name('search.medecins');
+
+
+/**
+ * des routes sans controllers .. code driectemtnt
+ */
+Route::post('/changer/etat/crenau',function(Request $request){
+    if($request->ajax()){
+        $medecin = Auth::guard('medecin')->user();
+        Medecin::where('id', $medecin->id)->update(['type_creneaux' => $request['etat']]);
+        return response()->json(['message'=>'done .. ']);
+    }
+})->name('changer_etat_crenau');

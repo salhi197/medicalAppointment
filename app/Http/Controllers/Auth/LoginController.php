@@ -94,6 +94,9 @@ class LoginController extends Controller
     protected function guardLogin(Request $request, $guard)
     {
 
+        /**
+         * 
+         */
         return Auth::guard($guard)->attempt(
             [
                 'email' => $request->email,
@@ -102,6 +105,9 @@ class LoginController extends Controller
             $request->get('remember')
         );
 
+        /**
+         * 
+         */
 
 
     }

@@ -10,6 +10,7 @@
 		
 		<!-- Favicons -->
 		<link href="{{asset('img/favicon.png')}}" rel="icon">
+		<meta name="csrf-token" content="{{ csrf_token() }}">
 		
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
