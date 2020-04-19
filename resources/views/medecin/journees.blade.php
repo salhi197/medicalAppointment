@@ -240,9 +240,9 @@ document.addEventListener('DOMContentLoaded', function () {
       //$('select').attr('readonly','true')
       /**
       ajax here . . . .. */
-      $('select').attr('disabled',checkbox.checked)
-      $('.save').attr('disabled',checkbox.checked)
-      $('input').attr('readonly',checkbox.checked)
+      //$('select').attr('disabled',checkbox.checked)
+      //$('.save').attr('disabled',checkbox.checked)
+      //$('input').attr('readonly',checkbox.checked)
       
       $.ajax({
                 headers: {
