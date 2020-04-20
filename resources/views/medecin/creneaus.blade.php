@@ -13,7 +13,7 @@
                 <div class="card-body">
                     <h4 class="card-title">Table des créneaux :</h4>
                     <br>
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Ajouter un créneau </button>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Ajouter des créneau </button>
 
                     <!-- Modal -->
 
