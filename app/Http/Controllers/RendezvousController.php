@@ -77,8 +77,6 @@ class RendezvousController extends Controller
             
         $journees_creneaus=[$creneaus_dimanche,$creneaus_lundi,$creneaus_mardi,$creneaus_mercredi,$creneaus_jeudi,$creneaus_vendredi,$creneaus_samedi];
 
-        dd($journees_creneaus);
-
         if (Auth::guard('medecin')->check()) {   
             $medecin = Auth::guard('medecin')->user();
             $rdvs = Rendezvous::where('id_medecin',$medecin->id)->paginate(10);
@@ -87,29 +85,30 @@ class RendezvousController extends Controller
         }
             $user = Auth::user();
             $medecin = Medecin::find($id_medecin);
-            if($medecin->type_creneaux == "false"){
-                $crenaux = Creneau::where('id_medecin',$id_medecin)->get();
+            // if($medecin->type_creneaux == "false"){
+            //     $crenaux = Creneau::where('id_medecin',$id_medecin)->get();
                 
 
-            }else{
-                /**
-                 * ecart 
-                 */
+            // }else{
+            //     /**
+            //      * ecart 
+            //      */
 
-                 $crenaux = [
-                    ['id' => 1, 'debut' => "08:00:00", "fin" =>"09:00:00"],
-                    ['id' => 2, 'debut' => "09:00:00", "fin" =>"10:00:00"],
-                    ['id' => 3, 'debut' => "10:00:00", "fin" =>"11:00:00"],
-                    ['id' => 4, 'debut' => "11:00:00", "fin" =>"12:00:00"],
-                    ['id' => 5, 'debut' => "12:00:00", "fin" =>"13:00:00"],
-                    ['id' => 6, 'debut' => "13:00:00", "fin" =>"14:00:00"],                    
-                ];                
+            //      $crenaux = [
+            //         ['id' => 1, 'debut' => "08:00:00", "fin" =>"09:00:00"],
+            //         ['id' => 2, 'debut' => "09:00:00", "fin" =>"10:00:00"],
+            //         ['id' => 3, 'debut' => "10:00:00", "fin" =>"11:00:00"],
+            //         ['id' => 4, 'debut' => "11:00:00", "fin" =>"12:00:00"],
+            //         ['id' => 5, 'debut' => "12:00:00", "fin" =>"13:00:00"],
+            //         ['id' => 6, 'debut' => "13:00:00", "fin" =>"14:00:00"],                    
+            //     ];                
 
-            }
-            $journees = Journee::where(['id_medecin'=>$id_medecin,'disponible'=>1])->get();
+            // }
+
+            //$journees = Journee::where(['id_medecin'=>$id_medecin,'disponible'=>1])->get();
             $soins =Soin::where('id_medecin',$id_medecin)->get(); 
 
-            return view('patient.rendez-vous.create',compact('soins','crenaux','journees'));
+            return view('patient.rendez-vous.create',compact('soins','journees_creneaus'));
 
 
     }

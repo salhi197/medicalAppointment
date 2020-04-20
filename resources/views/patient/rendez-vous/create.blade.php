@@ -110,7 +110,7 @@
 <script src="{{asset('fullcalendar/timegrid/main.min.js')}}"></script>
 
 <script>		
-  const weekday = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi","Samedi", "Dimanche"];
+  const weekday = [ "Dimanche","Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi","Samedi"];
 
 function day_of_week(input) {
 //  var input = document.getElementById("input").value;
@@ -131,14 +131,15 @@ var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 var yyyy = today.getFullYear();
 today = mm + '/' + dd + '/' + yyyy;
 var defaultEvents =  [];
-var journees = <?php echo json_encode($journees); ?>;
-var crenaux = <?php echo json_encode($crenaux); ?>;
+var journees_creneaus = <?php echo json_encode($journees_creneaus); ?>;
+//var crenaux = 
+//echo json_encode($crenaux); ?>;
 var aujourdhui = day_of_week(today)
 
-journees.forEach(jour=>{
-
-	var index = weekday.indexOf(jour['jour'])
-	console.log(jour['jour']+' '+ index+' '+aujourdhui[1])
+for (let index = 0; index < journees_creneaus.length; index++) {
+	if(journees_creneaus[index][0] != undefined){
+	//var index = weekday.indexOf(journees_creneaus[index][0]['jour'])
+	console.log(journees_creneaus[index][0]['jour']+' '+ index+' '+aujourdhui[1])
 	if (index<aujourdhui[1]) {
 		var d = parseInt(dd)+parseInt(index)+6-parseInt(aujourdhui[1])+1
 
@@ -151,9 +152,9 @@ journees.forEach(jour=>{
 	}
 		console.log(d)
 
-	crenaux.forEach(crenau=>{
+		journees_creneaus[index].forEach(crenau=>{
 		var event={
-            uid: jour['jour'],
+            uid: journees_creneaus[index][0]['jour'],
             title: "rendez-vous N ",
             start: yyyy+"-"+mm+"-"+d +" "+crenau['debut'],
             end: yyyy+"-"+mm+"-"+d +" "+crenau['fin'],
@@ -169,7 +170,10 @@ journees.forEach(jour=>{
 		defaultEvents.push(event)
 	})
 	d++;
-})
+	}
+
+
+}
 	
 console.log(defaultEvents)
             var calendarEl = document.getElementById('calendar');
