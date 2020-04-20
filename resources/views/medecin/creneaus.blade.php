@@ -188,7 +188,7 @@
 
                 
 
-                <form class="form-inline" action="/medecin/creneaus/ajouter" method="POST">
+                <form class="form-inline row" action="/medecin/creneaus/ajouter" method="POST">
 
 
 
@@ -234,7 +234,60 @@
 
           </div>
 
-          
+
+           <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                <h4 class="modal-title">Ajouter un ensemble de Nouveaux créneau</h4>
+
+           </div>
+
+    
+            <div class="modal-body row">
+            
+
+                <form class="row" id="jouter_bzzf" onsubmit="add_many(event,this)">
+
+                    <div class="form-group col-md-3">
+
+                        <label for="first">1er créneau </label>
+
+                        <input type="time" name="first" class="form-control" id="first">
+                    </div>
+
+                        
+
+                    <div class="form-group col-md-3">
+
+                        <label for="last">dernier créneau </label>
+
+                        <input type="time" name="last" class="form-control" id="last">
+
+                    </div>
+
+                    <div class="form-group col-md-3">
+
+                        <label for="dureee">durée de créneau </label>
+
+                        <input type="number" min="1" max="100" name="dureee" class="form-control col-md-6" id="dureee"> 
+                    </div>
+
+
+                    <div class="form-group col-md-3">
+
+                        <label for="maximum">maximum de visites </label>
+
+                        <input type="number" min="1" max="100" name="maximum" class="form-control col-md-6" id="maximum">
+                    </div>
+
+                    <button type="submit" style="margin-left: 2%" id="ajout_multiple" class="btn btn-success col-md-3">Ajouter</button>
+
+                </form>
+
+                {{--  --}}
+            </div>
+
 
           <div class="modal-footer">
 

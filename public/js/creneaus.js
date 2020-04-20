@@ -143,3 +143,34 @@ $(".modif").click(function(event)
 
     /* Act on the event */
 });
+
+function add_many (e,objet) 
+{
+
+    e.preventDefault();
+
+    var data=($('#jouter_bzzf').serializeArray());
+
+    $.ajax({
+        headers: 
+        {
+           'X-CSRF-TOKEN': $('input[name="_token"]').val()
+        },                    
+        type:"POST",
+        url:"/medecin/add_many/ajax",
+        data:{data},
+
+        success:function(data) 
+        {
+            
+            console.log(data)
+
+            location.reload()
+
+            /**/
+        }
+    });    
+
+
+    // body... 
+}

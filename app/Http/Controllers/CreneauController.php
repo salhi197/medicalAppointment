@@ -30,7 +30,7 @@ class CreneauController extends Controller
     public function index()
     {
 
-        $creneaus=(DB::select("select * from creneaus order by debut asc"));
+        $creneaus=(DB::select("select * from creneaus where id_medecin = 1 order by debut asc"));
 
         return view('medecin.creneaus',compact('creneaus'));
 
@@ -86,7 +86,9 @@ class CreneauController extends Controller
         'max' => 'int|max:100|min:1'
         ]);
 
-        
+         Auth::id();
+
+
 
         DB::insert("insert into creneaus (debut,fin,max_visite,id_medecin) values(\"$request->debut\",\"$request->fin\",\"$request->max\",1) ");        
 
@@ -101,6 +103,51 @@ class CreneauController extends Controller
     }
 
 
+    public function ajouterplusieurscreneau(Request $request)
+    {
+        
+        $data = $request->data;
+
+        $first = ($data[0]['value']);
+        
+        $last = ($data[1]['value']);
+        
+        $dureee = ($data[2]['value']);
+        
+        $maximum = ($data[3]['value']);
+        
+        $var = "+" .(float)$dureee." minutes";
+
+        if($maximum == null) {$maximum=1;}
+
+        if ($first!=null && $last!=null && $dureee!=null) 
+        {
+            # code...
+            DB::delete("delete from creneaus where id_medecin = 1");
+
+            $new_creneaus=[];
+            $i=0;
+
+            while ( date('H:i',strtotime($var ,strtotime($first))) <= $last) 
+            {
+                
+                $interm_last = date('H:i',strtotime($var ,strtotime($first)));
+
+                $new_creneaus[$i]= (object)array('debut' => $first , 'fin' => $interm_last);                
+                $i++;                
+
+                DB::insert("insert into creneaus (debut,fin,max_visite,id_medecin) values(\"$first\",\"$interm_last\",\"$maximum\",1) ");        
+
+                $first=$interm_last;
+
+                # code...
+            }
+
+            return response()->json($new_creneaus);       
+
+        }
+        # code...
+    }
 
 
     /**/

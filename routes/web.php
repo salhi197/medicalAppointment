@@ -92,6 +92,7 @@ Route::get('/medecin/creneaus','CreneauController@index');
 Route::post('/medecin/modifiercreneau/ajax','CreneauController@modifiercreneau');
 Route::get('/medecin/creneaus/supprimer/{id}','CreneauController@supprimercreneau');
 Route::post('/medecin/creneaus/ajouter', 'CreneauController@ajoutercreneau');
+Route::post('/medecin/add_many/ajax', 'CreneauController@ajouterplusieurscreneau');
 
 
 /**
