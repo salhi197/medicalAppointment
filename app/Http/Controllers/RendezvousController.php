@@ -130,7 +130,18 @@ class RendezvousController extends Controller
             $id_medecin = 1;//$request['id_medecin'];
             $date = $request['date'];
             $crenau = $request['crenau'];
-            $motif = $request['motif'];            
+            $motif = $request['motif'];  
+            
+            /**
+             * set cookies 
+             */
+            \Cookie::queue('id_medecin',$id_medecin,15);
+            \Cookie::queue('date',$date,15);
+            \Cookie::queue('crenau',$crenau,15);
+            \Cookie::queue('motif',$motif,15);
+            \Cookie::queue('inserted','false',15);
+              
+//            dd(request()->cookie());
             return view('patient.LoginRegister',compact('id_medecin','date','crenau','motif'));
         }
         if (Auth::user()!= null) {   

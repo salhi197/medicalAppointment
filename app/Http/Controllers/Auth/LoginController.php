@@ -97,14 +97,13 @@ class LoginController extends Controller
         /**
          * 
          */
-        return Auth::guard($guard)->attempt(
+        return  Auth::guard($guard)->attempt(
             [
                 'email' => $request->email,
                 'password' => $request->password
             ],
             $request->get('remember')
         );
-
         /**
          * 
          */

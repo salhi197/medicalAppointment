@@ -19,7 +19,7 @@ Route::post('/register/admin', 'Auth\RegisterController@createAdmin')->name('reg
 Route::post('/register/writer', 'Auth\RegisterController@createWriter')->name('register.writer');
 Route::post('/register/medecin', 'Auth\RegisterController@createMedecin')->name('register.medecin');
 
-Route::view('/home', 'home')->middleware('auth');
+Route::get('/home', 'HomeController@index')->middleware('auth');
 Route::group(['middleware' => 'auth:admin'], function () {
     Route::view('/admin', 'admin');
 });

@@ -5,12 +5,12 @@
 				<div class="container" style="transform: none;">
 
 					<div class="row" style="transform: none;">
-						<div class="col-md-12 col-lg-10">
+						<div class="col-md-7 col-lg-8">
 							<div class="card">
 								<div class="card-body">
 								
 									<!-- Checkout Form -->
-									<form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
+									<form method="POST" id="form1" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
 				                        @csrf
 									
 										<!-- Personal Information -->
@@ -44,7 +44,7 @@
 											</div>
 											<!-- Submit Section -->
 											<div class="submit-section mt-4">
-												<button type="submit" class="btn btn-primary submit-btn">Regsiter </button>
+												<button type="submit" class="btn btn-primary submit-btn submit" id="1">Regsiter </button>
 											</div>
 											<input type="hidden" name="id_medecin" value="{{$id_medecin}}">
 											<input type="hidden" name="date" value="{{$date}}">
@@ -56,7 +56,7 @@
 										<!-- /Personal Information -->
 										
 										<div class="payment-widget">
-                                        <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
+                                        <form id="form2" method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
                                             @csrf
 											<h4 class="card-title">Login : </h4>
 											
@@ -94,7 +94,7 @@
 											
 											<!-- Submit Section -->
 											<div class="submit-section mt-4">
-												<button type="submit" class="btn btn-primary submit-btn">login</button>
+												<button type="submit" class="btn btn-primary submit-btn submit" id="2">login</button>
 											</div>
 											<!-- /Submit Section -->
 											</form>
@@ -106,11 +106,76 @@
 							</div>
 							
 						</div>
+						<div class="col-md-5 col-lg-4 theiaStickySidebar">
 						
+						<!-- Booking Summary -->
+						<div class="card booking-card">
+							<div class="card-header">
+								<h4 class="card-title">Booking Summary</h4>
+							</div>
+							<div class="card-body">
+							
+								<!-- Booking Doctor Info -->
+								<div class="booking-doc-info">
+									<a href="doctor-profile.html" class="booking-doc-img">
+										<img src="{{asset('img/doctors/doctor-thumb-02.jpg')}}" alt="User Image">
+									</a>
+									<div class="booking-info">
+										<h4><a href="doctor-profile.html">Dr. Darren Elder</a></h4>
+										<div class="rating">
+											<i class="fas fa-star filled"></i>
+											<i class="fas fa-star filled"></i>
+											<i class="fas fa-star filled"></i>
+											<i class="fas fa-star filled"></i>
+											<i class="fas fa-star"></i>
+											<span class="d-inline-block average-rating">35</span>
+										</div>
+										<div class="clinic-details">
+											<p class="doc-location"><i class="fas fa-map-marker-alt"></i> Newyork, USA</p>
+										</div>
+									</div>
+								</div>
+								<!-- Booking Doctor Info -->
+								
+								<div class="booking-summary">
+									<div class="booking-item-wrap">
+										<ul class="booking-date">
+											<li>Date <span>{{$date}}</span></li>
+											<li>Time <span>{{$crenau}}</span></li>
+											<li>Motif : <span>{{$motif}}</span></li>
+										</ul>
+										
+										<div class="booking-total">
+											<a href="{{ url()->previous() }}"  class="btn btn-primary">
+												Modifier 
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 						
 					</div>
 
 				</div>
 
 			</div>
+@endsection
+
+@section('scripts')
+<script>
+
+
+$('.submit').on('click',function(){
+	event.preventDefault()
+	console.log($(this)[0].id)
+	if ($(this)[0].id==1) {
+		document.getElementById("form1").submit();		
+	}else{
+		document.getElementById("form2").submit();
+	}
+
+})
+
+</script>
 @endsection

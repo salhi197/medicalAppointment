@@ -53,19 +53,25 @@
 								</div>
 
 								<div class="col-12 col-sm-4 col-md-3">
-																	<form action="{{route('rendezvous.create')}}" method='post'>
+								<form id="form" action="{{route('rendezvous.create')}}" method='post'>
 									@csrf
 
-									<select class="form-control" name="motif">
-										<option value="">Choisissez un motif</option>
+									<select class="form-control" name="motif" id="motif">
+										<option value="null">Choisissez un motif</option>
 										@foreach($soins as $soin)
 											<option value="Consultation d'implantologie-1">{{$soin->nom}}</option>
 										@endforeach
 									</select>
 								</div>
-								
+								<div class="col-4 col-sm-8 col-md-4">
+									<label>
+										Séléctionner un seul motif parmi cette liste 
+									</label>
+								</div>
+
 								<div class="col-12 col-sm-8 col-md-3 text-sm-right">
-									<input type="hidden" name="date" class="form-control" id="date">
+									<input type='hidden' id="crenau" name="crenau" value="null">
+									<input type="hidden" name="date" class="form-control" id="date" value="null">
 
 								</div>
                             </div>
@@ -86,9 +92,8 @@
 										</div>
 									</div>
 								<!-- /Schedule Content -->
-									<input type='hidden' id="crenau" name="crenau">
 									<div class="submit-section proceed-btn text-right">
-										<button class="btn btn-primary submit-btn" type="submit">Enregistrer</button>
+										<button class="btn btn-primary submit-btn " type="submit">Enregistrer</button>
 									</div>
 								</form>		
 							</div>
@@ -124,7 +129,23 @@ function day_of_week(input) {
 }
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {	
+
+$('.submit-btn').on('click',function(){
+	event.preventDefault()
+	var motif = $('#motif').val()
+	var crenau = $('#crenau').val()
+	var date = $('#date').val()
+	console.log(motif,crenau,date)
+	if(motif=="null" ||crenau=="null" ||date=="null"){
+		alert('veuilliez compelter tout les champs . . ')
+	}else{
+		document.getElementById("form").submit();
+	}
+
+})
+
+
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
 var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -141,7 +162,7 @@ for (let index = 0; index < journees_creneaus.length; index++) {
 	//var index = weekday.indexOf(journees_creneaus[index][0]['jour'])
 	console.log(journees_creneaus[index][0]['jour']+' '+ index+' '+aujourdhui[1])
 	if (index<aujourdhui[1]) {
-		var d = parseInt(dd)+parseInt(index)+6-parseInt(aujourdhui[1])+1
+		var d = parseInt(dd)+parseInt(index)+6-parseInt(aujourdhui[1])
 
 	} 
 	if(index>aujourdhui[1]){		
@@ -155,7 +176,7 @@ for (let index = 0; index < journees_creneaus.length; index++) {
 		journees_creneaus[index].forEach(crenau=>{
 		var event={
             uid: journees_creneaus[index][0]['jour'],
-            title: "rendez-vous N ",
+            title: "	",
             start: yyyy+"-"+mm+"-"+d +" "+crenau['debut'],
             end: yyyy+"-"+mm+"-"+d +" "+crenau['fin'],
             className: "",	
@@ -177,6 +198,7 @@ for (let index = 0; index < journees_creneaus.length; index++) {
 	
 console.log(defaultEvents)
             var calendarEl = document.getElementById('calendar');
+			var prevClickedEvent = null
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 locale: 'fr',
                 firstDay :aujourdhui[1]+1,
@@ -193,6 +215,12 @@ console.log(defaultEvents)
                 },
 				events: defaultEvents,
 				eventClick: function(info) {
+					if(prevClickedEvent){
+							prevClickedEvent.el.style.backgroundColor = '#3788d8';
+							prevClickedEvent.el.style.borderColor = "#3788d8";
+
+					}  
+					prevClickedEvent = info; 					
 	            	var date = info.event._def.extendedProps.date_crenau
 					var heur = info.event._def.extendedProps.debut_crenau
 	            	console.log(info.event._def.extendedProps.debut_crenau)

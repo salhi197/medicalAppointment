@@ -3,6 +3,12 @@
 @section('content')
 <div class="row">
 						<div class="col-md-8 offset-md-2">
+
+						@if ($errors->any())
+							@foreach ($errors->all() as $error)
+								<div>{{$error}}</div>
+							@endforeach
+						@endif
 							
 							<!-- Login Tab Content -->
 							<div class="account-content">

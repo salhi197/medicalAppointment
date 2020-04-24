@@ -11,17 +11,8 @@
                     <div class="row">
                         <div class="col-md-2">
                             <div class="form-group">
-                                <label class="switch">
-                                <input type="checkbox">
-                                <div class="slider"></div>
-                                </label>
                             </div>                        
-                        </div>
-
-                        <label>
-                      Mettre les crénuax statiques , un écart d'une heure de 8 jusqué 5 
-                      </label>
-                        
+                        </div>                        
                     </div>
                     
 
@@ -65,9 +56,15 @@
 
                                             <td> 
 
-                                            <label>
                                             
-                                                <input class="form-control" type="number" min="0" max="1" name="dispo" id="dispo{{$journees[$i]->id}}" value="{!! $journees[$i]->disponible !!}">
+                                                <label class="switch">
+                                                    <input type="checkbox" class="powerButton" id="dispo{{$journees[$i]->id}}"  
+                                                    value="{!! $journees[$i]->disponible !!}"
+                                                    @if($journees[$i]->disponible==1) checked @endif>
+                                                    <div class="slider "></div>
+                                                </label>
+                                            <label>                                            
+                                                <input class="form-control" type="hidden" min="0" max="1" name="dispo" id="dispo{{$journees[$i]->id}}" >
                                             </label>
 
                                                 {{--  --}}
@@ -232,33 +229,10 @@ input:checked + .slider:before {
 document.addEventListener('DOMContentLoaded', function () {
   var checkbox = document.querySelector('input[type="checkbox"]');
 
-  checkbox.addEventListener('change', function () {
+  $('.powerButton').on('change', function () {
     
-    console.log(checkbox.checked);
-      //$('select').attr('readonly','true')
-      /**
-      ajax here . . . .. */
-      //$('select').attr('disabled',checkbox.checked)
-      //$('.save').attr('disabled',checkbox.checked)
-      //$('input').attr('readonly',checkbox.checked)
-      
-      $.ajax({
-                headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url:"{{ route('changer_etat_crenau') }}",
-                method:"POST",
-                data:{etat:checkbox.checked},
-                dataType: 'JSON',
-                success: function (data) {
-                    console.log(data)
-                },
-                error:function (err) {
-                    console.log(err)
-                }
-
-            })
-    
+    console.log($(this)[0].id);
+    $('#'+$(this)[0].id).val(Number($(this)[0].checked))    
   });
 });
 
