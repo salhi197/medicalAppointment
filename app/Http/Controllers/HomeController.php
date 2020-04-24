@@ -58,8 +58,10 @@ class HomeController extends Controller
                 /**
                  * after insert with cookies delte them 
                  */
+                $medecin = "Haider";
                 $to_email = "salhiali197@yahoo.fr";
-                $data = array("body" => "rendez-vous le 12-03-2020 18:30h");
+                $body = "rendez-vous le ".$date." à ".$crenau." chez le Medecin Dr ".$medecin;
+                $data = array("body" => $body);
                 \Mail::send("emails.mail", $data, function($message) use ($to_email) {
                     $message->to($to_email)
                     ->subject("Tebibe : Rappel sur la prise de rendez-vous");
