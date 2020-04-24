@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Medecin;
 use App\Rendezvous;
 use Auth;
+use Mail;
 use Cookie;
 
 class HomeController extends Controller
@@ -27,6 +28,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+         
+        
         /**
          * here we gonna make a call , if cookies exist here insert an delte them  . . .
          */
@@ -55,7 +58,15 @@ class HomeController extends Controller
                 /**
                  * after insert with cookies delte them 
                  */
-                $success = "inserterd ";
+                $to_email = "salhiali197@yahoo.fr";
+                $data = array("body" => "rendez-vous le 12-03-2020 18:30h");
+                \Mail::send("emails.mail", $data, function($message) use ($to_email) {
+                    $message->to($to_email)
+                    ->subject("Tebibe : Rappel sur la prise de rendez-vous");
+                        $message->from("salhihaider197@gmail.com",'Tebibe Mail Service');
+                });                               
+                        
+                 $success = "inserterd ";
                 return view('home',compact('success'));
 
 
