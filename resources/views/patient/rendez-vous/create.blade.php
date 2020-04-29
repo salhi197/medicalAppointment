@@ -147,7 +147,7 @@ $('.submit-btn').on('click',function(){
 
 
 var today = new Date();
-var dd = String(today.getDate()).padStart(2, '0');
+var dd = String(today.getDate()).padStart(2, '0')-8;
 var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 var yyyy = today.getFullYear();
 today = mm + '/' + dd + '/' + yyyy;
@@ -172,7 +172,7 @@ for (let index = 0; index < journees_creneaus.length; index++) {
 		d =dd
 	}
 		console.log(d)
-
+	
 		journees_creneaus[index].forEach(crenau=>{
 		var event={
             uid: journees_creneaus[index][0]['jour'],
@@ -206,7 +206,7 @@ console.log(defaultEvents)
                 timeFormat: 'HH:mm',
                 slotDuration: '00:15:00', /* If we want to split day time each 15minutes */
                 minTime: '08:00:00',
-                maxTime: '16:00:00',                                	
+                maxTime: '23:00:00',                                	
                 plugins: [ 'bootstrap', 'interaction', 'timeGridWeek', 'timeGrid' ],
                 header    : {
                     left  : 'prev,next today',
@@ -225,8 +225,8 @@ console.log(defaultEvents)
 					var heur = info.event._def.extendedProps.debut_crenau
 	            	console.log(info.event._def.extendedProps.debut_crenau)
 					console.log(info.event._def.extendedProps.date_crenau)
-					info.el.style.borderColor = 'red';
-					info.el.style.backgroundColor = 'red';
+					info.el.style.borderColor = '#09e5ab';
+					info.el.style.backgroundColor = '#09e5ab';
 	                $('#date').val(date)	
 					$('#crenau').val(heur)
 					

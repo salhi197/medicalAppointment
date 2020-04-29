@@ -27,37 +27,36 @@
 															<thead>
 																<tr>
 																	<th>Doctor</th>
-																	<th>Appt Date</th>
-																	<th>Booking Date</th>
-																	<th>Amount</th>
-																	<th>Follow Up</th>
+																	<th>Date rendez-vous</th>
+																	<th>Crenau Horaire</th>
+																	<th>Motif</th>
 																	<th>Status</th>
 																	<th></th>
 																</tr>
 															</thead>
 															<tbody>
-																<tr>
+															@foreach($rdvs as $rdv)
+															<tr>
 																	<td>
 																		<h2 class="table-avatar">
-																			<a href="doctor-profile.html">Dr. Olga Barlow  <span>Dental</span></a>
+																			<a href="doctor-profile.html">Dr.{{$rdv->getMedecin()->nom}} {{$rdv->getMedecin()->prenom}}  <span>{{$rdv->getMedecin()->specilaite}}</span></a>
 																		</h2>
 																	</td>
-																	<td>5 Nov 2019 <span class="d-block text-info">5.00 PM</span></td>
+																	<td>{{$rdv->date_rdv}} <span class="d-block text-info">{{$rdv->crénau}}</span></td>
 																	<td>1 Nov 2019</td>
 																	<td>$100</td>
-																	<td>7 Nov 2019</td>
-																	<td><span class="badge badge-pill bg-success-light">Confirm</span></td>
+																	<td>{{$rdv->motif}}</td>
+																	<td><span class="badge badge-pill bg-success-light">{{$rdv->status}}</span></td>
 																	<td class="text-right">
 																		<div class="table-action">
-																			<a href="javascript:void(0);" class="btn btn-sm bg-primary-light">
-																				<i class="fas fa-print"></i> Print
-																			</a>
-																			<a href="javascript:void(0);" class="btn btn-sm bg-info-light">
-																				<i class="far fa-eye"></i> View
+																			<a href="javascript:void(0);" class="btn btn-sm bg-danger-light">
+																				<i class="fas fa-trash"></i> Annuler 
 																			</a>
 																		</div>
 																	</td>
 																</tr>
+															
+															@endforeach
 															</tbody>
 														</table>
 													</div>

@@ -35,7 +35,7 @@ class HomeController extends Controller
          */
 
         if(Cookie::has('inserted') == 'false'){
-            $id_medecin=request(    )->cookie('id_medecin');
+            $id_medecin=request()->cookie('id_medecin');
             $date=request()->cookie('date');
             $crenau=request()->cookie('crenau');
             $motif=request()->cookie('motif');    
@@ -69,7 +69,7 @@ class HomeController extends Controller
                 });                               
                         
                  $success = "inserterd ";
-                return view('home',compact('success'));
+                 return redirect()->route('rendezvous.index')->with('success', 'le rendez-vosu a été enregostré avec succée -_-! '); 
 
 
 
