@@ -69,7 +69,7 @@ Route::group(['prefix' => 'rendezvous', 'as' => 'rendezvous'], function () {
     Route::get('/show/create',['as'=>'.show.create.medecin', 'uses' => 'RendezvousController@create']);
     Route::get('/delete/{id_rdv}', ['as' => '.delete', 'uses' => 'RendezvousController@destroy']);
     Route::post('/update/{id_rdv}', ['as' => '.update', 'uses' => 'RendezvousController@update']);
-    Route::get('/show/update/{id_rdv}', ['as' => '.show', 'uses' => 'RendezvousController@show']);
+    Route::get('/show/update/{id_rdv}', ['as' => '.show', 'uses' => 'RendezvousController@edit']);
     Route::get('/annuler/{id_rdv}', ['as' => '.annuler', 'uses' => 'RendezvousController@annuler']);
     
 });
