@@ -26,7 +26,7 @@ class CreateRendezvousesTable extends Migration
             $table->text('remarque');
             $table->integer('montant');
             $table->boolean('etat_payment');    
-            $table->string('status');    
+            $table->string('status')->default(0);    
             $table->date('date_rdv');
             $table->string('creneau');            
             /**

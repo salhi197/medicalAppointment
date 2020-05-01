@@ -37,10 +37,22 @@ class RendezvousController extends Controller
          */
         
         if (Auth::guard('medecin')->check()) {   
+            $date = date('Y-m-d');
             $medecin = Auth::guard('medecin')->user();
-            $rdvs = Rendezvous::where('id_medecin',$medecin->id)->paginate(10);
-            return view('rendez-vous.index', compact('rdvs'));
-    
+            /**
+             * rendez-vous d'auhourd'hui 
+             */
+            $upcoming_rdvs = Rendezvous::where('id_medecin',$medecin->id)
+            ->orderBy('created_at', 'desc')
+            ->get();
+            /**
+             * get upcoming appointements
+             */
+            $today_rdvs = Rendezvous::where(['id_medecin'=>$medecin->id,'date_rdv'=>$date])
+            ->orderBy('created_at', 'desc')
+            ->get();
+            return view('rendez-vous.index', compact('today_rdvs','upcoming_rdvs'));
+
         }
         
         if (Auth::user()!= null) {   
@@ -243,9 +255,10 @@ class RendezvousController extends Controller
      * @param  \App\Rendezvous  $rendezvous
      * @return \Illuminate\Http\Response
      */
-    public function annuler(Rendezvous $rendezvous)
+    public function annuler(Rendezvous $rendezvous,$id_rendezvous)
     {
-        //
+        Rendezvous::where('id', $id_rendezvous)->update(['status' => -1]);
+        return redirect()->route('rendezvous.index')->with('success', 'votre rendez-vous a été annulé .. !');
     }
 
 

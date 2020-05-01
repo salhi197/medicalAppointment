@@ -3,7 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Medecin;
+use App\User;
 class Rendezvous extends Model
 {
     protected $fillable = [
@@ -44,4 +45,21 @@ class Rendezvous extends Model
         return $rdv;
     }
 
+    /**
+     * get medecin info based on id 
+     */
+    public function getMedecin()
+    {
+        return Medecin::where('id',$this->id_medecin)->first();        
+    } 
+    
+    /**
+     * get patient info based on id 
+     */
+    public function getPatient()
+    {
+        return User::where('id',$this->id_user)->first();        
+    } 
+    
 }
+

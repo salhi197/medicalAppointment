@@ -66,11 +66,12 @@
 										<!-- Appointment Tab -->
 										<ul class="nav nav-tabs nav-tabs-solid nav-tabs-rounded">
 											<li class="nav-item">
-												<a class="nav-link active" href="#upcoming-appointments" data-toggle="tab">Upcoming</a>
-											</li>
-											<li class="nav-item">
-												<a class="nav-link" href="#today-appointments" data-toggle="tab">Today</a>
+												<a class="nav-link active" href="#today-appointments" data-toggle="tab">Today</a>
 											</li> 
+											<li class="nav-item">
+												<a class="nav-link" href="#upcoming-appointments" data-toggle="tab">Upcoming</a>
+											</li>
+
 											<li class="nav-item">
 											</li> 
 										</ul>
@@ -79,35 +80,33 @@
 										<div class="tab-content">
 										
 											<!-- Upcoming Appointment Tab -->
-											<div class="tab-pane show active" id="upcoming-appointments">
+											<div class="tab-pane show active" id="today-appointments">
 												<div class="card card-table mb-0">
 													<div class="card-body">
 														<div class="table-responsive">
 															<table class="table table-hover table-center mb-0">
 																<thead>
 																	<tr>
-																		<th>Patient Name</th>
-																		<th>Appt Date</th>
+																		<th>Nom Patient</th>
+																		<th>date & crénau</th>
 																		<th>remarque : </th>
 																		<th>Type</th>
-																		<th class="text-center">Paid Amount</th>
 																		<th></th>
 																	</tr>
 																</thead>
 																<tbody>
-                                                                @foreach($rdvs as $rdv)
+                                                                @foreach($today_rdvs as $rdv)
                                                                 <tr >
 																		<td>
 																			<h2 class="table-avatar">
 																				<a href="patient-profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{{asset('img/patients/patient11.jpg')}}" alt="User Image"></a>
-																				<a href="patient-profile.html">pateitn avec l'id  : {{$rdv->id_user}} <span>#PT0011</span></a>
+																				<a href="patient-profile.html"> {{$rdv->getPatient()['name']}} <span>#PT0011</span></a>
 																			</h2>
 																		</td>
 																		<td>{{$rdv->date_rdv}} | {{$rdv->creneau}} <span class="d-block text-info">
                                                                         crée : {{$rdv->created_at}}</span></td>
 																		<td>{{$rdv->remarque}}</td>
 																		<td>{{ $rdv->motif}}</td>
-																		<td class="text-center">$450</td>
 																		<td class="text-right">
 																			<div class="table-action">
                                                                                 <a href="#" class="btn btn-sm bg-info-light view-rdv" data-toggle="modal" 
@@ -133,6 +132,57 @@
 												</div>
 											</div>
 											<!-- /Upcoming Appointment Tab -->
+											<div class="tab-pane show" id="upcoming-appointments">
+												<div class="card card-table mb-0">
+													<div class="card-body">
+														<div class="table-responsive">
+															<table class="table table-hover table-center mb-0">
+																<thead>
+																	<tr>
+																		<th>Nom Patient</th>
+																		<th>date & crénau</th>
+																		<th>remarque : </th>
+																		<th>Type</th>
+																		<th></th>
+																	</tr>
+																</thead>
+																<tbody>
+                                                                @foreach($upcoming_rdvs as $rdv)
+                                                                <tr >
+																		<td>
+																			<h2 class="table-avatar">
+																				<a href="patient-profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{{asset('img/patients/patient11.jpg')}}" alt="User Image"></a>
+																				<a href="patient-profile.html"> {{$rdv->getPatient()['name']}} <span>#PT0011</span></a>
+																			</h2>
+																		</td>
+																		<td>{{$rdv->date_rdv}} | {{$rdv->creneau}} <span class="d-block text-info">
+                                                                        crée : {{$rdv->created_at}}</span></td>
+																		<td>{{$rdv->remarque}}</td>
+																		<td>{{ $rdv->motif}}</td>
+																		<td class="text-right">
+																			<div class="table-action">
+                                                                                <a href="#" class="btn btn-sm bg-info-light view-rdv" data-toggle="modal" 
+                                                                                data-target="#appt_details" data="{{$rdv}}">
+                                                                                    <i class="far fa-eye"></i> View
+                                                                                </a>																				
+																				<a href="{{route('rendezvous.annuler',['id_rdv'=>$rdv->id])}}" class="btn btn-sm bg-danger-light">
+																					<i class="fas fa-times"></i> Annuler
+																				</a>
+                                                                                <a href="{{route('rendezvous.show',['id_rdv'=>$rdv->id])}}" class="btn btn-sm bg-info-light">
+																					<i class="fas fa-list"></i> modifier
+																				</a>
+                                                                                
+																			</div>
+																		</td>
+																	</tr>
+                                                                @endforeach
+
+																</tbody>
+															</table>		
+														</div>
+													</div>
+												</div>
+											</div>
 									   
 											<!-- Today Appointment Tab -->
 											
