@@ -3553,7 +3553,7 @@ html.menu-opened body {
     background-color: #fff;
 }
 .time-slot li .timing:last-child {
-	margin-bottom: 0;
+	margin-bottom: 5px;
 }
 .time-slot li .timing.selected {
 	background-color: #42c0fb;

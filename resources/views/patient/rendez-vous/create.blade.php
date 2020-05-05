@@ -86,9 +86,19 @@
 									<!-- Schedule Content -->
 									<div class="schedule-cont">
 										<div class="row">
-											<div class="col-md-12">
-					                            <div id="calendar"></div>
+										<div class="col-md-6">
+												<div class="from-control">	
+														<input type="hidden" id="datepicker" >
+												</div>
 											</div>
+											<div class="col-md-6">
+											<div class="time-slot">
+												<ul class="clearfix">
+													
+												</ul>
+											</div>											
+											</div>
+											
 										</div>
 									</div>
 								<!-- /Schedule Content -->
@@ -109,150 +119,76 @@
 			</div>		
 
 			@endsection
+@section('styles')
+<link rel="stylesheet" type="text/css" href="{{asset('css/pikaday.css')}}">
+@endsection
 @section('scripts')
-<script src="{{asset('fullcalendar/core/main.min.js')}}"></script>
-<script src="{{asset('fullcalendar/daygrid/main.min.js')}}"></script>
-<script src="{{asset('fullcalendar/timegrid/main.min.js')}}"></script>
+	<script src="{{asset('js/pikaday.js')}}"></script>
+	<script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
+    <script>
 
-<script>		
-  const weekday = [ "Dimanche","Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi","Samedi"];
-
-function day_of_week(input) {
-//  var input = document.getElementById("input").value;
-
-  var date = new Date(input).getUTCDay();
-  
-  var array= []
-	array.push(weekday[date])
-	array.push(date)
-	return array;
-}
-
-
-document.addEventListener('DOMContentLoaded', function() {	
-
-$('.submit-btn').on('click',function(){
-	event.preventDefault()
-	var motif = $('#motif').val()
-	var crenau = $('#crenau').val()
-	var date = $('#date').val()
-	console.log(motif,crenau,date)
-	if(motif=="null" ||crenau=="null" ||date=="null"){
-		alert('veuilliez compelter tout les champs . . ')
-	}else{
-		document.getElementById("form").submit();
-	}
-
-})
-
-
-var today = new Date();
-var dd = String(today.getDate()).padStart(2, '0')-8;
-var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-var yyyy = today.getFullYear();
-today = mm + '/' + dd + '/' + yyyy;
-var defaultEvents =  [];
-var journees_creneaus = <?php echo json_encode($journees_creneaus); ?>;
-//var crenaux = 
-//echo json_encode($crenaux); ?>;
-var aujourdhui = day_of_week(today)
-
-for (let index = 0; index < journees_creneaus.length; index++) {
-	if(journees_creneaus[index][0] != undefined){
-	//var index = weekday.indexOf(journees_creneaus[index][0]['jour'])
-	console.log(journees_creneaus[index][0]['jour']+' '+ index+' '+aujourdhui[1])
-	if (index<aujourdhui[1]) {
-		var d = parseInt(dd)+parseInt(index)+6-parseInt(aujourdhui[1])
-
-	} 
-	if(index>aujourdhui[1]){		
-	var d = parseInt(dd)+index-parseInt(aujourdhui[1])
-	}
-	if (index==aujourdhui[1]) {
-		d =dd
-	}
-		console.log(d)
-	
-		journees_creneaus[index].forEach(crenau=>{
-		var event={
-            uid: journees_creneaus[index][0]['jour'],
-            title: "	",
-            start: yyyy+"-"+mm+"-"+d +" "+crenau['debut'],
-            end: yyyy+"-"+mm+"-"+d +" "+crenau['fin'],
-            className: "",	
-            level : "",
-            price : "32000",
-            status : "0",
-            full : "0",
-			debut_crenau :crenau['debut'],
-			fin_crenau: crenau['fin'],
-			date_crenau :yyyy+"-"+mm+"-"+d
-		};    		
-		defaultEvents.push(event)
-	})
-	d++;
-	}
-
-
-}
-	
-console.log(defaultEvents)
-            var calendarEl = document.getElementById('calendar');
-			var prevClickedEvent = null
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                locale: 'fr',
-                firstDay :aujourdhui[1]+1,
-                defaultDate: yyyy+'-'+mm + '-' + dd,// + '-' +,
-                timeFormat: 'HH:mm',
-                slotDuration: '00:15:00', /* If we want to split day time each 15minutes */
-                minTime: '08:00:00',
-                maxTime: '23:00:00',                                	
-                plugins: [ 'bootstrap', 'interaction', 'timeGridWeek', 'timeGrid' ],
-                header    : {
-                    left  : 'prev,next today',
-                    center: 'title',
-                    right : 'timeGridMonth,timeGridWeek'
-                },
-				events: defaultEvents,
-				eventClick: function(info) {
-					if(prevClickedEvent){
-							prevClickedEvent.el.style.backgroundColor = '#3788d8';
-							prevClickedEvent.el.style.borderColor = "#3788d8";
-
-					}  
-					prevClickedEvent = info; 					
-	            	var date = info.event._def.extendedProps.date_crenau
-					var heur = info.event._def.extendedProps.debut_crenau
-	            	console.log(info.event._def.extendedProps.debut_crenau)
-					console.log(info.event._def.extendedProps.date_crenau)
-					info.el.style.borderColor = '#09e5ab';
-					info.el.style.backgroundColor = '#09e5ab';
-	                $('#date').val(date)	
-					$('#crenau').val(heur)
-					
-                },
-            });
-
-            calendar.render();
-        });
-
-        $(function(){
-            $(".timing").click(function(){
-				$(".timing").removeClass('selected')
-                console.log()
+			$("body").delegate(".timing", "click", function(){
+				$('.timing').removeClass('selected');
+				console.log('a')
                 $(this).addClass('selected');
                 $('#crenau').val($(this).text())
             });
-            /*
-            * On change function  .. 
-            */
-            $('#date').on('change',function(){
-            	var date = $(this).val()
-            	console.log(date)
-            })
 
-        });	
-</script>
+			var days = ['Dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+			var journees_creneaus = <?php echo json_encode($journees_creneaus); ?>;
+			var crenauxDay=[] 
+
+			var field = document.getElementById('datepicker');
+			var picker = new Pikaday({
+				onSelect: function(date) {
+					$('.clearfix').LoadingOverlay("show")
+					$('.clearfix').empty()
+					field.value = picker.toString();
+					var d = new Date(field.value);
+					var dayName = days[d.getDay()];
+					console.log(dayName)
+					document.getElementById('date').value = field.value
+					/**
+					get crenaux  
+					 */ 
+					crenauxDay = journees_creneaus[d.getDay()]
+					if(crenauxDay.length == 0){
+						$('.clearfix').append('<span>Pas de crénaux pour ce jour .. <span>')
+
+					}else{
+						crenauxDay.forEach(function(item,index){
+							console.log(item)
+						$('.clearfix')
+						.append('<li class="elt">'+
+									'<a class="timing"  href="javascript:void(0);">'+
+										'<span>'+item.debut.substr(0,5)+'</span> <span>AM</span>'+
+									'</a>'+														
+								'</li>')
+					})
+					}
+					$('.clearfix').LoadingOverlay("hide")
+					
+
+
+						
+				}
+			});
+			field.parentNode.insertBefore(picker.el, field.nextSibling);    
+
+			$('.submit-btn').on('click',function(){
+				event.preventDefault()
+				var motif = $('#motif').val()
+				var crenau = $('#crenau').val()
+				var date = $('#date').val()
+				console.log(motif,crenau,date)
+				if(motif=="null" ||crenau=="null" ||date=="null"){
+					alert('veuilliez compelter tout les champs . . ')
+				}else{
+					document.getElementById("form").submit();
+				}
+
+			})            
+    </script>
 	
 
 @endsection

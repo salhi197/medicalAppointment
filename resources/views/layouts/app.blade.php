@@ -12,7 +12,7 @@
 		
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-		
+		  
 		<!-- Fontawesome CSS -->
 		<link rel="stylesheet" href="{{asset('plugins/fontawesome/css/fontawesome.min.css')}}">
 		<link rel="stylesheet" href="{{asset('plugins/fontawesome/css/all.min.css')}}">
@@ -25,6 +25,7 @@
 	    <link href="{{asset('fullcalendar/core/main.min.css')}}" rel="stylesheet" />
 	    <link href="{{asset('fullcalendar/daygrid/main.min.css')}}" rel="stylesheet" />
 	    <link href="{{asset('fullcalendar/timegrid/main.min.css')}}" rel="stylesheet" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
 
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>

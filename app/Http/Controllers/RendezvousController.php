@@ -203,14 +203,16 @@ class RendezvousController extends Controller
      * @param  \App\Rendezvous  $rendezvous
      * @return \Illuminate\Http\Response
      */
-    public function edit($id_rendezvous)
+    public function edit($id_rdv)
     {
 
         /**
          * modifer rendez-vous pour patient ,  si vous souhaitez créer une fonction modifier pour medecin ,créer une autre méthode
          */
-        $rdv = Rendezvous::where('id',$id_rendezvous)->first();
+        $rdv = Rendezvous::where('id',$id_rdv)->first();
+        
         $id_medecin = $rdv->id_medecin;
+
         $creneaus_dimanche = (DB::select("select j.id as id_jour,j.jour,cr.debut,cr.fin from journees j ,creneaus cr where cr.id_medecin=j.id_medecin and cr.id_medecin=\"$id_medecin\" and (cr.debut>=j.heuredeb and cr.debut<=j.heurefin) and j.disponible=1 and j.id=0 order by j.id,cr.debut"));
         
         $creneaus_lundi = (DB::select("select j.id as id_jour,j.jour,cr.debut,cr.fin from journees j ,creneaus cr where cr.id_medecin=j.id_medecin and cr.id_medecin=\"$id_medecin\" and (cr.debut>=j.heuredeb and cr.debut<=j.heurefin) and j.disponible=1 and j.id=1 order by j.id,cr.debut"));
@@ -247,10 +249,13 @@ class RendezvousController extends Controller
         //     'date_offre' => 'required'
         // ]);
         $rdv = Rendezvous::find($id_rdv);
+      
     
         $rdv->motif = $request->get('motifs');
-        $rdv->date_rdv = $request['date_rdv'];
-        $rdv->creneau = $request['creneau'];
+        $rdv->date_rdv = $request['date'];
+        $rdv->motif = $request['motif'];
+        
+        $rdv->creneau = $request['crenau'];
         $rdv->save();
         return redirect()->route('rendezvous.index')->with('success', 'le rendez-vous a été modifié!');
     }

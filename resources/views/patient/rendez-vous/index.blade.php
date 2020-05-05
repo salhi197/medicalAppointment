@@ -42,8 +42,8 @@
 																			<a href="doctor-profile.html">Dr.{{$rdv->getMedecin()->nom}} {{$rdv->getMedecin()->prenom}}  <span>{{$rdv->getMedecin()->specilaite}}</span></a>
 																		</h2>
 																	</td>
-																	<td>{{$rdv->date_rdv}} <span class="d-block text-info">{{$rdv->crénau}}</span></td>
-																	<td>1 Nov 2019</td>
+																	<td>{{$rdv->date_rdv}} </td>
+																	<td>{{$rdv->creneau}}</td>
 																	<td>$100</td>
 																	<td>{{$rdv->motif}}</td>
 																	<td><span class="badge badge-pill bg-success-light">{{$rdv->status}}</span></td>
