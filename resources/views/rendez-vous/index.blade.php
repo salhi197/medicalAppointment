@@ -66,10 +66,10 @@
 										<!-- Appointment Tab -->
 										<ul class="nav nav-tabs nav-tabs-solid nav-tabs-rounded">
 											<li class="nav-item">
-												<a class="nav-link active" href="#today-appointments" data-toggle="tab">Today</a>
+												<a class="nav-link" href="#today-appointments" data-toggle="tab">Today</a>
 											</li> 
 											<li class="nav-item">
-												<a class="nav-link" href="#upcoming-appointments" data-toggle="tab">Upcoming</a>
+												<a class="nav-link active" href="#upcoming-appointments" data-toggle="tab">Upcoming</a>
 											</li>
 
 											<li class="nav-item">
@@ -80,7 +80,7 @@
 										<div class="tab-content">
 										
 											<!-- Upcoming Appointment Tab -->
-											<div class="tab-pane show active" id="today-appointments">
+											<div class="tab-pane show" id="today-appointments">
 												<div class="card card-table mb-0">
 													<div class="card-body">
 														<div class="table-responsive">
@@ -132,54 +132,11 @@
 												</div>
 											</div>
 											<!-- /Upcoming Appointment Tab -->
-											<div class="tab-pane show" id="upcoming-appointments">
+											<div class="tab-pane show active" id="upcoming-appointments">
 												<div class="card card-table mb-0">
 													<div class="card-body">
-														<div class="table-responsive">
-															<table class="table table-hover table-center mb-0">
-																<thead>
-																	<tr>
-																		<th>Nom Patient</th>
-																		<th>date & crénau</th>
-																		<th>remarque : </th>
-																		<th>Type</th>
-																		<th></th>
-																	</tr>
-																</thead>
-																<tbody>
-                                                                @foreach($upcoming_rdvs as $rdv)
-                                                                <tr >
-																		<td>
-																			<h2 class="table-avatar">
-																				<a href="patient-profile.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{{asset('img/patients/patient11.jpg')}}" alt="User Image"></a>
-																				<a href="patient-profile.html"> {{$rdv->getPatient()['name']}} <span>#PT0011</span></a>
-																			</h2>
-																		</td>
-																		<td>{{$rdv->date_rdv}} | {{$rdv->creneau}} <span class="d-block text-info">
-                                                                        crée : {{$rdv->created_at}}</span></td>
-																		<td>{{$rdv->remarque}}</td>
-																		<td>{{ $rdv->motif}}</td>
-																		<td class="text-right">
-																			<div class="table-action">
-                                                                                <a href="#" class="btn btn-sm bg-info-light view-rdv" data-toggle="modal" 
-                                                                                data-target="#appt_details" data="{{$rdv}}">
-                                                                                    <i class="far fa-eye"></i> View
-                                                                                </a>																				
-																				<a href="{{route('rendezvous.annuler',['id_rdv'=>$rdv->id])}}" class="btn btn-sm bg-danger-light">
-																					<i class="fas fa-times"></i> Annuler
-																				</a>
-                                                                                <a href="{{route('rendezvous.show',['id_rdv'=>$rdv->id])}}" class="btn btn-sm bg-info-light">
-																					<i class="fas fa-list"></i> modifier
-																				</a>
-                                                                                
-																			</div>
-																		</td>
-																	</tr>
-                                                                @endforeach
+													<div id='calendrier'></div>
 
-																</tbody>
-															</table>		
-														</div>
 													</div>
 												</div>
 											</div>
@@ -270,7 +227,16 @@
 @endsection
 
 @section('scripts')
-<script>		
+
+<script src="{{asset('fullcalendar/core/main.js')}}"></script>
+<script src="{{asset('fullcalendar/interaction/main.js')}}"></script>
+<script src="{{asset('fullcalendar/bootstrap/main.js')}}"></script>
+<script src="{{asset('fullcalendar/daygrid/main.js')}}"></script>
+<script src="{{asset('fullcalendar/timegrid/main.js')}}"></script>
+<script src="{{asset('fullcalendar/list/main.js')}}"></script>
+<script src="{{asset('js/theme-chooser.js')}}"></script>
+
+<script>
         $(function(){
             $(".view-rdv").click(function(){
                 var data = JSON.parse($(this).attr('data'));
@@ -286,6 +252,88 @@
                 $("#rdv_detail").modal("show");
             });
         });	
+  const weekday = [ "Dimanche","Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi","Samedi"];
+
+function day_of_week(input) {
+//  var input = document.getElementById("input").value;
+
+  var date = new Date(input).getUTCDay();
+  
+  var array= []
+	array.push(weekday[date])
+	array.push(date)
+	return array;
+}
+
+
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0')-8;
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+today = mm + '/' + dd + '/' + yyyy;
+var defaultEvents =  [];
+var rendezvous = <?php echo json_encode($upcoming_rdvs); ?>;
+//var crenaux = 
+//echo json_encode($crenaux); ?>;
+var event;
+var aujourdhui = day_of_week(today)
+for(rdv of rendezvous){
+	console.log(rdv)
+	var c= rdv['creneau']
+	c = c.substr(0,c.length-3)
+	event = {
+          title: 'Rendez-vous avec XXX',
+          start: rdv['date_rdv']+'T'+c+':00',
+          end: rdv['date_rdv']+'T'+c+':00'
+        },
+
+	defaultEvents.push(event)
+}
+console.log(defaultEvents)
+
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendrier');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      plugins: [ 'interaction', 'dayGrid', 'timeGrid' ],
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+      },
+      defaultDate: '2020-02-12',
+      navLinks: true, // can click day/week names to navigate views
+      selectable: true,
+      selectMirror: true,
+      select: function(arg) {
+        var title = prompt('Event Title:');
+        if (title) {
+          calendar.addEvent({
+            title: title,
+            start: arg.start,
+            end: arg.end,
+            allDay: arg.allDay
+          })
+        }
+        calendar.unselect()
+      },
+      editable: true,
+      eventLimit: true, // allow "more" link when too many events
+      events:defaultEvents
+    });
+
+    calendar.render();
+  });
+
 </script>
 	
+
+@endsection
+
+@section('styles')
+<link href="{{asset('fullcalendar/core/main.css')}}" rel='stylesheet' />
+<link href="{{asset('fullcalendar/daygrid/main.css')}}" rel='stylesheet' />
+<link href="{{asset('fullcalendar/timegrid/main.css')}}" rel='stylesheet' />
+
 @endsection
