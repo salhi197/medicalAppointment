@@ -309,6 +309,24 @@ console.log(defaultEvents)
       navLinks: true, // can click day/week names to navigate views
       selectable: true,
       selectMirror: true,
+		eventClick: function(info) {
+			/** 
+			onclick open model to show or create .. ... . . . . 
+			 */
+		prevClickedEvent = info; 					
+		var date = info.event._def.extendedProps.date_crenau
+		var heur = info.event._def.extendedProps.debut_crenau
+		console.log(info.event._def.extendedProps.debut_crenau)
+		console.log(info.event._def.extendedProps.date_crenau)
+		info.el.style.borderColor = '#09e5ab';
+		info.el.style.backgroundColor = '#09e5ab';
+
+		$('#rdv_detail').modal('show');
+
+
+
+		
+	},
       select: function(arg) {
         var title = prompt('Event Title:');
         if (title) {

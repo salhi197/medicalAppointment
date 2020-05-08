@@ -48,6 +48,7 @@ class RendezvousController extends Controller
             /**
              * get upcoming appointements
              */
+            return view('rendez-vous.index', compact('rdvs'));
 
         }
         
