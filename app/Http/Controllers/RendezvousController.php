@@ -48,10 +48,6 @@ class RendezvousController extends Controller
             /**
              * get upcoming appointements
              */
-            $today_rdvs = Rendezvous::where(['id_medecin'=>$medecin->id,'date_rdv'=>$date])
-            ->orderBy('created_at', 'desc')
-            ->get();
-            return view('rendez-vous.index', compact('today_rdvs','upcoming_rdvs'));
 
         }
         
@@ -137,7 +133,6 @@ class RendezvousController extends Controller
             $id_medecin = Auth::guard('medecin')->user()->id;
             $id_patient = $request->get('id_patient');
         }
-
         if(Auth::user()== null){
             $id_medecin = 1;//$request['id_medecin'];
             $date = $request['date'];

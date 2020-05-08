@@ -72,6 +72,8 @@
 								<div class="col-12 col-sm-8 col-md-3 text-sm-right">
 									<input type='hidden' id="crenau" name="crenau" value="null">
 									<input type="hidden" name="date" class="form-control" id="date" value="null">
+									<input type="hidden" name="crenau_fin" class="form-control" id="crenau_fin" value="null">
+									
 
 								</div>
                             </div>
@@ -129,9 +131,10 @@
 
 			$("body").delegate(".timing", "click", function(){
 				$('.timing').removeClass('selected');
-				console.log('a')
+				console.log($(this).attr('id'))
                 $(this).addClass('selected');
                 $('#crenau').val($(this).text())
+                $('#crenau_fin').val($(this).attr('id'))
             });
 
 			var days = ['Dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
@@ -160,7 +163,7 @@
 							console.log(item)
 						$('.clearfix')
 						.append('<li class="elt">'+
-									'<a class="timing"  href="javascript:void(0);">'+
+									'<a class="timing" id='+item.fin.substr(0,5)+' href="javascript:void(0);">'+
 										'<span>'+item.debut.substr(0,5)+'</span> <span>AM</span>'+
 									'</a>'+														
 								'</li>')

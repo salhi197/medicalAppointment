@@ -279,12 +279,15 @@ var event;
 var aujourdhui = day_of_week(today)
 for(rdv of rendezvous){
 	console.log(rdv)
-	var c= rdv['creneau']
-	c = c.substr(0,c.length-3)
+	var dc= rdv['creneau']
+	var fc= rdv['fin_creneau']
+	/***/
+	dc = c.substr(0,c.length-3)
+	fc = fc.substr(0,c.length-3)
 	event = {
           title: 'Rendez-vous avec XXX',
-          start: rdv['date_rdv']+'T'+c+':00',
-          end: rdv['date_rdv']+'T'+c+':00'
+          start: rdv['date_rdv']+'T'+dc+':00',
+          end: rdv['date_rdv']+'T'+fc+':00'
         },
 
 	defaultEvents.push(event)
