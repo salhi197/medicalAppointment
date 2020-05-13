@@ -72,7 +72,7 @@
 								<div class="col-12 col-sm-8 col-md-3 text-sm-right">
 									<input type='hidden' id="crenau" name="crenau" value="null">
 									<input type="hidden" name="date" class="form-control" id="date" value="null">
-									<input type="hidden" name="crenau_fin" class="form-control" id="crenau_fin" value="null">
+									<input type="hidden" name="fin_crenau" class="form-control" id="fin_crenau" value="null">
 									
 
 								</div>
@@ -134,7 +134,7 @@
 				console.log($(this).attr('id'))
                 $(this).addClass('selected');
                 $('#crenau').val($(this).text())
-                $('#crenau_fin').val($(this).attr('id'))
+                $('#fin_crenau').val($(this).attr('id'))
             });
 
 			var days = ['Dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];

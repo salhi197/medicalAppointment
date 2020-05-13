@@ -178,12 +178,12 @@
                         
 							<div class="form-group">
                                 <span class="title">Date rendez-vous : </span>
-								<span class="text" id="date_rdv" ></span>                            
+								<span class="text" id="date_rdv"></span>                            
 							</div>
 							<div class="form-group">
                                 <span class="title">les motifs de rendez-vous : </span>
 
-								<span class="text" id="motif" ></span>                            
+								<span class="text" id="motif"></span>                            
 							</div>
 							<div class="form-group">
                                 <span class="title">crénau rendez-vous : </span>
@@ -216,7 +216,7 @@
 							</div>
 
 							<div class="submit-section text-center">
-								<a href="" id="update_link" class="btn btn-primary">Modifier</a>
+								<a href="" id="update_link" class="btn btn-danger">Annuler & Notifer patient</a>
 								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 							</div>
 
@@ -280,14 +280,23 @@ var aujourdhui = day_of_week(today)
 for(rdv of rendezvous){
 	console.log(rdv)
 	var dc= rdv['creneau']
-	var fc= rdv['fin_creneau']
+	 var fc= rdv['fin_creneau']
 	/***/
-	dc = c.substr(0,c.length-3)
-	fc = fc.substr(0,c.length-3)
+	dc = dc.substr(0,dc.length-3)
+	// fc = fc.substr(0,c.length-3)
 	event = {
-          title: 'Rendez-vous avec XXX',
-          start: rdv['date_rdv']+'T'+dc+':00',
-          end: rdv['date_rdv']+'T'+fc+':00'
+		id:rdv['id'],
+		title: 'Rendez-vous avec XXX',
+		start: rdv['date_rdv']+'T'+dc+':00',
+		end: rdv['date_rdv']+'T'+fc+':00',
+		date_rdv:rdv['date_rdv'],
+		motif:rdv['motif'],
+		creneau:rdv['creneau'],
+		remarque:rdv['remarque'],
+		status:rdv['status'],
+		etat_payment:rdv['etat_payment'],
+		montant:rdv['montant'],
+		created_at:rdv['created_at']		  
         },
 
 	defaultEvents.push(event)
@@ -305,7 +314,7 @@ console.log(defaultEvents)
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,timeGridDay'
       },
-      defaultDate: '2020-02-12',
+      defaultDate: '2020-05-08',
       navLinks: true, // can click day/week names to navigate views
       selectable: true,
       selectMirror: true,
@@ -320,8 +329,13 @@ console.log(defaultEvents)
 		console.log(info.event._def.extendedProps.date_crenau)
 		info.el.style.borderColor = '#09e5ab';
 		info.el.style.backgroundColor = '#09e5ab';
-
-		$('#rdv_detail').modal('show');
+			var lien  = 'http://127.0.0.1:8000/annuler/'+info.event._def.extendedProps.id
+                $('#update_link').attr('href',lien)
+			jQuery.each(info.event._def.extendedProps, function(i, val) {
+				$('#'+i).html(val)
+				console.log(`${i}: ${val}`);
+			});		
+			$('#rdv_detail').modal('show');
 
 
 

@@ -48,7 +48,10 @@ class RendezvousController extends Controller
             /**
              * get upcoming appointements
              */
-            return view('rendez-vous.index', compact('rdvs'));
+            $today_rdvs = Rendezvous::where(['id_medecin'=>$medecin->id,'date_rdv'=>$date])
+            ->orderBy('created_at', 'desc')
+            ->get();
+            return view('rendez-vous.index', compact('today_rdvs','upcoming_rdvs'));
 
         }
         
@@ -138,6 +141,7 @@ class RendezvousController extends Controller
             $id_medecin = 1;//$request['id_medecin'];
             $date = $request['date'];
             $crenau = $request['crenau'];
+            $fin_crenau = $request['fin_crenau'];
             $motif = $request['motif'];  
             
             /**
@@ -146,6 +150,7 @@ class RendezvousController extends Controller
             \Cookie::queue('id_medecin',$id_medecin,15);
             \Cookie::queue('date',$date,15);
             \Cookie::queue('crenau',$crenau,15);
+            \Cookie::queue('fin_crenau',$fin_crenau,15);
             \Cookie::queue('motif',$motif,15);
             \Cookie::queue('inserted','false',15);
               
@@ -168,7 +173,8 @@ class RendezvousController extends Controller
             'etat_payment'=>false,//$request->get('etat_payment'),
             'date_rdv'=>$request->get('date'),
             'status'=>'en attente',
-            'creneau'=>$request->get('crenau')
+            'creneau'=>$request->get('crenau'),
+            'fin_crenau'=>$request->get('fin_crenau'),
         ]);
         $rdv->save();
         //$rdv->motifs()->attach($request->get('motifs'));

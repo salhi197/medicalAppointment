@@ -16,7 +16,8 @@ class Rendezvous extends Model
         'etat_payment',
         'date_rdv',
         'creneau',
-        'status'
+        'status',
+        'fin_crenau'
     ];
 
 

@@ -38,6 +38,8 @@ class HomeController extends Controller
             $id_medecin=request()->cookie('id_medecin');
             $date=request()->cookie('date');
             $crenau=request()->cookie('crenau');
+            $fin_crenau=request()->cookie('fin_crenau');
+            
             $motif=request()->cookie('motif');    
             $user = Auth::user();
             $id_patient = $user->id;        
@@ -51,7 +53,9 @@ class HomeController extends Controller
                     'etat_payment'=>false,//$etat_payment,
                     'date_rdv'=>$date,
                     'status'=>'en attente',
-                    'creneau'=>$crenau
+                    'creneau'=>$crenau,
+                    'fin_crenau'=>$fin_crenau,
+                    
                 ]);
                 $rdv->save();
                 \Cookie::queue('inserted','true',20);
@@ -88,11 +92,14 @@ class HomeController extends Controller
     {
         /*
         * la méthode de recherche
-        */
-        //$medecins =Medecin::where(['specialite' => $request->get('specialite'),'wilaya' => $request->get('wilaya')])->get();
-        $medecins= ['12','4'];
+        */  
+        dd($request['wilaya']);
+        $results = User::where('wilaya', '=', $request['wilaya'])
+        ->where('specilaite', '=', $request['specialite'])
+        ->get();
+
         return view('results',compact(
-            'medecins'
+            'results'
         ));
     }
 

@@ -13,7 +13,9 @@ class AddFinCrenauField extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('rendezvouses', function (Blueprint $table) {
+            $table->string('fin_crenau');            
+        });
     }
 
     /**

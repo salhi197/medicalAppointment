@@ -21,7 +21,10 @@
 		
 		<!-- Main CSS -->
 		<link rel="stylesheet" href="/css/style.css">
-		
+
+		<link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+
+
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
 			<script src="/js/html5shiv.min.js"></script>
@@ -167,11 +170,16 @@
 						<div class="search-box">
 							<form action="{{route('search.medecins')}}" method="get">
 								<div class="form-group search-location">
-									<input name="wilaya" type="text" class="form-control" placeholder="Wilaya ..">
-									<span class="form-text">Based on your Location</span>
+									<select class="js-example-basic-single" name="wilaya" id="wilayas" style="padding:10px;">>
+										<option value="">----</option>
+									</select>
+
+									<span class="form-text">Ex: Alger,Bouira,Oran...</span>
 								</div>
 								<div class="form-group search-info">
-									<input name="specialite " type="text" class="form-control" placeholder="Search Doctors, Clinics, Hospitals, Diseases Etc">
+									<select class="js-example-basic-single" id="specialites" name="specialite" style="padding:10px;">>
+										<option value="">----</option>
+									</select>
 									<span class="form-text">Ex : Chirurgie Dentaire</span>
 								</div>
 								<button type="submit" class="btn btn-primary search-btn"><i class="fas fa-search"></i> <span>Search</span></button>
@@ -665,318 +673,7 @@
 			<!-- /Popular Section -->
 		   
 		   <!-- Availabe Features -->
-		   <section class="section section-features">
-				<div class="container-fluid">
-				   <div class="row">
-						<div class="col-md-5 features-img">
-							<img src="/img/features/feature.png" class="img-fluid" alt="Feature">
-						</div>
-						<div class="col-md-7">
-							<div class="section-header">	
-								<h2 class="mt-2">Availabe Features in Our Clinic</h2>
-								<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>
-							</div>	
-							<div class="features-slider slider">
-								<!-- Slider Item -->
-								<div class="feature-item text-center">
-									<img src="/img/features/feature-01.jpg" class="img-fluid" alt="Feature">
-									<p>Patient Ward</p>
-								</div>
-								<!-- /Slider Item -->
-								
-								<!-- Slider Item -->
-								<div class="feature-item text-center">
-									<img src="/img/features/feature-02.jpg" class="img-fluid" alt="Feature">
-									<p>Test Room</p>
-								</div>
-								<!-- /Slider Item -->
-								
-								<!-- Slider Item -->
-								<div class="feature-item text-center">
-									<img src="/img/features/feature-03.jpg" class="img-fluid" alt="Feature">
-									<p>ICU</p>
-								</div>
-								<!-- /Slider Item -->
-								
-								<!-- Slider Item -->
-								<div class="feature-item text-center">
-									<img src="/img/features/feature-04.jpg" class="img-fluid" alt="Feature">
-									<p>Laboratory</p>
-								</div>
-								<!-- /Slider Item -->
-								
-								<!-- Slider Item -->
-								<div class="feature-item text-center">
-									<img src="/img/features/feature-05.jpg" class="img-fluid" alt="Feature">
-									<p>Operation</p>
-								</div>
-								<!-- /Slider Item -->
-								
-								<!-- Slider Item -->
-								<div class="feature-item text-center">
-									<img src="/img/features/feature-06.jpg" class="img-fluid" alt="Feature">
-									<p>Medical</p>
-								</div>
-								<!-- /Slider Item -->
-							</div>
-						</div>
-				   </div>
-				</div>
-			</section>		
-			<!-- /Availabe Features -->
-			
-			<!-- Blog Section -->
-		   <section class="section section-blogs">
-				<div class="container-fluid">
-				
-					<!-- Section Header -->
-					<div class="section-header text-center">
-						<h2>Blogs and News</h2>
-						<p class="sub-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-					</div>
-					<!-- /Section Header -->
-					
-					<div class="row blog-grid-row">
-						<div class="col-md-6 col-lg-3 col-sm-12">
-						
-							<!-- Blog Post -->
-							<div class="blog grid-blog">
-								<div class="blog-image">
-									<a href="blog-details.html"><img class="img-fluid" src="/img/blog/blog-01.jpg" alt="Post Image"></a>
-								</div>
-								<div class="blog-content">
-									<ul class="entry-meta meta-item">
-										<li>
-											<div class="post-author">
-												<a href="doctor-profile.html"><img src="/img/doctors/doctor-thumb-01.jpg" alt="Post Author"> <span>Dr. Ruby Perrin</span></a>
-											</div>
-										</li>
-										<li><i class="far fa-clock"></i> 4 Dec 2019</li>
-									</ul>
-									<h3 class="blog-title"><a href="blog-details.html">Doccure – Making your clinic painless visit?</a></h3>
-									<p class="mb-0">Lorem ipsum dolor sit amet, consectetur em adipiscing elit, sed do eiusmod tempor.</p>
-								</div>
-							</div>
-							<!-- /Blog Post -->
-							
-						</div>
-						<div class="col-md-6 col-lg-3 col-sm-12">
-						
-							<!-- Blog Post -->
-							<div class="blog grid-blog">
-								<div class="blog-image">
-									<a href="blog-details.html"><img class="img-fluid" src="/img/blog/blog-02.jpg" alt="Post Image"></a>
-								</div>
-								<div class="blog-content">
-									<ul class="entry-meta meta-item">
-										<li>
-											<div class="post-author">
-												<a href="doctor-profile.html"><img src="/img/doctors/doctor-thumb-02.jpg" alt="Post Author"> <span>Dr. Darren Elder</span></a>
-											</div>
-										</li>
-										<li><i class="far fa-clock"></i> 3 Dec 2019</li>
-									</ul>
-									<h3 class="blog-title"><a href="blog-details.html">What are the benefits of Online Doctor Booking?</a></h3>
-									<p class="mb-0">Lorem ipsum dolor sit amet, consectetur em adipiscing elit, sed do eiusmod tempor.</p>
-								</div>
-							</div>
-							<!-- /Blog Post -->
-							
-						</div>
-						<div class="col-md-6 col-lg-3 col-sm-12">
-						
-							<!-- Blog Post -->
-							<div class="blog grid-blog">
-								<div class="blog-image">
-									<a href="blog-details.html"><img class="img-fluid" src="/img/blog/blog-03.jpg" alt="Post Image"></a>
-								</div>
-								<div class="blog-content">
-									<ul class="entry-meta meta-item">
-										<li>
-											<div class="post-author">
-												<a href="doctor-profile.html"><img src="/img/doctors/doctor-thumb-03.jpg" alt="Post Author"> <span>Dr. Deborah Angel</span></a>
-											</div>
-										</li>
-										<li><i class="far fa-clock"></i> 3 Dec 2019</li>
-									</ul>
-									<h3 class="blog-title"><a href="blog-details.html">Benefits of consulting with an Online Doctor</a></h3>
-									<p class="mb-0">Lorem ipsum dolor sit amet, consectetur em adipiscing elit, sed do eiusmod tempor.</p>
-								</div>
-							</div>
-							<!-- /Blog Post -->
-							
-						</div>
-						<div class="col-md-6 col-lg-3 col-sm-12">
-						
-							<!-- Blog Post -->
-							<div class="blog grid-blog">
-								<div class="blog-image">
-									<a href="blog-details.html"><img class="img-fluid" src="/img/blog/blog-04.jpg" alt="Post Image"></a>
-								</div>
-								<div class="blog-content">
-									<ul class="entry-meta meta-item">
-										<li>
-											<div class="post-author">
-												<a href="doctor-profile.html"><img src="/img/doctors/doctor-thumb-04.jpg" alt="Post Author"> <span>Dr. Sofia Brient</span></a>
-											</div>
-										</li>
-										<li><i class="far fa-clock"></i> 2 Dec 2019</li>
-									</ul>
-									<h3 class="blog-title"><a href="blog-details.html">5 Great reasons to use an Online Doctor</a></h3>
-									<p class="mb-0">Lorem ipsum dolor sit amet, consectetur em adipiscing elit, sed do eiusmod tempor.</p>
-								</div>
-							</div>
-							<!-- /Blog Post -->
-							
-						</div>
-					</div>
-					<div class="view-all text-center"> 
-						<a href="blog-list.html" class="btn btn-primary">View All</a>
-					</div>
-				</div>
-			</section>
-			<!-- /Blog Section -->			
-			
-			<!-- Footer -->
-			<footer class="footer">
-				
-				<!-- Footer Top -->
-				<div class="footer-top">
-					<div class="container-fluid">
-						<div class="row">
-							<div class="col-lg-3 col-md-6">
-							
-								<!-- Footer Widget -->
-								<div class="footer-widget footer-about">
-									<div class="footer-logo">
-										<img src="/img/footer-logo.png" alt="logo">
-									</div>
-									<div class="footer-about-content">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-										<div class="social-icon">
-											<ul>
-												<li>
-													<a href="#" target="_blank"><i class="fab fa-facebook-f"></i> </a>
-												</li>
-												<li>
-													<a href="#" target="_blank"><i class="fab fa-twitter"></i> </a>
-												</li>
-												<li>
-													<a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-												</li>
-												<li>
-													<a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-												</li>
-												<li>
-													<a href="#" target="_blank"><i class="fab fa-dribbble"></i> </a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-								<!-- /Footer Widget -->
-								
-							</div>
-							
-							<div class="col-lg-3 col-md-6">
-							
-								<!-- Footer Widget -->
-								<div class="footer-widget footer-menu">
-									<h2 class="footer-title">For Patients</h2>
-									<ul>
-										<li><a href="search.html">Search for Doctors</a></li>
-										<li><a href="login.html">Login</a></li>
-										<li><a href="register.html">Register</a></li>
-										<li><a href="booking.html">Booking</a></li>
-										<li><a href="patient-dashboard.html">Patient Dashboard</a></li>
-									</ul>
-								</div>
-								<!-- /Footer Widget -->
-								
-							</div>
-							
-							<div class="col-lg-3 col-md-6">
-							
-								<!-- Footer Widget -->
-								<div class="footer-widget footer-menu">
-									<h2 class="footer-title">For Doctors</h2>
-									<ul>
-										<li><a href="appointments.html">Appointments</a></li>
-										<li><a href="chat.html">Chat</a></li>
-										<li><a href="login.html">Login</a></li>
-										<li><a href="doctor-register.html">Register</a></li>
-										<li><a href="doctor-dashboard.html">Doctor Dashboard</a></li>
-									</ul>
-								</div>
-								<!-- /Footer Widget -->
-								
-							</div>
-							
-							<div class="col-lg-3 col-md-6">
-							
-								<!-- Footer Widget -->
-								<div class="footer-widget footer-contact">
-									<h2 class="footer-title">Contact Us</h2>
-									<div class="footer-contact-info">
-										<div class="footer-address">
-											<span><i class="fas fa-map-marker-alt"></i></span>
-											<p> 3556  Beech Street, San Francisco,<br> California, CA 94108 </p>
-										</div>
-										<p>
-											<i class="fas fa-phone-alt"></i>
-											+1 315 369 5943
-										</p>
-										<p class="mb-0">
-											<i class="fas fa-envelope"></i>
-											doccure@example.com
-										</p>
-									</div>
-								</div>
-								<!-- /Footer Widget -->
-								
-							</div>
-							
-						</div>
-					</div>
-				</div>
-				<!-- /Footer Top -->
-				
-				<!-- Footer Bottom -->
-                <div class="footer-bottom">
-					<div class="container-fluid">
-					
-						<!-- Copyright -->
-						<div class="copyright">
-							<div class="row">
-								<div class="col-md-6 col-lg-6">
-									<div class="copyright-text">
-										<p class="mb-0">&copy; 2020 Doccure. All rights reserved.</p>
-									</div>
-								</div>
-								<div class="col-md-6 col-lg-6">
-								
-									<!-- Copyright Menu -->
-									<div class="copyright-menu">
-										<ul class="policy-menu">
-											<li><a href="term-condition.html">Terms and Conditions</a></li>
-											<li><a href="privacy-policy.html">Policy</a></li>
-										</ul>
-									</div>
-									<!-- /Copyright Menu -->
-									
-								</div>
-							</div>
-						</div>
-						<!-- /Copyright -->
-						
-					</div>
-				</div>
-				<!-- /Footer Bottom -->
-				
-			</footer>
-			<!-- /Footer -->
-		   
-	   </div>
+		   </div>
 	   <!-- /Main Wrapper -->
 	  
 		<!-- jQuery -->
@@ -991,6 +688,50 @@
 		
 		<!-- Custom JS -->
 		<script src="/js/script.js"></script>
+
+		<script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+
+
+		<script>
+
+		var wilayas = [{"id":"1","code":"1","nom":"Adrar"}, {"id":"2","code":"2","nom":"Chlef"}, {"id":"3","code":"3","nom":"Laghouat"}, {"id":"4","code":"4","nom":"Oum El Bouaghi"}, {"id":"5","code":"5","nom":"Batna"}, {"id":"6","code":"6","nom":"B\u00e9ja\u00efa"}, {"id":"7","code":"7","nom":"Biskra"}, {"id":"8","code":"8","nom":"B\u00e9char"}, {"id":"9","code":"9","nom":"Blida"}, {"id":"10","code":"10","nom":"Bouira"}, {"id":"11","code":"11","nom":"Tamanrasset"}, {"id":"12","code":"12","nom":"T\u00e9bessa"}, {"id":"13","code":"13","nom":"Tlemcen"}, {"id":"14","code":"14","nom":"Tiaret"}, {"id":"15","code":"15","nom":"Tizi Ouzou"}, {"id":"16","code":"16","nom":"Alger"}, {"id":"17","code":"17","nom":"Djelfa"}, {"id":"18","code":"18","nom":"Jijel"}, {"id":"19","code":"19","nom":"S\u00e9tif"}, {"id":"20","code":"20","nom":"Sa\u00efda"}, {"id":"21","code":"21","nom":"Skikda"}, {"id":"22","code":"22","nom":"Sidi Bel Abb\u00e8s"}, {"id":"23","code":"23","nom":"Annaba"}, {"id":"24","code":"24","nom":"Guelma"}, {"id":"25","code":"25","nom":"Constantine"}, {"id":"26","code":"26","nom":"M\u00e9d\u00e9a"}, {"id":"27","code":"27","nom":"Mostaganem"}, {"id":"28","code":"28","nom":"M'Sila"}, {"id":"29","code":"29","nom":"Mascara"}, {"id":"30","code":"30","nom":"Ouargla"}, {"id":"31","code":"31","nom":"Oran"}, {"id":"32","code":"32","nom":"El Bayadh"}, {"id":"33","code":"33","nom":"Illizi"}, {"id":"34","code":"34","nom":"Bordj Bou Arreridj"}, {"id":"35","code":"35","nom":"Boumerd\u00e8s"}, {"id":"36","code":"36","nom":"El Tarf"}, {"id":"37","code":"37","nom":"Tindouf"}, {"id":"38","code":"38","nom":"Tissemsilt"}, {"id":"39","code":"39","nom":"El Oued"}, {"id":"40","code":"40","nom":"Khenchela"}, {"id":"41","code":"41","nom":"Souk Ahras"}, {"id":"42","code":"42","nom":"Tipaza"}, {"id":"43","code":"43","nom":"Mila"}, {"id":"44","code":"44","nom":"A\u00efn Defla"}, {"id":"45","code":"45","nom":"Na\u00e2ma"}, {"id":"46","code":"46","nom":"A\u00efn T\u00e9mouchent"}, {"id":"47","code":"47","nom":"Gharda\u00efa"}, {"id":"48","code":"48","nom":"Relizane"}];
+			
+			// the code you're looking for
+			var needle = 'AL';
+			$(document).ready(function() {
+				$('.js-example-basic-single').select2({
+					width: '100%', // need to override the changed default
+					placeholder:'Choisri votre ville'
+				});
+				$('#specialites').select2({
+					width: '100%', // need to override the changed default
+					placeholder:'Choisri votre ville'
+				});
+
+
+
+				wilayas.map(function(value, index, wilaya){
+                        $('#wilayas').append($('<option>', {
+                            value: value.nom,
+                            text : value.nom
+                        }));
+                        $('#specialites').append($('<option>', {
+                            value: value.nom,
+                            text : value.nom
+                        }));
+
+
+                    })
+
+			})
+
+
+
+
+			// iterate over each  name="specialite"element in the array
+		
+		
+		</script>
 		
 	</body>
 </html>
