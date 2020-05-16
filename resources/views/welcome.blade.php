@@ -62,78 +62,6 @@
 							</a>
 						</div>
 						<ul class="main-nav">
-							<li class="active">
-								<a href="index.html">Home</a>
-							</li>
-							<li class="has-submenu">
-								<a href="#">Doctors <i class="fas fa-chevron-down"></i></a>
-								<ul class="submenu">
-									<li><a href="doctor-dashboard.html">Doctor Dashboard</a></li>
-									<li><a href="appointments.html">Appointments</a></li>
-									<li><a href="schedule-timings.html">Schedule Timing</a></li>
-									<li><a href="my-patients.html">Patients List</a></li>
-									<li><a href="patient-profile.html">Patients Profile</a></li>
-									<li><a href="chat-doctor.html">Chat</a></li>
-									<li><a href="invoices.html">Invoices</a></li>
-									<li><a href="doctor-profile-settings.html">Profile Settings</a></li>
-									<li><a href="reviews.html">Reviews</a></li>
-									<li><a href="doctor-register.html">Doctor Register</a></li>
-								</ul>
-							</li>	
-							<li class="has-submenu">
-								<a href="#">Patients <i class="fas fa-chevron-down"></i></a>
-								<ul class="submenu">
-									<li class="has-submenu">
-										<a href="#">Doctors</a>
-										<ul class="submenu">
-											<li><a href="map-grid.html">Map Grid</a></li>
-											<li><a href="map-list.html">Map List</a></li>
-										</ul>
-									</li>
-									<li><a href="search.html">Search Doctor</a></li>
-									<li><a href="doctor-profile.html">Doctor Profile</a></li>
-									<li><a href="booking.html">Booking</a></li>
-									<li><a href="checkout.html">Checkout</a></li>
-									<li><a href="booking-success.html">Booking Success</a></li>
-									<li><a href="patient-dashboard.html">Patient Dashboard</a></li>
-									<li><a href="favourites.html">Favourites</a></li>
-									<li><a href="chat.html">Chat</a></li>
-									<li><a href="profile-settings.html">Profile Settings</a></li>
-									<li><a href="change-password.html">Change Password</a></li>
-								</ul>
-							</li>	
-							<li class="has-submenu">
-								<a href="#">Pages <i class="fas fa-chevron-down"></i></a>
-								<ul class="submenu">
-									<li><a href="voice-call.html">Voice Call</a></li>
-									<li><a href="video-call.html">Video Call</a></li>
-									<li><a href="search.html">Search Doctors</a></li>
-									<li><a href="calendar.html">Calendar</a></li>
-									<li><a href="components.html">Components</a></li>
-									<li class="has-submenu">
-										<a href="invoices.html">Invoices</a>
-										<ul class="submenu">
-											<li><a href="invoices.html">Invoices</a></li>
-											<li><a href="invoice-view.html">Invoice View</a></li>
-										</ul>
-									</li>
-									<li><a href="blank-page.html">Starter Page</a></li>
-									<li><a href="{{route('login')}}">Login</a></li>
-									<li><a href="register.html">Register</a></li>
-									<li><a href="forgot-password.html">Forgot Password</a></li>
-								</ul>
-							</li>
-							<li class="has-submenu">
-								<a href="#">Blog <i class="fas fa-chevron-down"></i></a>
-								<ul class="submenu">
-									<li><a href="blog-list.html">Blog List</a></li>
-									<li><a href="blog-grid.html">Blog Grid</a></li>
-									<li><a href="blog-details.html">Blog Details</a></li>
-								</ul>
-							</li>
-							<li>
-								<a href="admin/index.html" target="_blank">Admin</a>
-							</li>
 							<li class="login-link">
 								<a href="{{route('login')}}">Login / Signup</a>
 							</li>
@@ -148,6 +76,10 @@
 								<p class="contact-header">Contact</p>
 								<p class="contact-info-header"> +1 315 369 5943</p>
 							</div>
+						</li>
+						
+						<li class="nav-item">
+							<a class="nav-link header-login" href="{{route('login')}}">Vous êtes professionnel de santé ?</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link header-login" href="{{route('login')}}">login / Signup </a>
@@ -695,7 +627,8 @@
 		<script>
 
 		var wilayas = [{"id":"1","code":"1","nom":"Adrar"}, {"id":"2","code":"2","nom":"Chlef"}, {"id":"3","code":"3","nom":"Laghouat"}, {"id":"4","code":"4","nom":"Oum El Bouaghi"}, {"id":"5","code":"5","nom":"Batna"}, {"id":"6","code":"6","nom":"B\u00e9ja\u00efa"}, {"id":"7","code":"7","nom":"Biskra"}, {"id":"8","code":"8","nom":"B\u00e9char"}, {"id":"9","code":"9","nom":"Blida"}, {"id":"10","code":"10","nom":"Bouira"}, {"id":"11","code":"11","nom":"Tamanrasset"}, {"id":"12","code":"12","nom":"T\u00e9bessa"}, {"id":"13","code":"13","nom":"Tlemcen"}, {"id":"14","code":"14","nom":"Tiaret"}, {"id":"15","code":"15","nom":"Tizi Ouzou"}, {"id":"16","code":"16","nom":"Alger"}, {"id":"17","code":"17","nom":"Djelfa"}, {"id":"18","code":"18","nom":"Jijel"}, {"id":"19","code":"19","nom":"S\u00e9tif"}, {"id":"20","code":"20","nom":"Sa\u00efda"}, {"id":"21","code":"21","nom":"Skikda"}, {"id":"22","code":"22","nom":"Sidi Bel Abb\u00e8s"}, {"id":"23","code":"23","nom":"Annaba"}, {"id":"24","code":"24","nom":"Guelma"}, {"id":"25","code":"25","nom":"Constantine"}, {"id":"26","code":"26","nom":"M\u00e9d\u00e9a"}, {"id":"27","code":"27","nom":"Mostaganem"}, {"id":"28","code":"28","nom":"M'Sila"}, {"id":"29","code":"29","nom":"Mascara"}, {"id":"30","code":"30","nom":"Ouargla"}, {"id":"31","code":"31","nom":"Oran"}, {"id":"32","code":"32","nom":"El Bayadh"}, {"id":"33","code":"33","nom":"Illizi"}, {"id":"34","code":"34","nom":"Bordj Bou Arreridj"}, {"id":"35","code":"35","nom":"Boumerd\u00e8s"}, {"id":"36","code":"36","nom":"El Tarf"}, {"id":"37","code":"37","nom":"Tindouf"}, {"id":"38","code":"38","nom":"Tissemsilt"}, {"id":"39","code":"39","nom":"El Oued"}, {"id":"40","code":"40","nom":"Khenchela"}, {"id":"41","code":"41","nom":"Souk Ahras"}, {"id":"42","code":"42","nom":"Tipaza"}, {"id":"43","code":"43","nom":"Mila"}, {"id":"44","code":"44","nom":"A\u00efn Defla"}, {"id":"45","code":"45","nom":"Na\u00e2ma"}, {"id":"46","code":"46","nom":"A\u00efn T\u00e9mouchent"}, {"id":"47","code":"47","nom":"Gharda\u00efa"}, {"id":"48","code":"48","nom":"Relizane"}];
-			
+
+		var specialites =[{"nom":"Allergologue"},{"nom":"Anatomo cyto-pathologiste"},{"nom":"Andrologue"},{"nom":"Anesthésiste réanimateur"},{"nom":"Angiologue"},{"nom":"Audioprothésiste"},{"nom":"Cancérologue"},{"nom":"Cancérologue médical"},{"nom":"Cancérologue radiothérapeute"},{"nom":"Cardiologue"},{"nom":"Chiropracteur"},{"nom":"Chirurgien"},{"nom":"Chirurgien cancérologue"},{"nom":"Chirurgien de la face et du cou"},{"nom":"Chirurgien de la main"},{"nom":"Chirurgien dentiste"},{"nom":"Chirurgien infantile"},{"nom":"Chirurgien maxillo-facial"},{"nom":"Chirurgien maxillo-facial et stomatologue"},{"nom":"Chirurgien oral"},{"nom":"Chirurgien orthopédiste"},{"nom":"Chirurgien plasticien et esthétique"},{"nom":"Chirurgien thoracique et cardio-vasculaire"},{"nom":"Chirurgien urologue"},{"nom":"Chirurgien vasculaire"},{"nom":"Chirurgien viscéral et digestif"},{"nom":"Dermatologue"},{"nom":"Diététicien"},{"nom":"Endocrinologue"},{"nom":"Ergothérapeute"},{"nom":"Gastro entérologue et hépatologue"},{"nom":"Généticien"},{"nom":"Gériatre"},{"nom":"Gynécologue médical"},{"nom":"Gynécologue médical et obstétrique"},{"nom":"Gynécologue obstétricien"},{"nom":"Hématologue"},{"nom":"Hypnothérapeute"},{"nom":"Infectiologue"},{"nom":"Infirmier"},{"nom":"Masseur kinésithérapeute"},{"nom":"Médecin acupuncteur"},{"nom":"Médecin addictologue"},{"nom":"Médecin biologiste"},{"nom":"Médecin bucco-dentaire"},{"nom":"Médecin du sport"},{"nom":"Médecin du travail"},{"nom":"Médecin généraliste"},{"nom":"Médecin homéopathe"},{"nom":"Médecin morphologue et anti-âge"},{"nom":"Médecin nucléaire"},{"nom":"Médecin nutritionniste"},{"nom":"Médecin réanimateur"},{"nom":"Médecin spécialiste de santé publique"},{"nom":"Médecin urgentiste"},{"nom":"Naturopathe"},{"nom":"Néphrologue"},{"nom":"Neurochirurgien"},{"nom":"Neurologue"},{"nom":"Ophtalmologue"},{"nom":"ORL"},{"nom":"ORL - Chirurgien de la face et du cou"},{"nom":"Orthodontiste"},{"nom":"Orthopédiste orthésiste"},{"nom":"Orthopédiste orthésiste-podologiste"},{"nom":"Orthophoniste"},{"nom":"Orthoptiste"},{"nom":"Ostéopathe"},{"nom":"Pédiatre"},{"nom":"Pédicure podologue"},{"nom":"Phlébologue"},{"nom":"Pneumologue"},{"nom":"Psychanalyste"},{"nom":"Psychiatre"},{"nom":"Psychiatre de l'enfant et de l'adolescent"},{"nom":"Psychologue"},{"nom":"Psychomotricien"},{"nom":"Radiologue"},{"nom":"Radiothérapeute"},{"nom":"Rhumatologue"},{"nom":"Sage femme"},{"nom":"Sophrologue"},{"nom":"Spécialiste en hémobiologie-transfusion"},{"nom":"Spécialiste en médecine interne"},{"nom":"Spécialiste en médecine légale et expertises médicales"},{"nom":"Spécialiste en médecine physique et de réadaptation"},{"nom":"Stomatologue"}];
 			// the code you're looking for
 			var needle = 'AL';
 			$(document).ready(function() {
@@ -705,7 +638,7 @@
 				});
 				$('#specialites').select2({
 					width: '100%', // need to override the changed default
-					placeholder:'Choisri votre ville'
+					placeholder:'Choisir une spécialité'
 				});
 
 
@@ -715,13 +648,16 @@
                             value: value.nom,
                             text : value.nom
                         }));
-                        $('#specialites').append($('<option>', {
+					})
+					
+					specialites.map(function(value, index, wilaya){
+						$('#specialites').append($('<option>', {
                             value: value.nom,
                             text : value.nom
                         }));
+					})
+				
 
-
-                    })
 
 			})
 

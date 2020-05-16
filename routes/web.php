@@ -71,6 +71,7 @@ Route::group(['prefix' => 'rendezvous', 'as' => 'rendezvous'], function () {
     Route::post('/update/{id_rdv}', ['as' => '.update', 'uses' => 'RendezvousController@update']);
     Route::get('/show/update/{id_rdv}', ['as' => '.show', 'uses' => 'RendezvousController@edit']);
     Route::get('/annuler/{id_rdv}', ['as' => '.annuler', 'uses' => 'RendezvousController@annuler']);
+    Route::get('/destroy/{id_rdv}', ['as' => '.destroy', 'uses' => 'RendezvousController@destroy']);
     
 });
 
@@ -123,3 +124,15 @@ Route::post('/changer/etat/crenau',function(Request $request){
         return response()->json(['message'=>'done .. ']);
     }
 })->name('changer_etat_crenau');
+
+
+
+
+
+/**
+ * profile settings 
+ */
+
+Route::get('/medecin/profile-settings','MedecinController@profile')->name('medecin.profile.settings');
+ 
+

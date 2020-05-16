@@ -24,6 +24,16 @@ class MedecinController extends Controller
         dd('oir medecin ...');
     }
 
+    /**
+     * profile settings.
+     *
+     * @param  \App\Medecin  $medecin
+     * @return \Illuminate\Http\Response
+     */
+    public function profile()
+    {   
+        return view('medecin.profile-settings');
+    }
+    
 
-    //
 }

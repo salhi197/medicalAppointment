@@ -48,8 +48,8 @@
 																	<td>{{$rdv->motif}}</td>
 																	<td><span class="badge badge-pill bg-success-light">{{$rdv->status}}</span></td>
 																	<td class="text-right">
-																		<div class="table-action">
-																			<a href="javascript:void(0);" class="btn btn-sm bg-danger-light">
+																		<div class="table-action">	
+																			<a href="{{route('rendezvous.destroy',['id_rdv'=>$rdv->id])}}" class="btn btn-sm bg-danger-light">
 																				<i class="fas fa-trash"></i> Annuler 
 																			</a>
 																		</div>

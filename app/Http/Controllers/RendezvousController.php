@@ -9,7 +9,7 @@ use App\User;
 use App\Soin;
 use App\Creneau;
 use App\Medecin;
-
+use Mail;
 use App\Journee;
 
 use App\Http\Requests\StoreRdv;
@@ -42,7 +42,7 @@ class RendezvousController extends Controller
             /**
              * rendez-vous d'auhourd'hui 
              */
-            $upcoming_rdvs = Rendezvous::where('id_medecin',$medecin->id)
+            $upcoming_rdvs = Rendezvous::where(['id_medecin'=>$medecin->id,'status'=>''])
             ->orderBy('created_at', 'desc')
             ->get();
             /**
@@ -143,6 +143,8 @@ class RendezvousController extends Controller
             $crenau = $request['crenau'];
             $fin_crenau = $request['fin_crenau'];
             $motif = $request['motif'];  
+            $autre_nom = $request['nom'];
+            $autre_prenom = $request['prenom'];
             
             /**
              * set cookies 
@@ -152,9 +154,9 @@ class RendezvousController extends Controller
             \Cookie::queue('crenau',$crenau,15);
             \Cookie::queue('fin_crenau',$fin_crenau,15);
             \Cookie::queue('motif',$motif,15);
-            \Cookie::queue('inserted','false',15);
-              
-//            dd(request()->cookie());
+            \Cookie::queue('nom',$autre_nom,15);
+            \Cookie::queue('prenom',$autre_prenom,15);
+            \Cookie::queue('inserted','false',15);              
             return view('patient.LoginRegister',compact('id_medecin','date','crenau','motif'));
         }
         if (Auth::user()!= null) {   
@@ -268,21 +270,53 @@ class RendezvousController extends Controller
      * @param  \App\Rendezvous  $rendezvous
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Rendezvous $rendezvous)
+    public function destroy($id_rendezvous)
     {
-        //
+        $rdv = Rendezvous::where('id', $id_rendezvous)->first();
+        $rdv->delete();
+
+    }
+
+    
+
+    /**
+     * Annuler un rdv ,de la part de medecin changer les status du rdv .
+     *
+     */
+    public function annuler(Rendezvous $rendezvous,$id_rendezvous)
+    {
+        $rdv = Rendezvous::where('id', $id_rendezvous)->first();
+        $rdv->update(['status' => -1]);
+        $user = User::where('id',$rdv->id_patient)->first();
+
+        /**
+         * sending emila
+         */
+        $medecin = "Haider";
+        $to_email = "salhiali197@yahoo.fr";
+        $body = "Nous vous informons que votre rendez-vous a été annulé";
+        $data = array("body" => $body);
+        $tempalte = "emails.mail";
+        \Mail::send($tempalte, $data, function($message) use ($to_email) {
+            $message->to($to_email)
+            ->subject("Tebibe : Rappel sur la prise de rendez-vous");
+                $message->from("salhihaider197@gmail.com",'Tebibe Mail Service');
+        });                               
+
+        return redirect()->route('rendezvous.index')->with('success', 'votre rendez-vous a été annulé .. !');
     }
 
     /**
-     * Annuler un rdv , changer les status du rdv Remove the specified resource from storage.
+     * Cloturer un rdv , veut dire que le rendez-vosu a été réaliser.
      *
      * @param  \App\Rendezvous  $rendezvous
      * @return \Illuminate\Http\Response
      */
-    public function annuler(Rendezvous $rendezvous,$id_rendezvous)
+
+    public function cloturer($id_rendezvous)
     {
-        Rendezvous::where('id', $id_rendezvous)->update(['status' => -1]);
-        return redirect()->route('rendezvous.index')->with('success', 'votre rendez-vous a été annulé .. !');
+
+
     }
 
 

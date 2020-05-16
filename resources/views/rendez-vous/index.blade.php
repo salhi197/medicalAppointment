@@ -285,7 +285,7 @@ for(rdv of rendezvous){
 	dc = dc.substr(0,dc.length-3)
 	// fc = fc.substr(0,c.length-3)
 	event = {
-		id:rdv['id'],
+		id_rdv:rdv['id'],
 		title: 'Rendez-vous avec XXX',
 		start: rdv['date_rdv']+'T'+dc+':00',
 		end: rdv['date_rdv']+'T'+fc+':00',
@@ -301,7 +301,7 @@ for(rdv of rendezvous){
 
 	defaultEvents.push(event)
 }
-console.log(defaultEvents)
+	console.log(defaultEvents)
 
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -329,7 +329,7 @@ console.log(defaultEvents)
 		console.log(info.event._def.extendedProps.date_crenau)
 		info.el.style.borderColor = '#09e5ab';
 		info.el.style.backgroundColor = '#09e5ab';
-			var lien  = 'http://127.0.0.1:8000/annuler/'+info.event._def.extendedProps.id
+			var lien  = 'http://127.0.0.1:8000/rendezvous/annuler/'+info.event._def.extendedProps.id_rdv
                 $('#update_link').attr('href',lien)
 			jQuery.each(info.event._def.extendedProps, function(i, val) {
 				$('#'+i).html(val)

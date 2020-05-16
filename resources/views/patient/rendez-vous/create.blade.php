@@ -32,7 +32,7 @@
 										<a href="doctor-profile.html" class="booking-doc-img">
 										</a>
 										<div class="booking-info">
-											<h4><a href="doctor-profile.html">Dr</a></h4>
+											<h4><a href="doctor-profile.html">Dr Mokhat belmokhtare </a></h4>
 											<div class="rating">
 												<i class="fas fa-star filled"></i>
 												<i class="fas fa-star filled"></i>
@@ -47,7 +47,7 @@
 								</div>
 							</div>
 							<div class="row">								
-							<div class="col-12 col-sm-4 col-md-2">
+								<div class="col-12 col-sm-4 col-md-2">
 									<h4 class="mb-1">11 November 2019</h4>
 									<p class="text-muted">Monday</p>
 								</div>
@@ -63,7 +63,7 @@
 										@endforeach
 									</select>
 								</div>
-								<div class="col-4 col-sm-8 col-md-4">
+								<div class="col-4 col-sm-12 col-md-4">
 									<label>
 										Séléctionner un seul motif parmi cette liste 
 									</label>
@@ -73,13 +73,43 @@
 									<input type='hidden' id="crenau" name="crenau" value="null">
 									<input type="hidden" name="date" class="form-control" id="date" value="null">
 									<input type="hidden" name="fin_crenau" class="form-control" id="fin_crenau" value="null">
-									
-
 								</div>
                             </div>
+
+							<div class="row">
+								<div class="col-12 col-sm-8 col-md-4">
+									<h4 class="mb-1">Qui visite le medecin ?</h4>
+								</div>
+								
+								<div class="col-12 col-sm-12 col-md-2">
+									<button id="me" class="btn btn-primary">
+										Moi meme
+									</button>
+								</div>
+								<div class="col-12 col-sm-4 col-md-2">
+									<button id="other" class="btn btn-primary">
+										quelq'un d'autre 
+									</button>
+								</div>
+
+							</div>
+							<br>
+							<div class="row" id="other_section" class=".d-none">
+								<div class="col-12 col-sm-4 col-md-4">
+									<label>Saisir les informatiosn ?</label>
+								</div>
+								<div class="col-12 col-sm-4 col-md-4">
+									<input value="" type="text" class="form-control" name="nom" id="nom" placeholder="Nom du patient "  />
+								</div>
+								<div class="col-12 col-sm-4 col-md-4">
+									<input value="" type="text" class="form-control" name="prenom" id="prenom" placeholder="prenoom du patient "  />
+								</div>
+
+							</div>
+							<br>
 							<!-- Schedule Widget -->
 							<div class="card booking-schedule schedule-widget">
-								<!-- Schedule Header -->
+								<!--	 Schedule Header -->
 									<div class="schedule-header">
 										<div class="row">
 										</div>
@@ -96,7 +126,7 @@
 											<div class="col-md-6">
 											<div class="time-slot">
 												<ul class="clearfix">
-													
+													<span>Choisissez une date dans le calendrier .. <span>
 												</ul>
 											</div>											
 											</div>
@@ -128,8 +158,10 @@
 	<script src="{{asset('js/pikaday.js')}}"></script>
 	<script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
     <script>
+				$('#other_section').hide()
 
-			$("body").delegate(".timing", "click", function(){
+			var OtherSectionIsHidden = true
+  			$("body").delegate(".timing", "click", function(){
 				$('.timing').removeClass('selected');
 				console.log($(this).attr('id'))
                 $(this).addClass('selected');
@@ -183,14 +215,34 @@
 				var motif = $('#motif').val()
 				var crenau = $('#crenau').val()
 				var date = $('#date').val()
+				var nom = $('#nom').val()
+				var prenom = $('#prenom').val()
 				console.log(motif,crenau,date)
-				if(motif=="null" ||crenau=="null" ||date=="null"){
-					alert('veuilliez compelter tout les champs . . ')
+
+				if(motif=="null" ||crenau=="null" ||date=="null" || (OtherSectionIsHidden == false && (nom=="null" || rpenom == "null"))){
+					alert('veuilliez compelter tout les champs ! ')
 				}else{
 					document.getElementById("form").submit();
 				}
 
 			})            
+			$('#me').on('click',function(){
+				event.preventDefault()
+				$('#nom').val('')
+				$('#prenom').val('')
+					console.log($('#prenom').val())
+				$('#other_section').hide()
+				OtherSectionIsHidden =true
+			})            
+			$('#other').on('click',function(){
+				OtherSectionIsHidden =false
+				event.preventDefault()
+				$('#other_section').show()
+			})            
+			
+
+
+
     </script>
 	
 

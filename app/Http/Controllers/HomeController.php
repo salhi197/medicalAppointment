@@ -7,6 +7,7 @@ use App\Medecin;
 use App\Rendezvous;
 use Auth;
 use Mail;
+use User;
 use Cookie;
 
 class HomeController extends Controller
@@ -93,10 +94,10 @@ class HomeController extends Controller
         /*
         * la méthode de recherche
         */  
-        dd($request['wilaya']);
-        $results = User::where('wilaya', '=', $request['wilaya'])
+        $results = Medecin::where('wilyaya', '=', $request['wilaya'])
         ->where('specilaite', '=', $request['specialite'])
         ->get();
+        
 
         return view('results',compact(
             'results'
