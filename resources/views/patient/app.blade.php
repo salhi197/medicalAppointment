@@ -25,6 +25,7 @@
 	    <link href="{{asset('fullcalendar/core/main.min.css')}}" rel="stylesheet" />
 	    <link href="{{asset('fullcalendar/daygrid/main.min.css')}}" rel="stylesheet" />
 	    <link href="{{asset('fullcalendar/timegrid/main.min.css')}}" rel="stylesheet" />
+	    <link href="{{asset('css/toastr.css')}}" rel="stylesheet" />
 
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
@@ -63,96 +64,6 @@
 								<i class="fas fa-times"></i>
 							</a>
 						</div>
-						<ul class="main-nav">
-							<li>
-								<a href="index.html">Home</a>
-							</li>
-							<li class="has-submenu">
-								<a href="#">Doctors <i class="fas fa-chevron-down"></i></a>
-								<ul class="submenu">
-									<li><a href="doctor-dashboard.html">Doctor Dashboard</a></li>
-									<li><a href="appointments.html">Appointments</a></li>
-									<li><a href="schedule-timings.html">Schedule Timing</a></li>
-									<li><a href="my-patients.html">Patients List</a></li>
-									<li><a href="patient-profile.html">Patients Profile</a></li>
-									<li><a href="chat-doctor.html">Chat</a></li>
-									<li><a href="invoices.html">Invoices</a></li>
-									<li><a href="doctor-profile-settings.html">Profile Settings</a></li>
-									<li><a href="reviews.html">Reviews</a></li>
-									<li><a href="doctor-register.html">Doctor Register</a></li>
-								</ul>
-							</li>	
-							<li class="has-submenu">
-								<a href="#">Patients <i class="fas fa-chevron-down"></i></a>
-								<ul class="submenu">
-									<li class="has-submenu">
-										<a href="#">Doctors</a>
-										<ul class="submenu">
-											<li><a href="map-grid.html">Map Grid</a></li>
-											<li><a href="map-list.html">Map List</a></li>
-										</ul>
-									</li>
-									<li><a href="search.html">Search Doctor</a></li>
-									<li><a href="doctor-profile.html">Doctor Profile</a></li>
-									<li><a href="booking.html">Booking</a></li>
-									<li><a href="checkout.html">Checkout</a></li>
-									<li><a href="booking-success.html">Booking Success</a></li>
-									<li><a href="patient-dashboard.html">Patient Dashboard</a></li>
-									<li><a href="favourites.html">Favourites</a></li>
-									<li><a href="chat.html">Chat</a></li>
-									<li><a href="profile-settings.html">Profile Settings</a></li>
-									<li><a href="change-password.html">Change Password</a></li>
-								</ul>
-							</li>	
-							<li class="has-submenu active">
-								<a href="#">Pages <i class="fas fa-chevron-down"></i></a>
-								<ul class="submenu">
-									<li><a href="voice-call.html">Voice Call</a></li>
-									<li><a href="video-call.html">Video Call</a></li>
-									<li><a href="search.html">Search Doctors</a></li>
-									<li><a href="calendar.html">Calendar</a></li>
-									<li><a href="components.html">Components</a></li>
-									<li class="has-submenu">
-										<a href="invoices.html">Invoices</a>
-										<ul class="submenu">
-											<li><a href="invoices.html">Invoices</a></li>
-											<li><a href="invoice-view.html">Invoice View</a></li>
-										</ul>
-									</li>
-									<li><a href="blank-page.html">Starter Page</a></li>
-									<li class="active"><a href="login.html">Login</a></li>
-									<li><a href="register.html">Register</a></li>
-									<li><a href="forgot-password.html">Forgot Password</a></li>
-								</ul>
-							</li>
-							<li class="has-submenu">
-								<a href="#">Blog <i class="fas fa-chevron-down"></i></a>
-								<ul class="submenu">
-									<li><a href="blog-list.html">Blog List</a></li>
-									<li><a href="blog-grid.html">Blog Grid</a></li>
-									<li><a href="blog-details.html">Blog Details</a></li>
-								</ul>
-							</li>
-							<li>
-								<a href="admin/index.html" target="_blank">Admin</a>
-							</li>
-							<li>
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-
-                            </li>
-
-							<li class="login-link">
-								<a href="login.html">Login / Signup</a>
-							</li>
-						</ul>
 					</div>		 
 					<ul class="nav header-navbar-rht">
 						<li class="nav-item contact-item">
@@ -213,23 +124,10 @@
 								<div class="dashboard-widget">
 									<nav class="dashboard-menu">
 										<ul>
-											<li class="active">
-												<a href="patient-dashboard.html">
-													<i class="fas fa-columns"></i>
-													<span>Dashboard</span>
-												</a>
-											</li>
-											<li>
-												<a href="favourites.html">
+										<li class="active">
+													<a href="{{route('patient.rendezvous.index')}}">
 													<i class="fas fa-bookmark"></i>
-													<span>Favourites</span>
-												</a>
-											</li>
-											<li>
-												<a href="chat.html">
-													<i class="fas fa-comments"></i>
-													<span>Message</span>
-													<small class="unread-msg">23</small>
+													<span>Mes Rendez-vous</span>
 												</a>
 											</li>
 											<li>
@@ -245,10 +143,17 @@
 												</a>
 											</li>
 											<li>
-												<a href="index.html">
-													<i class="fas fa-sign-out-alt"></i>
-													<span>Logout</span>
-												</a>
+											<a href="{{ route('logout') }}"
+												onclick="event.preventDefault();
+																document.getElementById('logout-form').submit();">
+												{{ __('Logout') }}
+											</a>
+
+											<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+												@csrf
+											</form>
+
+
 											</li>
 										</ul>
 									</nav>
@@ -286,6 +191,7 @@
 		
 		<!-- Custom JS -->
 		<script src="{{asset('js/script.js')}}"></script>
+		<script src="{{asset('js/toastr.min.js')}}"></script>
 		@yield('scripts')
 	</body>
 

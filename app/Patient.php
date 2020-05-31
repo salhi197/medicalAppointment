@@ -1,18 +1,18 @@
 <?php
 
 namespace App;
-
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Writer extends Authenticatable
+class Patient extends Authenticatable
 {
     use Notifiable;
 
     /**
      * @var string
      */
-    protected $guard = 'writer';
+    protected $guard = 'patient';
 
     /**
      * The attributes that are mass assignable.
@@ -32,4 +32,11 @@ class Writer extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public static function hasRdv($id_rdv)
+    {   
+        $rdv= Rendezvous::where('id',$id_rdv)->first();
+        return $rdv->id_user == $this->id;
+
+    }
 }

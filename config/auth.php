@@ -51,9 +51,9 @@ return [
             'provider' => 'admins',
         ],
         
-        'writer' => [
+        'patient' => [
             'driver' => 'session',
-            'provider' => 'writers',
+            'provider' => 'patients',
         ],
         'medecin' => [
             'driver' => 'session',
@@ -92,6 +92,10 @@ return [
         'writers' => [
             'driver' => 'eloquent',
             'model' => App\Writer::class,
+        ],
+        'patients' => [
+            'driver' => 'eloquent',
+            'model' => App\Patient::class,
         ],
         'medecins' => [
             'driver' => 'eloquent',

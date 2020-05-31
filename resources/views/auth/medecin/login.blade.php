@@ -50,12 +50,7 @@
 													<a href="#" class="btn btn-google btn-block"><i class="fab fa-google mr-1"></i> Login</a>
 												</div>
 											</div>
-											@isset($url)
-											<div class="text-center dont-have">Don’t have an account? <a href="{{route('register')}}">Register</a></div>
-											@else
-											<div class="text-center dont-have">Don’t have an account? <a href="{{route('register')}}">Register</a></div>
-											@endisset
-											
+											<div class="text-center dont-have">Don’t have an account? <a href="register.html">Register</a></div>
 										</form>
 									</div>
 								</div>

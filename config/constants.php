@@ -2,7 +2,8 @@
     return [
         'guards'=> [
             'admin' => 'admin',
-            'writer' => 'writer'
+            'writer' => 'writer',
+            'patient' => 'patient'
         ]
 
     ];

@@ -1,22 +1,23 @@
 <?php
 use Illuminate\Http\Request;
 use App\Medecin;
+use App\Patient;
 
 Route::view('/', 'welcome');
 Auth::routes();
 
 Route::get('/login/admin', 'Auth\LoginController@showAdminLoginForm')->name('login.admin');
-Route::get('/login/writer', 'Auth\LoginController@showWriterLoginForm')->name('login.writer');
+Route::get('/login/patient', 'Auth\LoginController@showPatientLoginForm')->name('login.patient');
 Route::get('/login/medecin', 'Auth\LoginController@showMedecinLoginForm')->name('login.medecin');
 Route::get('/register/admin', 'Auth\RegisterController@showAdminRegisterForm')->name('register.admin');
-Route::get('/register/writer', 'Auth\RegisterController@showWriterRegisterForm')->name('register.writer');
+Route::get('/register/patient', 'Auth\RegisterController@showPatientRegisterForm')->name('register.patient');
 Route::get('/register/medecin', 'Auth\RegisterController@showMedecinRegisterForm')->name('register.medecin');
 
 Route::post('/login/admin', 'Auth\LoginController@adminLogin');
-Route::post('/login/writer', 'Auth\LoginController@writerLogin');
+Route::post('/login/patient', 'Auth\LoginController@patientLogin');
 Route::post('/login/medecin', 'Auth\LoginController@medecinLogin');
 Route::post('/register/admin', 'Auth\RegisterController@createAdmin')->name('register.admin');
-Route::post('/register/writer', 'Auth\RegisterController@createWriter')->name('register.writer');
+Route::post('/register/patient', 'Auth\RegisterController@createPatient')->name('register.patient');
 Route::post('/register/medecin', 'Auth\RegisterController@createMedecin')->name('register.medecin');
 
 Route::get('/home', 'HomeController@index')->middleware('auth');
@@ -24,8 +25,8 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::view('/admin', 'admin');
 });
 
-Route::group(['middleware' => 'auth:writer'], function () {
-    Route::view('/writer', 'writer');
+Route::group(['middleware' => 'auth:patient'], function () {
+    Route::view('/patient', 'patient');
 });
 Route::group(['middleware' => 'auth:medecin'], function () {
     Route::view('/medecin', 'medecin');
@@ -125,6 +126,33 @@ Route::post('/changer/etat/crenau',function(Request $request){
     }
 })->name('changer_etat_crenau');
 
+Route::get('/test',function(){
+    return view('patient.LoginRegister');
+});
+
+
+
+/**
+ * patient routes 
+ * 
+ */
+Route::get('verify','PatientController@verifier')->name('verify.get');
+Route::post('verify','PatientController@verifier')->name('verify.post');
+
+
+Route::group(['prefix' => 'patient/rendezvous', 'as' => 'patient.rendezvous'], function () {
+    Route::get('/', ['as' => '.index', 'uses' => 'PatientRendezvousController@index']);
+    Route::get('/show/create/medecin/{id_medecin}',['as'=>'.show.create', 'uses' => 'PatientRendezvousController@create']);
+    Route::post('/create', ['as' => '.create', 'uses' => 'PatientRendezvousController@store']);
+    Route::get('/destroy/{id_rdv}', ['as' => '.destroy', 'uses' => 'PatientRendezvousController@destroy']);    
+    // Route::post('/update/{id_rdv}', ['as' => '.update', 'uses' => 'PatientRendezvousController@update']);
+    // Route::get('/show/update/{id_rdv}', ['as' => '.show', 'uses' => 'PatientRendezvousController@edit']);
+    // Route::get('/annuler/{id_rdv}', ['as' => '.annuler', 'uses' => 'PatientRendezvousController@annuler']);
+    
+});
+
+
+
 
 
 
@@ -135,4 +163,5 @@ Route::post('/changer/etat/crenau',function(Request $request){
 
 Route::get('/medecin/profile-settings','MedecinController@profile')->name('medecin.profile.settings');
  
+
 

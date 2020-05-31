@@ -17,7 +17,8 @@ class Rendezvous extends Model
         'date_rdv',
         'creneau',
         'status',
-        'fin_crenau'
+        'fin_crenau',
+        'nom','prennom'
     ];
 
 

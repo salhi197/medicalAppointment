@@ -9,14 +9,6 @@ Version      : 1.3
 	
 	// Stick Sidebar
 	
-	if ($(window).width() > 767) {
-		if($('.theiaStickySidebar').length > 0) {
-			$('.theiaStickySidebar').theiaStickySidebar({
-			  // Settings
-			  additionalMarginTop: 30
-			});
-		}
-	}
 	
 	// Sidebar
 	

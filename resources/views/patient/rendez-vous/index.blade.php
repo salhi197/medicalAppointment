@@ -8,8 +8,11 @@
 									<!-- Tab Menu -->
 									<nav class="user-tabs mb-4">
 										<ul class="nav nav-tabs nav-tabs-bottom nav-justified">
-											<li class="nav-item">
+										<li class="nav-item">
 												<a class="nav-link active" href="#pat_appointments" data-toggle="tab">Appointments</a>
+											</li>
+											<li class="nav-item">
+												<a class="nav-link active" href="/">+ créer un rendez-vous</a>
 											</li>
 										</ul>
 									</nav>
@@ -49,7 +52,7 @@
 																	<td><span class="badge badge-pill bg-success-light">{{$rdv->status}}</span></td>
 																	<td class="text-right">
 																		<div class="table-action">	
-																			<a href="{{route('rendezvous.destroy',['id_rdv'=>$rdv->id])}}" class="btn btn-sm bg-danger-light">
+																			<a href="{{route('patient.rendezvous.destroy',['id_rdv'=>$rdv->id])}}" class="btn btn-sm bg-danger-light">
 																				<i class="fas fa-trash"></i> Annuler 
 																			</a>
 																		</div>
@@ -80,3 +83,17 @@
 
                         @endsection
 
+@section('scripts')
+@if(!session()->has('message'))
+<script>
+
+        $(function(){
+			toastr.success('Have fun storming the castle!', 'Miracle Max Says')
+		})
+
+</script>
+
+@endif
+
+
+@endsection

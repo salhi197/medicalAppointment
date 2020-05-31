@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Admin;
-use App\Writer;
+use App\Patient;
 use App\Medecin;
 use App\Rendezvous;
 
@@ -44,7 +44,7 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
         $this->middleware('guest:admin');
-        $this->middleware('guest:writer');
+        $this->middleware('guest:patient');
         $this->middleware('guest:medecin');
     }
 
@@ -57,7 +57,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            'nom' => 'required|string|max:255',
+            'prenom' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
@@ -74,9 +75,9 @@ class RegisterController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function showWriterRegisterForm()
+    public function showPatientRegisterForm()
     {
-        return view('auth.register', ['url' => 'writer']);
+        return view('auth.patient.register', ['url' => 'patient']);
     }
 
     /**
@@ -125,15 +126,37 @@ class RegisterController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    protected function createWriter(Request $request)
+    protected function createPatient(Request $request)
     {
-        $this->validator($request->all())->validate();
-        Writer::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
+        //$this->validator($request->all())->validate();
+
+        $phone_code  = $this->generateBarcodeNumber('phone_code');
+
+        $email_code  = $this->generateBarcodeNumber('email_code');
+
+            /**
+             * send email and sms here 
+             */
+        $email  = $request['email'];
+        Patient::create([
+            'prenom'=>$request['prenom'],
+            'nom'=>$request['nom'],
+            'email'=>$request['email'],
+            'password'=>$request['password'],
+            'age'=>$request['age'],
+            'sexe'=>$request['sexe'],
+            'telephone'=>$request['telephone'],
+            'email_verified'=>0,
+            'phone_verified'=>0,
+            'email_code'=>$phone_code,
+            'phone_code'=>$email_code,
+            'password' => Hash::make($request['password']),
         ]);
-        return redirect()->intended('login/writer');
+        $request->session()->flash('email', $email);
+        \Cookie::queue('email',$email,15);
+        \Cookie::queue('id_verified','false',15);
+ 
+        return redirect()->to('verify');
     }
 
     /**
@@ -151,4 +174,26 @@ class RegisterController extends Controller
         ]);
         return redirect()->intended('login/medecin');
     }
+
+    function generateBarcodeNumber($attr) {
+        $number = mt_rand(100000,999999 ); // better than rand()
+    
+        // call the same function if the barcode exists already
+        if ($this->barcodeNumberExists($number,$attr)) {
+            return generateBarcodeNumber();
+        }
+    
+        // otherwise, it's valid and can be used
+        return $number;
+    }
+    
+    function barcodeNumberExists($number,$attr) {
+        // query the database and return a boolean
+        // for instance, it might look like this in Laravel
+        return Patient::where($attr,$number)->exists();
+    }
+
+
+
+
 }

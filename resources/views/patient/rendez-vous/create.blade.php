@@ -53,7 +53,7 @@
 								</div>
 
 								<div class="col-12 col-sm-4 col-md-3">
-								<form id="form" action="{{route('rendezvous.create')}}" method='post'>
+								<form id="form" action="{{route('patient.rendezvous.create')}}" method='post'>
 									@csrf
 
 									<select class="form-control" name="motif" id="motif">
@@ -99,10 +99,10 @@
 									<label>Saisir les informatiosn ?</label>
 								</div>
 								<div class="col-12 col-sm-4 col-md-4">
-									<input value="" type="text" class="form-control" name="nom" id="nom" placeholder="Nom du patient "  />
+									<input value="null" type="text" class="form-control" name="nom" id="nom" placeholder="Nom du patient "  />
 								</div>
 								<div class="col-12 col-sm-4 col-md-4">
-									<input value="" type="text" class="form-control" name="prenom" id="prenom" placeholder="prenoom du patient "  />
+									<input value="null" type="text" class="form-control" name="prennom" id="prennom" placeholder="prenoom du patient "  />
 								</div>
 
 							</div>
