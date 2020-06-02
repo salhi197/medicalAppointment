@@ -33,7 +33,7 @@ class Patient extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public static function hasRdv($id_rdv)
+    public function hasRdv($id_rdv)
     {   
         $rdv= Rendezvous::where('id',$id_rdv)->first();
         return $rdv->id_user == $this->id;

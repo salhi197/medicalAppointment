@@ -8,6 +8,7 @@
                 <div class="card-header">{{ __('Reset Password') }}</div>
 
                 <div class="card-body">
+                
                 @if(request()->cookie('id_verified') == 'true')
                     <a href="{{route('login.patient')}}">login</a>
                 @else

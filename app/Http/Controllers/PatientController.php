@@ -33,4 +33,12 @@ class PatientController extends Controller
         }
 
     }
+
+    public function deleteAccount()
+    {
+        /**
+         * toute une histoire
+         */
+        dd('test');
+    }
 }

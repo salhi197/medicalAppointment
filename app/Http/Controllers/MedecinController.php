@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Medecin;
 class MedecinController extends Controller
 {
     
     public function __construct()
     {
 
-        $this->middleware('auth:medecin');
+        //$this->middleware('auth:medecin');
     }
+
 
     /**
      * Display the specified resource.
@@ -21,7 +22,8 @@ class MedecinController extends Controller
      */
     public function show($id_medecin)
     {   
-        dd('oir medecin ...');
+        $medecin = Medecin::where('id',$id_medecin)->first();
+        return view('medecin.profile',compact('medecin'));
     }
 
     /**

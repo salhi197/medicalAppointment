@@ -27,7 +27,7 @@
                                         @endisset
                                             @csrf
 											<div class="form-group form-focus">
-												<input type="email" name="email" class="form-control floating">
+												<input type="email" name="email" value="" class="form-control floating">
 												<label class="focus-label">Email</label>
 											</div>
 											<div class="form-group form-focus">

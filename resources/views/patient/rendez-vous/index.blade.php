@@ -52,8 +52,13 @@
 																	<td><span class="badge badge-pill bg-success-light">{{$rdv->status}}</span></td>
 																	<td class="text-right">
 																		<div class="table-action">	
-																			<a href="{{route('patient.rendezvous.destroy',['id_rdv'=>$rdv->id])}}" class="btn btn-sm bg-danger-light">
+																		<a href="{{route('patient.rendezvous.destroy',['id_rdv'=>$rdv->id])}}" 
+																		onclick="return confirm('etes vous sure ?')" 
+																		class="btn btn-sm bg-danger-light">
 																				<i class="fas fa-trash"></i> Annuler 
+																			</a>
+																			<a href="{{route('patient.rendezvous.edit',['id_rdv'=>$rdv->id])}}" class="btn btn-sm bg-info-light">
+																				<i class="fas fa-eye"></i> Modifier 
 																			</a>
 																		</div>
 																	</td>
@@ -84,16 +89,6 @@
                         @endsection
 
 @section('scripts')
-@if(!session()->has('message'))
-<script>
-
-        $(function(){
-			toastr.success('Have fun storming the castle!', 'Miracle Max Says')
-		})
-
-</script>
-
-@endif
 
 
 @endsection

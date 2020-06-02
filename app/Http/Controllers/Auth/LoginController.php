@@ -185,11 +185,11 @@ class LoginController extends Controller
                     });                                                       
                      $success = "inserterd ";
             }
-            return redirect()->intended('/patient/rendezvous');
+            return redirect()->intended('/patient/rendezvous')->with('success', 'Bienvenue');
 
         }
 
-        return back()->withInput($request->only('email', 'remember'));
+        return back()->withInput($request->only('email', 'remember'))->with('error', 'les coordonnées sont incorrecte');
     }
     /**
      * @param Request $request

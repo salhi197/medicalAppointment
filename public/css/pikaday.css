@@ -133,7 +133,7 @@ http://nicolasgallagher.com/micro-clearfix-hack/
 .pika-table th,
 .pika-table td {
     width: 14.285714285714286%;
-    padding: 0;
+    padding: 5px;
 }
 
 .pika-table th {

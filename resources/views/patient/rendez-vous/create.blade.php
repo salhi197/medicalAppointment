@@ -28,8 +28,9 @@
 						
 							<div class="card">
 								<div class="card-body">
-									<div class="booking-doc-info">
+									<div class="booking-doc-info">									
 										<a href="doctor-profile.html" class="booking-doc-img">
+											<img src="{{asset('img/doctors/doctor-thumb-02.jpg')}}" class="img-fluid" alt="User Image">
 										</a>
 										<div class="booking-info">
 											<h4><a href="doctor-profile.html">Dr Mokhat belmokhtare </a></h4>
@@ -45,6 +46,61 @@
 										</div>
 									</div>
 								</div>
+								<div class="widget business-widget">
+												<div class="widget-content">
+													<div class="listing-hours">
+														<div class="listing-day current">
+															<div class="day">Today <span>5 Nov 2019</span></div>
+															<div class="time-items">
+																<span class="open-status"><span class="badge bg-success-light">Open Now</span></span>
+																<span class="time">07:00 AM - 09:00 PM</span>
+															</div>
+														</div>
+														<div class="listing-day">
+															<div class="day">Monday</div>
+															<div class="time-items">
+																<span class="time">07:00 AM - 09:00 PM</span>
+															</div>
+														</div>
+														<div class="listing-day">
+															<div class="day">Tuesday</div>
+															<div class="time-items">
+																<span class="time">07:00 AM - 09:00 PM</span>
+															</div>
+														</div>
+														<div class="listing-day">
+															<div class="day">Wednesday</div>
+															<div class="time-items">
+																<span class="time">07:00 AM - 09:00 PM</span>
+															</div>
+														</div>
+														<div class="listing-day">
+															<div class="day">Thursday</div>
+															<div class="time-items">
+																<span class="time">07:00 AM - 09:00 PM</span>
+															</div>
+														</div>
+														<div class="listing-day">
+															<div class="day">Friday</div>
+															<div class="time-items">
+																<span class="time">07:00 AM - 09:00 PM</span>
+															</div>
+														</div>
+														<div class="listing-day">
+															<div class="day">Saturday</div>
+															<div class="time-items">
+																<span class="time">07:00 AM - 09:00 PM</span>
+															</div>
+														</div>
+														<div class="listing-day closed">
+															<div class="day">Sunday</div>
+															<div class="time-items">
+																<span class="time"><span class="badge bg-danger-light">Closed</span></span>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>								
 							</div>
 							<div class="row">								
 								<div class="col-12 col-sm-4 col-md-2">
@@ -82,7 +138,7 @@
 								</div>
 								
 								<div class="col-12 col-sm-12 col-md-2">
-									<button id="me" class="btn btn-primary">
+									<button id="me" class="btn btn-info">
 										Moi meme
 									</button>
 								</div>
@@ -99,10 +155,10 @@
 									<label>Saisir les informatiosn ?</label>
 								</div>
 								<div class="col-12 col-sm-4 col-md-4">
-									<input value="null" type="text" class="form-control" name="nom" id="nom" placeholder="Nom du patient "  />
+									<input value="moi-meme" type="text" class="form-control " name="nom" id="nom" placeholder="Nom du patient "  />
 								</div>
 								<div class="col-12 col-sm-4 col-md-4">
-									<input value="null" type="text" class="form-control" name="prennom" id="prennom" placeholder="prenoom du patient "  />
+									<input value="moi-meme" type="text" class="form-control" name="prennom" id="prennom" placeholder="prenoom du patient "  />
 								</div>
 
 							</div>
@@ -158,7 +214,7 @@
 	<script src="{{asset('js/pikaday.js')}}"></script>
 	<script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
     <script>
-				$('#other_section').hide()
+			$('#other_section').hide()
 
 			var OtherSectionIsHidden = true
   			$("body").delegate(".timing", "click", function(){
@@ -215,11 +271,11 @@
 				var motif = $('#motif').val()
 				var crenau = $('#crenau').val()
 				var date = $('#date').val()
-				var nom = $('#nom').val()
-				var prenom = $('#prenom').val()
-				console.log(motif,crenau,date)
+				// var nom = $('#nom').val()
+				// var prenom = $('#prenom').val()
+				// console.log(motif,crenau,date)
 
-				if(motif=="null" ||crenau=="null" ||date=="null" || (OtherSectionIsHidden == false && (nom=="null" || rpenom == "null"))){
+				if(motif=="null" ||crenau=="null" ||date=="null"){
 					alert('veuilliez compelter tout les champs ! ')
 				}else{
 					document.getElementById("form").submit();
@@ -228,9 +284,10 @@
 			})            
 			$('#me').on('click',function(){
 				event.preventDefault()
-				$('#nom').val('')
-				$('#prenom').val('')
-					console.log($('#prenom').val())
+				$('#nom').val('moi-meme')
+				$('#prenom').val('moi-meme')
+				$('#other_section').hide()
+				
 				$('#other_section').hide()
 				OtherSectionIsHidden =true
 			})            

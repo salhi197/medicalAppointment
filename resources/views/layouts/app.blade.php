@@ -7,6 +7,7 @@
 		<title>Doccure</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 		
+		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 		<!-- Favicons -->
 		<link href="{{asset('img/favicon.png')}}" rel="icon">
 		
@@ -26,6 +27,7 @@
 	    <link href="{{asset('fullcalendar/daygrid/main.min.css')}}" rel="stylesheet" />
 	    <link href="{{asset('fullcalendar/timegrid/main.min.css')}}" rel="stylesheet" />
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+	    <link href="{{asset('css/toastr.css')}}" rel="stylesheet" />
 
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
@@ -196,6 +198,23 @@
 		
 		<!-- Custom JS -->
 		<script src="{{asset('js/script.js')}}"></script>
+		<script src="{{asset('js/toastr.min.js')}}"></script>
+
+		<script>
+		@if(session('success'))
+			$(function(){
+				toastr.success('{{Session::get("success")}}')
+			})
+		@endif
+
+		@if(session('error'))
+			$(function(){
+				toastr.error('{{Session::get("error")}}')
+			})
+		@endif
+
+		</script>
+
 		@yield('scripts')
 	</body>
 

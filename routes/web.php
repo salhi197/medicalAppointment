@@ -48,7 +48,13 @@ Route::group(['middleware' => 'auth:medecin'], function () {
  * cette partie est trés importante , puisque c le crud de medecin et il se fait au niveau d'admin 
  */
 Route::group(['prefix' => 'medecin', 'as' => 'medecin'], function () {
+
     Route::get('/', ['as' => '.index', 'uses' => 'MedecinController@index']);
+    
+    Route::get('/profile/{id_medecin}', ['as' => '.profile', 'uses' => 'MedecinController@show']);
+    Route::get('/profile-settings','MedecinController@profile')->name('medecin.profile.settings');
+
+    
     Route::post('/create', ['as' => '.create', 'uses' => 'MedecinController@store']);
     Route::get('/show/create',['as'=>'.show.create', 'uses' => 'MedecinController@create']);
     Route::get('/delete/{id_rdv}', ['as' => '.delete', 'uses' => 'MedecinController@destroy']);
@@ -127,7 +133,7 @@ Route::post('/changer/etat/crenau',function(Request $request){
 })->name('changer_etat_crenau');
 
 Route::get('/test',function(){
-    return view('patient.LoginRegister');
+    return view('patient.LoginRegister',compact());
 });
 
 
@@ -140,13 +146,18 @@ Route::get('verify','PatientController@verifier')->name('verify.get');
 Route::post('verify','PatientController@verifier')->name('verify.post');
 
 
+
+Route::post('delete/account','PatientController@deleteAccount')->name('delete-account');
+
+
 Route::group(['prefix' => 'patient/rendezvous', 'as' => 'patient.rendezvous'], function () {
     Route::get('/', ['as' => '.index', 'uses' => 'PatientRendezvousController@index']);
     Route::get('/show/create/medecin/{id_medecin}',['as'=>'.show.create', 'uses' => 'PatientRendezvousController@create']);
     Route::post('/create', ['as' => '.create', 'uses' => 'PatientRendezvousController@store']);
     Route::get('/destroy/{id_rdv}', ['as' => '.destroy', 'uses' => 'PatientRendezvousController@destroy']);    
-    // Route::post('/update/{id_rdv}', ['as' => '.update', 'uses' => 'PatientRendezvousController@update']);
-    // Route::get('/show/update/{id_rdv}', ['as' => '.show', 'uses' => 'PatientRendezvousController@edit']);
+    
+    Route::get('/modifier/{id_rdv}', ['as' => '.edit', 'uses' => 'PatientRendezvousController@edit']);
+    Route::post('/modifier/{id_rdv}', ['as' => '.update', 'uses' => 'PatientRendezvousController@update']);
     // Route::get('/annuler/{id_rdv}', ['as' => '.annuler', 'uses' => 'PatientRendezvousController@annuler']);
     
 });

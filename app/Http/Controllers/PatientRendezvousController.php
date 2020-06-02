@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\PayUService\Exception;
 use Illuminate\Support\Facades\DB;
 use App\Rendezvous;
 use Illuminate\Http\Request;
@@ -26,10 +27,9 @@ class PatientRendezvousController extends Controller
     {
             $patient = Auth::guard('patient')->user();
             $rdvs = Rendezvous::where('id_user',$patient->id)->get();
-            return view('patient.rendez-vous.index', compact('rdvs'));
+            $success = 'welcome to dash';
+            return view('patient.rendez-vous.index', compact('rdvs'))->with( ['merchant' => 'welcome'] );;
     }
-
-
 
     public function create(Request $request,$id_medecin)
     {
@@ -101,8 +101,8 @@ class PatientRendezvousController extends Controller
             'status'=>'en attente',
             'creneau'=>$request->get('crenau'),
             'fin_crenau'=>$request->get('fin_crenau'),
-            'nom'=>'null',
-            'prennom'=>'null',
+            'nom'=>$request->get('nom'),
+            'prennom'=>$request->get('prennom'),
             
         ]);
         $rdv->save();
@@ -117,6 +117,8 @@ class PatientRendezvousController extends Controller
         $rdv = Rendezvous::where('id', $id_rendezvous)->first();
         if($patient->hasRdv($rdv->id)){
             $rdv->delete();
+            return redirect()->route('patient.rendezvous.index')->with('success', 'le rendez-vosu a été supprimé');
+
         }else{
             /**
              * le rendez-vous machi ta3o , my9dche ysuprimih
@@ -126,5 +128,55 @@ class PatientRendezvousController extends Controller
 
     }
 
+    public function edit($id_rdv)
+    {
+
+        $rdv = Rendezvous::where('id',$id_rdv)->first();
+        
+        $id_medecin = $rdv->id_medecin;
+
+        $creneaus_dimanche = (DB::select("select j.id as id_jour,j.jour,cr.debut,cr.fin from journees j ,creneaus cr where cr.id_medecin=j.id_medecin and cr.id_medecin=\"$id_medecin\" and (cr.debut>=j.heuredeb and cr.debut<=j.heurefin) and j.disponible=1 and j.id=0 order by j.id,cr.debut"));
+        
+        $creneaus_lundi = (DB::select("select j.id as id_jour,j.jour,cr.debut,cr.fin from journees j ,creneaus cr where cr.id_medecin=j.id_medecin and cr.id_medecin=\"$id_medecin\" and (cr.debut>=j.heuredeb and cr.debut<=j.heurefin) and j.disponible=1 and j.id=1 order by j.id,cr.debut"));
+            
+        $creneaus_mardi = (DB::select("select j.id as id_jour,j.jour,cr.debut,cr.fin from journees j ,creneaus cr where cr.id_medecin=j.id_medecin and cr.id_medecin=\"$id_medecin\" and (cr.debut>=j.heuredeb and cr.debut<=j.heurefin) and j.disponible=1 and j.id=2 order by j.id,cr.debut"));
+            
+        $creneaus_mercredi = (DB::select("select j.id as id_jour,j.jour,cr.debut,cr.fin from journees j ,creneaus cr where cr.id_medecin=j.id_medecin and cr.id_medecin=\"$id_medecin\" and (cr.debut>=j.heuredeb and cr.debut<=j.heurefin) and j.disponible=1 and j.id=3 order by j.id,cr.debut"));
+            
+        $creneaus_jeudi = (DB::select("select j.id as id_jour,j.jour,cr.debut,cr.fin from journees j ,creneaus cr where cr.id_medecin=j.id_medecin and cr.id_medecin=\"$id_medecin\" and (cr.debut>=j.heuredeb and cr.debut<=j.heurefin) and j.disponible=1 and j.id=4 order by j.id,cr.debut"));
+            
+        $creneaus_vendredi = (DB::select("select j.id as id_jour,j.jour,cr.debut,cr.fin from journees j ,creneaus cr where cr.id_medecin=j.id_medecin and cr.id_medecin=\"$id_medecin\" and (cr.debut>=j.heuredeb and cr.debut<=j.heurefin) and j.disponible=1 and j.id=5 order by j.id,cr.debut"));
+            
+        $creneaus_samedi = (DB::select("select j.id as id_jour,j.jour,cr.debut,cr.fin from journees j ,creneaus cr where cr.id_medecin=j.id_medecin and cr.id_medecin=\"$id_medecin\" and (cr.debut>=j.heuredeb and cr.debut<=j.heurefin) and j.disponible=1 and j.id=6 order by j.id,cr.debut"));            
+        $journees_creneaus=[$creneaus_dimanche,$creneaus_lundi,$creneaus_mardi,$creneaus_mercredi,$creneaus_jeudi,$creneaus_vendredi,$creneaus_samedi];
+
+        $soins =Soin::where('id_medecin',$id_medecin)->get(); 
+
+        return view('patient.rendez-vous.edit',compact('rdv','soins','journees_creneaus'));   
+
+    }
     
+    public function update(Request $request,$id_rdv)
+    {
+        $rendezvous = Rendezvous::where('id',$id_rdv)->first();
+        $rendezvous->motif = $request['motif'];
+        $rendezvous->nom=$request['nom'];
+        $rendezvous->prennom=$request['prennom'];
+
+        
+        $rendezvous->creneau = $request['crenau'];
+        $rendezvous->date_rdv= $request['date'];
+        try {
+
+            $rendezvous->save();
+          
+          } catch (\Exception $e) {
+          
+            return redirect()->route('patient.rendezvous.index')->with('error', $e);
+        }
+          return redirect()->route('patient.rendezvous.index')->with('success', 'le rendez-vous a été mis à jour ');
+          
+
+
+    }
 }

@@ -53,13 +53,14 @@
 								</div>
 
 								<div class="col-12 col-sm-4 col-md-3">
-								<form id="form" action="{{route('rendezvous.update',['id_rdv'=>$rdv->id])}}" method='post'>
+								<form id="form" action="{{route('patient.rendezvous.update',['id_rdv'=>$rdv->id])}}" method='post'>
 									@csrf
 
 									<select class="form-control" name="motif" id="motif">
 										<option value="null">Choisissez un motif</option>
 										@foreach($soins as $soin)
-											<option value="Consultation d'implantologie-1">{{$soin->nom}}</option>
+										<option value="Consultation d'implantologie-1">{{$soin->nom}}</option>
+										<option value="Consultation dentiste">{{$soin->nom}}</option>
 										@endforeach
 									</select>
 								</div>
@@ -76,14 +77,43 @@
 								</div>
                             </div>
 							<!-- Schedule Widget -->
-							
+							<div class="row">
+								<div class="col-12 col-sm-8 col-md-4">
+									<h4 class="mb-1">Qui visite le medecin ?</h4>
+								</div>
+								
+								<div class="col-12 col-sm-12 col-md-2">
+									<button id="me" class="btn btn-primary">
+										Moi meme
+									</button>
+								</div>
+								<div class="col-12 col-sm-4 col-md-2">
+									<button id="other" class="btn btn-primary">
+										quelq'un d'autre 
+									</button>
+								</div>
+
+							</div>
+							<br>
+							<div class="row" id="other_section" class=".d-none">
+								<div class="col-12 col-sm-4 col-md-4">
+									<label>Saisir les informatiosn ?</label>
+								</div>
+								<div class="col-12 col-sm-4 col-md-4">
+									<input value="null" type="text" class="form-control" name="nom" id="nom" placeholder="Nom du patient "  />
+								</div>
+								<div class="col-12 col-sm-4 col-md-4">
+									<input value="null" type="text" class="form-control" name="prennom" id="prennom" placeholder="prenoom du patient "  />
+								</div>
+
+							</div>							
 							<div class="card booking-schedule schedule-widget">
 								<!-- Schedule Header -->
 									<div class="schedule-header">
 										<div class="row">
-										<label>
+											<label>
 										la date de rendez-vous est : {{$rdv->date_rdv}} à {{$rdv->creneau}} , séléctionner une autre date si vous voulez la changer
-							<label>
+											<label>
 										</div>
 									</div>
 									<!-- /Schedule Header -->									
@@ -130,6 +160,8 @@
 	<script src="{{asset('js/pikaday.js')}}"></script>
 	<script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
     <script>
+					$('#other_section').hide()
+
 
 			$("body").delegate(".timing", "click", function(){
 				$('.timing').removeClass('selected');
@@ -192,6 +224,22 @@
 				}
 
 			})            
+
+			$('#me').on('click',function(){
+				event.preventDefault()
+				$('#nom').val('')
+				$('#prenom').val('')
+					console.log($('#prenom').val())
+				$('#other_section').hide()
+				OtherSectionIsHidden =true
+			})            
+			$('#other').on('click',function(){
+				OtherSectionIsHidden =false
+				event.preventDefault()
+				$('#other_section').show()
+			})            
+
+
     </script>
 	
 
