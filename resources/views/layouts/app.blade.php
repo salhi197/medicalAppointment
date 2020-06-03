@@ -71,14 +71,14 @@
 								<a href="index.html">Home</a>
 							</li>
 							<li class="has-submenu">
-								<a href="#">Doctors <i class="fas fa-chevron-down"></i></a>
+								<a href="#">Médecin <i class="fas fa-chevron-down"></i></a>
 								<ul class="submenu">
-									<li><a href="doctor-dashboard.html">Doctor Dashboard</a></li>
+									<li><a href="doctor-dashboard.html">Médecin Dashboard</a></li>
 									<li><a href="doctor-register.html">Contactez-nous</a></li>
 								</ul>
 							</li>	
 							<li class="has-submenu">
-								<a href="#">Patients <i class="fas fa-chevron-down"></i></a>
+								<a href="#">Patient <i class="fas fa-chevron-down"></i></a>
 								<ul class="submenu">
 									<li><a href="search.html">Patient Dashboard</a></li>
 									<li><a href="search.html">S'inscrire</a></li>
@@ -87,7 +87,7 @@
 								</ul>
 							</li>	
 							<li class="has-submenu">
-								<a href="#">À Propos <i class="fas fa-chevron-down"></i></a>
+								<a href="#">À propos <i class="fas fa-chevron-down"></i></a>
 								<ul class="submenu">
 									<li><a href="change-password.html">Contactez-nous</a></li>
 									<li><a href="video-call.html">Qui somme nous</a></li>
@@ -97,7 +97,7 @@
 								<a href="#">Contact</a>
 							</li>
 							<li>
-                           		 <a class="dropdown-item" href="{{ route('logout') }}"onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                           		 <a href="{{ route('logout') }}"onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                           	     </a>
 
