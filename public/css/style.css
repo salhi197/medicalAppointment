@@ -829,8 +829,9 @@ button.bg-danger:hover {
 	background-color: #fff;
 }
 .card {
-    border: 1px solid #f0f0f0;
+    border: 1px solid #15558d;
     margin-bottom: 1.875rem;
+    margin-top: 1.875rem;   
 }
 .card-body {
 	padding: 1.5rem;
@@ -848,11 +849,14 @@ button.bg-danger:hover {
 	padding: 1rem 1.5rem;
 }
 .card .card-header {
-    background-color: #fff;
+    background-color: #15558d;
     border-bottom: 1px solid #f0f0f0;
+    color: white;
+    font-size: 16px;
 }
 .card .card-header .card-title {
     margin-bottom: 0;
+    color: white;
 }
 .btn-light {
 	border-color: #e6e6e6;
