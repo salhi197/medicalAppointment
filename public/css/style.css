@@ -2175,9 +2175,10 @@ html.menu-opened body {
 }
 .login-right {
 	background-color: #fff;
-	border: 1px solid #f0f0f0;
+	border: 1px solid #15558d;
 	border-radius: 4px;
 	padding: 25px;
+	margin-top: 20px;
 }
 .login-header {
 	margin-bottom: 20px;
@@ -2208,7 +2209,7 @@ html.menu-opened body {
     font-weight: 500;
 }
 .login-or {
-	color: #d4d4d4;
+	color: #15558d;
 	margin-bottom: 20px;
 	margin-top: 20px;
 	padding-bottom: 10px;
@@ -2216,7 +2217,7 @@ html.menu-opened body {
 	position: relative;
 }
 .or-line {
-	background-color: #e5e5e5;
+	background-color: #15558d;
 	height: 1px;
 	margin-bottom: 0;
 	margin-top: 0;
@@ -2894,14 +2895,7 @@ html.menu-opened body {
 .filter-widget .custom_check {
 	line-height: 18px;
 }
-.btn-search .btn {
-    background-color: #0de0fe;
-    border: 1px solid #0de0fe;
-    color: #fff;
-    height: 46px;
-	font-weight:500;
-	font-size:16px;
-}
+
 .doctor-widget {
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -3037,9 +3031,9 @@ html.menu-opened body {
     color: #20c0f3;
     display: block;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: 1px;
-    padding: 10px 20px;
+    padding: 10px 10px;
     text-align: center;
     text-transform: uppercase;
     width: 100%;
