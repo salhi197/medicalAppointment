@@ -22,7 +22,7 @@ class PatientController extends Controller
                 /**
                  * upadte patient status
                  */
-                return redirect()->back()->with('success', 'le code  incorecte ');   
+                return redirect()->back()->with('success', 'le code  correcte ');   
             }else{
                 return redirect()->back()->with('errors', 'le code est incorecte ');   
             }
@@ -71,6 +71,19 @@ class PatientController extends Controller
             return redirect()->back()->with("success","le mot de pass a été changé!");
     
     
+        }
+
+    }
+
+    public function profile(Request $request)
+    {
+        if ($request->isMethod('get'))
+        {
+            return view('patient.patient-profile');
+        }
+        else
+        {
+            dd('ipdaye');
         }
 
     }

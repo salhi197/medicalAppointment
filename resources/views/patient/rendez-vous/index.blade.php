@@ -44,7 +44,7 @@
 																		<h2 class="table-avatar">
 																			<a href="doctor-profile.html">
 																			
-																			
+																				
 																			</a>
 																		</h2>
 																	</td>
