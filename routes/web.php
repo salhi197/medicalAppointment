@@ -148,6 +148,8 @@ Route::post('verify','PatientController@verifier')->name('verify.post');
 
 
 Route::post('delete/account','PatientController@deleteAccount')->name('delete-account');
+Route::get('patient/mot-de-passe','PatientController@password')->name('password.get');
+Route::post('patient/mot-de-passe','PatientController@password')->name('password.post');
 
 
 Route::group(['prefix' => 'patient/rendezvous', 'as' => 'patient.rendezvous'], function () {

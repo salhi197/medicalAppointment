@@ -21,6 +21,15 @@ class Rendezvous extends Model
         'nom','prennom'
     ];
 
+    public function patient()
+    {
+        return $this->belongsTo('App\Patient');
+    }
+
+    public function medecin()
+    {
+        return $this->belongsTo('App\Medecin');
+    }
 
     public function Motif()
     {

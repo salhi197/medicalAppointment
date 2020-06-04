@@ -63,7 +63,7 @@
 						</div>
 						<ul class="main-nav">
 							<li class="login-link">
-								<a href="{{route('login')}}">Login / Signup</a>
+								<a href="{{route('login')}}">se connecter</a>
 							</li>
 						</ul>		 
 					</div>		 
@@ -82,7 +82,7 @@
 							<a class="nav-link header-login" href="{{route('login')}}">Vous êtes professionnel de santé ?</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link header-login" href="{{route('login')}}">login / Signup </a>
+							<a class="nav-link header-login" href="{{route('login.patient')}}">se connecter </a>
 						</li>
 					</ul>
 				</nav>

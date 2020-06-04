@@ -89,7 +89,7 @@
 			<div class="breadcrumb-bar">
 				<div class="container-fluid">
 					<div class="row align-items-center">
-						<div class="col-md-2 col-12">
+						<div class="col-md-3 col-12 col-offset-2">
 							<nav aria-label="breadcrumb" class="page-breadcrumb">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -98,7 +98,7 @@
 							</nav>
 							<h2 class="breadcrumb-title">Profile Settings</h2>							
 						</div>
-						<div class="col-md-10">
+						<div class="col-md-9">
 						<div class="search-box">
 							<form action="{{route('search.medecins')}}" method="get">
 								<div class="form-group search-location">
@@ -106,13 +106,11 @@
 										<option value="">----</option>
 									</select>
 
-									<span >Ex: Alger,Bouira,Oran...</span>
 								</div>
 								<div class="form-group search-info">
 									<select class="js-example-basic-single" id="specialites" name="specialite" style="padding:10px;">>
 										<option value="">----</option>
 									</select>
-									<span >Ex : Chirurgie Dentaire</span>
 								</div>
 								<button type="submit" class="btn btn-primary search-btn"><i class="fas fa-search"></i> <span>Search</span></button>
 							</form>
@@ -159,7 +157,7 @@
 												</a>
 											</li>
 											<li>
-												<a href="change-password.html">
+												<a href="{{route('password.get')}}">
 													<i class="fas fa-lock"></i>
 													<span>Change Password</span>
 												</a>
@@ -233,11 +231,22 @@
 			})
 		@endif
 
-		@if(session('error'))
+@if ($errors->any())
+	$(function(){
+     @foreach ($errors->all() as $error)
+				toastr.error('{{$error}}')
+     @endforeach
+	})
+ @endif
+
+ @if(session('error'))
 			$(function(){
 				toastr.error('{{Session::get("error")}}')
 			})
 		@endif
+
+
+
 
 		</script>
 		<script>

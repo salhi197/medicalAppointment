@@ -33,6 +33,11 @@ class Patient extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function rendezvous()
+    {
+        return $this->hasMany('App\Rendezvous');
+    }
+
     public function hasRdv($id_rdv)
     {   
         $rdv= Rendezvous::where('id',$id_rdv)->first();

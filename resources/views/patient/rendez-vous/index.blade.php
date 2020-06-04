@@ -42,7 +42,10 @@
 															<tr>
 																	<td>
 																		<h2 class="table-avatar">
-																			<a href="doctor-profile.html">Dr.{{$rdv->getMedecin()->nom}} {{$rdv->getMedecin()->prenom}}  <span>{{$rdv->getMedecin()->specilaite}}</span></a>
+																			<a href="doctor-profile.html">
+																			
+																			
+																			</a>
 																		</h2>
 																	</td>
 																	<td>{{$rdv->date_rdv}} </td>
