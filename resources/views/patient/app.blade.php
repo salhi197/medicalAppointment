@@ -73,7 +73,7 @@
 							</div>
 							<div class="header-contact-detail">
 								<p class="contact-header">Contact</p>
-								<p class="contact-info-header"> +1 315 369 5943</p>
+								<p class="contact-info-header"> +213 666 666 666</p>
 							</div>
 						</li>
 						<li class="nav-item">
@@ -92,7 +92,7 @@
 						<div class="col-md-2 col-12">
 							<nav aria-label="breadcrumb" class="page-breadcrumb">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+									<li class="breadcrumb-item"><a href="index.html">Accueil</a></li>
 									<li class="breadcrumb-item active" aria-current="page">Profile Settings</li>
 								</ol>
 							</nav>
@@ -106,13 +106,13 @@
 										<option value="">----</option>
 									</select>
 
-									<span >Ex: Alger,Bouira,Oran...</span>
+									<span style=" color: white;">Ex: Alger,Bouira,Oran...</span>
 								</div>
 								<div class="form-group search-info">
 									<select class="js-example-basic-single" id="specialites" name="specialite" style="padding:10px;">>
 										<option value="">----</option>
 									</select>
-									<span >Ex : Chirurgie Dentaire</span>
+									<span style=" color: white;">Ex : Chirurgie Dentaire</span>
 								</div>
 								<button type="submit" class="btn btn-primary search-btn"><i class="fas fa-search"></i> <span>Search</span></button>
 							</form>
@@ -130,10 +130,10 @@
 					<div class="row">
 						
 						<!-- Profile Sidebar -->
-						<div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
-							<div class="profile-sidebar">
-								<div class="widget-profile pro-widget-content">
-									<div class="profile-info-widget">
+						<div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar" >
+							<div class="profile-sidebar" style=" border: 1px solid #15558d;">
+								<div class="widget-profile pro-widget-content" >
+									<div class="profile-info-widget" >
 										<div class="profile-det-info">
 											<h3>Richard Wilson</h3>
 											<div class="patient-details">
@@ -144,50 +144,47 @@
 									</div>
 								</div>
 								<div class="dashboard-widget">
-									<nav class="dashboard-menu">
+									<nav class="dashboard-menu" >
 										<ul>
-										<li class="active">
+										    <li class="active" style=" border-top: 1px solid #15558d;">
 													<a href="{{route('patient.rendezvous.index')}}">
 													<i class="fas fa-bookmark"></i>
 													<span>Mes Rendez-vous</span>
 												</a>
 											</li>
-											<li>
+											<li style=" border-top: 1px solid #15558d;">
 												<a href="profile-settings.html">
 													<i class="fas fa-user-cog"></i>
 													<span>Profile Settings</span>
 												</a>
 											</li>
-											<li>
+											<li style=" border-top: 1px solid #15558d;">
 												<a href="change-password.html">
 													<i class="fas fa-lock"></i>
 													<span>Change Password</span>
 												</a>
 											</li>
-											<li>
-											<a href="{{ route('logout') }}"
-												onclick="event.preventDefault();
-																document.getElementById('logout-form').submit();">
-												{{ __('Logout') }}
-											</a>
-
-											<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-												@csrf
-											</form>
-											<li>
-											<a href="{{ route('logout') }}"
-												onclick="event.preventDefault();
+											<li style=" border-top: 1px solid #15558d;">
+											    <a href="{{ route('logout') }}"
+												   onclick="event.preventDefault();
 																document.getElementById('delete-account-form').submit();">
-												<i class="fa fa-trash"></i>
-												supprimer mon compte
-											</a>
-											<form id="delete-account-form" action="{{ route('delete-account') }}" method="POST" style="display: none;">
-												@csrf
-											</form>
-
+												    <i class="fa fa-trash"></i>
+												    <span>supprimer mon compte<span>
+											   </a>
+											   <form id="delete-account-form" action="{{ route('delete-account') }}" method="POST" style="display: none;">
+												   @csrf
+											   </form>
 											</li>
-
-
+											<li style=" border-top: 1px solid #15558d;">
+											    <a href="{{ route('logout') }}"
+												   onclick="event.preventDefault();
+																document.getElementById('logout-form').submit();">
+												    <i class="fa fa-sign-out-alt"></i>
+												   {{ __('Logout') }}
+											    </a>
+											    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+												   @csrf
+											    </form>
 											</li>
 										</ul>
 									</nav>
