@@ -41,26 +41,26 @@ Route::group(['middleware' => 'auth:medecin'], function () {
     {
         return view('medecin.appointments');
     })->name('appointment-create');
-    
+
 });
 
 /**
- * cette partie est trés importante , puisque c le crud de medecin et il se fait au niveau d'admin 
+ * cette partie est trés importante , puisque c le crud de medecin et il se fait au niveau d'admin
  */
 Route::group(['prefix' => 'medecin', 'as' => 'medecin'], function () {
 
     Route::get('/', ['as' => '.index', 'uses' => 'MedecinController@index']);
-    
+
     Route::get('/profile/{id_medecin}', ['as' => '.profile', 'uses' => 'MedecinController@show']);
     Route::get('/profile-settings','MedecinController@profile')->name('medecin.profile.settings');
 
-    
+
     Route::post('/create', ['as' => '.create', 'uses' => 'MedecinController@store']);
     Route::get('/show/create',['as'=>'.show.create', 'uses' => 'MedecinController@create']);
     Route::get('/delete/{id_rdv}', ['as' => '.delete', 'uses' => 'MedecinController@destroy']);
     Route::post('/update/{id_rdv}', ['as' => '.update', 'uses' => 'MedecinController@update']);
     Route::get('/show/{id_rdv}', ['as' => '.show', 'uses' => 'MedecinController@show']);
-    
+
 });
 
 
@@ -79,7 +79,7 @@ Route::group(['prefix' => 'rendezvous', 'as' => 'rendezvous'], function () {
     Route::get('/show/update/{id_rdv}', ['as' => '.show', 'uses' => 'RendezvousController@edit']);
     Route::get('/annuler/{id_rdv}', ['as' => '.annuler', 'uses' => 'RendezvousController@annuler']);
     Route::get('/destroy/{id_rdv}', ['as' => '.destroy', 'uses' => 'RendezvousController@destroy']);
-    
+
 });
 
 /**
@@ -113,8 +113,11 @@ Route::post('/medecin/journées/modifier/post/ajax','JourneeController@modifierj
 
 
 
+
+
+
 /**
-* les routes liées à la recherche . . . 
+* les routes liées à la recherche . . .
 */
 
 Route::get('/search/medecins','HomeController@search')->name('search.medecins');
@@ -139,8 +142,8 @@ Route::get('/test',function(){
 
 
 /**
- * patient routes 
- * 
+ * patient routes
+ *
  */
 Route::get('verify','PatientController@verifier')->name('verify.get');
 Route::post('verify','PatientController@verifier')->name('verify.post');
@@ -154,12 +157,12 @@ Route::group(['prefix' => 'patient/rendezvous', 'as' => 'patient.rendezvous'], f
     Route::get('/', ['as' => '.index', 'uses' => 'PatientRendezvousController@index']);
     Route::get('/show/create/medecin/{id_medecin}',['as'=>'.show.create', 'uses' => 'PatientRendezvousController@create']);
     Route::post('/create', ['as' => '.create', 'uses' => 'PatientRendezvousController@store']);
-    Route::get('/destroy/{id_rdv}', ['as' => '.destroy', 'uses' => 'PatientRendezvousController@destroy']);    
-    
+    Route::get('/destroy/{id_rdv}', ['as' => '.destroy', 'uses' => 'PatientRendezvousController@destroy']);
+
     Route::get('/modifier/{id_rdv}', ['as' => '.edit', 'uses' => 'PatientRendezvousController@edit']);
     Route::post('/modifier/{id_rdv}', ['as' => '.update', 'uses' => 'PatientRendezvousController@update']);
     // Route::get('/annuler/{id_rdv}', ['as' => '.annuler', 'uses' => 'PatientRendezvousController@annuler']);
-    
+
 });
 
 
@@ -169,10 +172,10 @@ Route::group(['prefix' => 'patient/rendezvous', 'as' => 'patient.rendezvous'], f
 
 
 /**
- * profile settings 
+ * profile settings
  */
 
 Route::get('/medecin/profile-settings','MedecinController@profile')->name('medecin.profile.settings');
- 
+
 
 
