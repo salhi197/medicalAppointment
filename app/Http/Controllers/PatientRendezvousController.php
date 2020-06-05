@@ -28,7 +28,7 @@ class PatientRendezvousController extends Controller
             $patient = Auth::guard('patient')->user();
             $rdvs = Rendezvous::where('id_user',$patient->id)->get();
             $success = 'welcome to dash';
-            return view('patient.rendez-vous.index', compact('rdvs'))->with( ['merchant' => 'welcome'] );;
+            return view('patient.rendez-vous.index', compact('rdvs'));
     }
 
     public function create(Request $request,$id_medecin)
@@ -63,33 +63,20 @@ class PatientRendezvousController extends Controller
     {
         
         $patient = Auth::guard('patient')->user();
+        $id_medecin = 1;//$request['id_medecin'];
 
         if($patient == null){
-            $id_medecin = 1;//$request['id_medecin'];
-            $date = $request['date'];
-            $crenau = $request['crenau'];
-            $fin_crenau = $request['fin_crenau'];
-            $motif = $request['motif'];  
-            $autre_nom = $request['nom'];
-            $autre_prenom = $request['prenom'];
-            
-            /**
-             * set cookies 
-             */
-            \Cookie::queue('id_medecin',$id_medecin,15);
-            \Cookie::queue('date',$date,15);
-            \Cookie::queue('crenau',$crenau,15);
-            \Cookie::queue('fin_crenau',$fin_crenau,15);
-            \Cookie::queue('motif',$motif,15);
-            \Cookie::queue('nom',$autre_nom,15);
-            \Cookie::queue('prenom',$autre_prenom,15);
+           \Cookie::queue('id_medecin',$id_medecin,15);
+            \Cookie::queue('date',$request['date'],15);
+            \Cookie::queue('crenau',$request['crenau'],15);
+            \Cookie::queue('fin_crenau',$request['fin_crenau'],15);
+            \Cookie::queue('motif',$request['motif'],15);
+            \Cookie::queue('nom',$request['autre_nom'],15);
+            \Cookie::queue('prenom',$request['autre_prenom'],15);
             \Cookie::queue('inserted','false',15);              
             return view('patient.LoginRegister',compact('id_medecin','date','crenau','motif'));
         }
 
-        $id_medecin = 1;//$request['id_medecin'];
-        //$validated = $request->validated();
-         //converts an array to JSON string
         $rdv = new Rendezvous([
             'id_user'=>$patient->id,
             'id_medecin'=>$id_medecin,
@@ -106,9 +93,7 @@ class PatientRendezvousController extends Controller
             
         ]);
         $rdv->save();
-        //$rdv->motifs()->attach($request->get('motifs'));
             Notification::send($patient,new RdvCreated);
-
         return redirect()->route('patient.rendezvous.index')->with('success', 'le rendez-vosu a été enregostré avec succée -_- ');
 
     } 
@@ -116,11 +101,10 @@ class PatientRendezvousController extends Controller
     public function destroy($id_rendezvous)
     {
         $patient = Auth::guard('patient')->user();
-        $rdv = Rendezvous::where('id', $id_rendezvous)->first();
+        $rdv = Rendezvous::find($id_rendezvous);
         if($patient->hasRdv($rdv->id)){
             $rdv->delete();
             return redirect()->route('patient.rendezvous.index')->with('success', 'le rendez-vosu a été supprimé');
-
         }else{
             /**
              * le rendez-vous machi ta3o , my9dche ysuprimih
@@ -133,7 +117,7 @@ class PatientRendezvousController extends Controller
     public function edit($id_rdv)
     {
 
-        $rdv = Rendezvous::where('id',$id_rdv)->first();
+        $rdv = Rendezvous::find($id_rdv);//('id',$id_rdv)->first();
         
         $id_medecin = $rdv->id_medecin;
 
@@ -160,20 +144,16 @@ class PatientRendezvousController extends Controller
     
     public function update(Request $request,$id_rdv)
     {
-        $rendezvous = Rendezvous::where('id',$id_rdv)->first();
+        $rendezvous = Rendezvous::find($id_rdv);//('id',$id_rdv)->first();
         $rendezvous->motif = $request['motif'];
         $rendezvous->nom=$request['nom'];
         $rendezvous->prennom=$request['prennom'];
-
-        
         $rendezvous->creneau = $request['crenau'];
         $rendezvous->date_rdv= $request['date'];
         try {
-
             $rendezvous->save();
           
           } catch (\Exception $e) {
-          
             return redirect()->route('patient.rendezvous.index')->with('error', $e);
         }
           return redirect()->route('patient.rendezvous.index')->with('success', 'le rendez-vous a été mis à jour ');

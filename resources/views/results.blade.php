@@ -12,6 +12,8 @@
 								</ol>
 							</nav>
 							<h2 class="breadcrumb-title">2245 matches found for : Dentist In Bangalore</h2>
+							<h2 class="breadcrumb-title">{{$query}}</h2>
+							
 						</div>
 						<div class="col-md-4 col-12 d-md-block d-none">
 							<div class="sort-by">

@@ -52,23 +52,21 @@ class HomeController extends Controller
 
         $filter = array();
 
-        if ($_GET['specialite'] != '')
-        { $filter[] = 'specialite = '.$_GET['specialite'];}
-        if ($_GET['vertical'] != '')
-        { $filter[] = 'VERTICAL = '.$_GET['vertical'];}
-        if ($_GET['creative'] != '')
-        { $filter[] = 'CREATIVE  = '.$_GET['creative'];}
-        if ($_GET['week'] != '')
-        { $filter[] = 'WK = '.$_GET['week'];}
+        if ($request->get('specialite') != '')
+        { $filter[] = 'specialite=\''.$request->get('specialite').'\'';}
+        if ($request->get('sexe') != '')
+        { $filter[] = 'sexe=\''.$request->get('sexe').'\'';}
+        if ($request->get('wilaya') != '')
+        { $filter[] = 'wilaya=\''.$request->get('wilaya').'\'';}
+        if ($request->get('min_age') != '')
+        { $filter[] = 'age > '.$request->get('min_age');}
+        if ($request->get('max_age') != '')
+        { $filter[] = 'age < '.$request->get('max_age');}
         
-        $query = 'SELECT * FROM $tableName WHERE '.implode(' AND ', $filter);
-        $result = mysql_query($query);
+        $query = 'SELECT * FROM medecins WHERE '.implode(' AND ', $filter);
+//        $result = mysql_query($query);
+        return view('results',compact('query'));
 
-
-        return view('results');
-        // ,compact(
-        //     'results'
-        // ));
     }
 
 
