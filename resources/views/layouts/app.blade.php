@@ -345,7 +345,7 @@
 
                     <!-- Footer Widget -->
                     <div class="footer-widget footer-contact">
-                        <h2 class="footer-title">Contact Us</h2>
+                        <h2 class="footer-title">Contactez nous</h2>
                         <div class="footer-contact-info">
                             <div class="footer-address">
                                 <span><i class="fas fa-map-marker-alt"></i></span>
