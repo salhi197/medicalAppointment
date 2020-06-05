@@ -9,26 +9,26 @@
 							<nav aria-label="breadcrumb" class="page-breadcrumb">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Booking</li>
+									<li class="breadcrumb-item active" aria-current="page">Rendez vous</li>
 								</ol>
 							</nav>
-							<h2 class="breadcrumb-title">Booking</h2>
+							<h2 class="breadcrumb-title">Rendez vous</h2>
 						</div>
 					</div>
 				</div>
 			</div>
 			<!-- /Breadcrumb -->
-			
+
 			<!-- Page Content -->
 			<div class="content">
 				<div class="container">
-				
+
 					<div class="row">
 						<div class="col-12">
-						
+
 							<div class="card">
 								<div class="card-body">
-									<div class="booking-doc-info">									
+									<div class="booking-doc-info">
 										<a href="doctor-profile.html" class="booking-doc-img">
 											<img src="{{asset('img/doctors/doctor-thumb-02.jpg')}}" class="img-fluid" alt="User Image">
 										</a>
@@ -100,111 +100,125 @@
 														</div>
 													</div>
 												</div>
-											</div>								
+											</div>
 							</div>
-							<div class="row">								
-								<div class="col-12 col-sm-4 col-md-2">
-									<h4 class="mb-1">11 November 2019</h4>
-									<p class="text-muted">Monday</p>
-								</div>
+                            <!-- Search Filter -->
 
-								<div class="col-12 col-sm-4 col-md-3">
-								<form id="form" action="{{route('patient.rendezvous.create')}}" method='post'>
-									@csrf
+                            <div class="row">
+                                <div class="col-12 col-sm-8 col-md-5" class="card search-filter" style=" border: 1px solid #15558d;">
+                                    <div class="card-header">
+                                        <h4 class="card-title mb-0">Informations importantes pour la réservation</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="filter-widget" >
+                                            <h4 class="mb-1">11 November 2019</h4>
+                                            <p class="text-muted">Monday</p>
+                                        </div>
+                                        <form id="form" action="{{route('patient.rendezvous.create')}}" method='post'>
+                                            @csrf
+                                            <div class="form-group">
+                                                <span class="label label-primary">Motif de la réservation</span>
+                                                <select class="form-control" name="motif" id="motif">
 
-									<select class="form-control" name="motif" id="motif">
-										<option value="null">Choisissez un motif</option>
-										@foreach($soins as $soin)
-											<option value="Consultation d'implantologie-1">{{$soin->nom}}</option>
-										@endforeach
-									</select>
-								</div>
-								<div class="col-4 col-sm-12 col-md-4">
-									<label>
-										Séléctionner un seul motif parmi cette liste 
-									</label>
-								</div>
+                                                    @foreach($soins as $soin)
+                                                        <option value="Consultation d'implantologie-1">{{$soin->nom}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </form>
+                                        <div class="row">
+                                            <div class="col-12 col-sm-8 col-md-4">
+                                                <h4 class="mb-1">Qui visite le medecin ?</h4>
+                                            </div>
 
-								<div class="col-12 col-sm-8 col-md-3 text-sm-right">
-									<input type='hidden' id="crenau" name="crenau" value="null">
-									<input type="hidden" name="date" class="form-control" id="date" value="null">
-									<input type="hidden" name="fin_crenau" class="form-control" id="fin_crenau" value="null">
-								</div>
+                                            <div class="col-12 col-sm-12 col-md-2">
+                                                <button id="me" class="btn btn-primary btn-sm">
+                                                    Moi meme
+                                                </button>
+                                            </div>
+                                            <div class="col-12 col-sm-4 col-md-2">
+                                                <button id="other" class="btn btn-primary btn-sm">
+                                                    Quelqu'un d'autre
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                        <br>
+                                        <div class="row" id="other_section" class=".d-none">
+                                            <div class="col-12 col-sm-4 col-md-4">
+                                                <span class="label label-primary">Veuillez saisir les informations du patient</span>
+
+                                            </div>
+                                            <div class="col-12 col-sm-4 col-md-4">
+                                                <input  type="text" class="form-control " name="nom" id="nom" placeholder="Nom"  />
+                                            </div>
+                                            <div class="col-12 col-sm-4 col-md-4">
+                                                <input  type="text" class="form-control" name="prennom" id="prennom" placeholder="Prénom"  />
+                                            </div>
+
+                                        </div>
+                                        <div class="col-12 col-sm-8 col-md-3 text-sm-right">
+                                            <input type='hidden' id="crenau" name="crenau" value="null">
+                                            <input type="hidden" name="date" class="form-control" id="date" value="null">
+                                            <input type="hidden" name="fin_crenau" class="form-control" id="fin_crenau" value="null">
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-4 col-md-6" class="card booking-schedule schedule-widget" style=" border: 1px solid #15558d;" >
+                                    <!--	 Schedule Header -->
+                                    <div class="schedule-header">
+                                        <div class="row">
+                                        </div>
+                                    </div>
+                                    <!-- /Schedule Header -->
+                                    <!-- Schedule Content -->
+                                    <div class="schedule-cont">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="from-control">
+                                                    <input type="hidden" id="datepicker" >
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="time-slot">
+                                                    <ul class="clearfix">
+													<span>Choisissez une date dans le calendrier .. <span>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!-- /Schedule Content -->
+                                    <div class="submit-section proceed-btn text-right">
+                                        <button class="btn btn-primary submit-btn " type="submit">Enregistrer</button>
+                                    </div>
+                                    </form>
+                                </div>
                             </div>
 
-							<div class="row">
-								<div class="col-12 col-sm-8 col-md-4">
-									<h4 class="mb-1">Qui visite le medecin ?</h4>
-								</div>
-								
-								<div class="col-12 col-sm-12 col-md-2">
-									<button id="me" class="btn btn-info">
-										Moi meme
-									</button>
-								</div>
-								<div class="col-12 col-sm-4 col-md-2">
-									<button id="other" class="btn btn-primary">
-										quelq'un d'autre 
-									</button>
-								</div>
 
-							</div>
-							<br>
-							<div class="row" id="other_section" class=".d-none">
-								<div class="col-12 col-sm-4 col-md-4">
-									<label>Saisir les informatiosn ?</label>
-								</div>
-								<div class="col-12 col-sm-4 col-md-4">
-									<input value="moi-meme" type="text" class="form-control " name="nom" id="nom" placeholder="Nom du patient "  />
-								</div>
-								<div class="col-12 col-sm-4 col-md-4">
-									<input value="moi-meme" type="text" class="form-control" name="prennom" id="prennom" placeholder="prenoom du patient "  />
-								</div>
 
-							</div>
+
+
+
+                            </div>
+
+
 							<br>
 							<!-- Schedule Widget -->
-							<div class="card booking-schedule schedule-widget">
-								<!--	 Schedule Header -->
-									<div class="schedule-header">
-										<div class="row">
-										</div>
-									</div>
-									<!-- /Schedule Header -->									
-									<!-- Schedule Content -->
-									<div class="schedule-cont">
-										<div class="row">
-										<div class="col-md-6">
-												<div class="from-control">	
-														<input type="hidden" id="datepicker" >
-												</div>
-											</div>
-											<div class="col-md-6">
-											<div class="time-slot">
-												<ul class="clearfix">
-													<span>Choisissez une date dans le calendrier .. <span>
-												</ul>
-											</div>											
-											</div>
-											
-										</div>
-									</div>
-								<!-- /Schedule Content -->
-									<div class="submit-section proceed-btn text-right">
-										<button class="btn btn-primary submit-btn " type="submit">Enregistrer</button>
-									</div>
-								</form>		
-							</div>
+
 							<!-- /Schedule Widget -->
-							
+
 							<!-- Submit Section -->
 							<!-- /Submit Section -->
-							
+
 						</div>
 					</div>
 				</div>
 
-			</div>		
+			</div>
 
 			@endsection
 @section('styles')
@@ -227,7 +241,7 @@
 
 			var days = ['Dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
 			var journees_creneaus = <?php echo json_encode($journees_creneaus); ?>;
-			var crenauxDay=[] 
+			var crenauxDay=[]
 
 			var field = document.getElementById('datepicker');
 			var picker = new Pikaday({
@@ -240,8 +254,8 @@
 					console.log(dayName)
 					document.getElementById('date').value = field.value
 					/**
-					get crenaux  
-					 */ 
+					get crenaux
+					 */
 					crenauxDay = journees_creneaus[d.getDay()]
 					if(crenauxDay.length == 0){
 						$('.clearfix').append('<span>Pas de crénaux pour ce jour .. <span>')
@@ -253,18 +267,18 @@
 						.append('<li class="elt">'+
 									'<a class="timing" id='+item.fin.substr(0,5)+' href="javascript:void(0);">'+
 										'<span>'+item.debut.substr(0,5)+'</span> <span>AM</span>'+
-									'</a>'+														
+									'</a>'+
 								'</li>')
 					})
 					}
 					$('.clearfix').LoadingOverlay("hide")
-					
 
 
-						
+
+
 				}
 			});
-			field.parentNode.insertBefore(picker.el, field.nextSibling);    
+			field.parentNode.insertBefore(picker.el, field.nextSibling);
 
 			$('.submit-btn').on('click',function(){
 				event.preventDefault()
@@ -281,26 +295,26 @@
 					document.getElementById("form").submit();
 				}
 
-			})            
+			})
 			$('#me').on('click',function(){
 				event.preventDefault()
 				$('#nom').val('moi-meme')
 				$('#prennom').val('moi-meme')
 				$('#other_section').hide()
-				
+
 				$('#other_section').hide()
 				OtherSectionIsHidden =true
-			})            
+			})
 			$('#other').on('click',function(){
 				OtherSectionIsHidden =false
 				event.preventDefault()
 				$('#other_section').show()
-			})            
-			
+			})
+
 
 
 
     </script>
-	
+
 
 @endsection
