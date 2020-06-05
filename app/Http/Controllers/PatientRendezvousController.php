@@ -107,6 +107,8 @@ class PatientRendezvousController extends Controller
         ]);
         $rdv->save();
         //$rdv->motifs()->attach($request->get('motifs'));
+            Notification::send($patient,new RdvCreated);
+
         return redirect()->route('patient.rendezvous.index')->with('success', 'le rendez-vosu a été enregostré avec succée -_- ');
 
     } 

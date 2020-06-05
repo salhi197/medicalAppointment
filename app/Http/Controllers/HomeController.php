@@ -49,7 +49,21 @@ class HomeController extends Controller
         // $results = Medecin::where('wilyaya', '=', $request['wilaya'])
         // ->where('specilaite', '=', $request['specialite'])
         // ->get();
+
+        $filter = array();
+
+        if ($_GET['specialite'] != '')
+        { $filter[] = 'specialite = '.$_GET['specialite'];}
+        if ($_GET['vertical'] != '')
+        { $filter[] = 'VERTICAL = '.$_GET['vertical'];}
+        if ($_GET['creative'] != '')
+        { $filter[] = 'CREATIVE  = '.$_GET['creative'];}
+        if ($_GET['week'] != '')
+        { $filter[] = 'WK = '.$_GET['week'];}
         
+        $query = 'SELECT * FROM $tableName WHERE '.implode(' AND ', $filter);
+        $result = mysql_query($query);
+
 
         return view('results');
         // ,compact(
