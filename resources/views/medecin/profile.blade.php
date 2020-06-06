@@ -99,7 +99,7 @@
 										</a>
 									</div>
 									<div class="clinic-booking">
-										<a class="apt-btn" href="booking.html">Book Appointment</a>
+										<a class="apt-btn" href="booking.html">Prendre un rendez vous</a>
 									</div>
 								</div>
 							</div>
@@ -304,7 +304,7 @@
 								<!-- Locations Content -->
 								<div role="tabpanel" id="doc_locations" class="tab-pane fade">
 
-									
+
 									<!-- /Location List -->
 
 								</div>

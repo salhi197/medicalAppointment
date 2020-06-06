@@ -27,28 +27,69 @@
 						<div class="col-12">
 
 							<div class="card">
+                                <div class="card-header" style=" text-align : center;">
+                                    <h4 class="card-title mb-0">Informations sur le médecin</h4>
+                                </div>
 								<div class="card-body">
-									<div class="booking-doc-info">
-										<a href="doctor-profile.html" class="booking-doc-img">
-											<img src="{{asset('img/doctors/doctor-thumb-02.jpg')}}" class="img-fluid" alt="User Image">
-										</a>
-										<div class="booking-info">
-											<h4><a href="doctor-profile.html">Dr Mokhat belmokhtare </a></h4>
-											<div class="rating">
-												<i class="fas fa-star filled"></i>
-												<i class="fas fa-star filled"></i>
-												<i class="fas fa-star filled"></i>
-												<i class="fas fa-star filled"></i>
-												<i class="fas fa-star"></i>
-												<span class="d-inline-block average-rating">35</span>
-											</div>
-											<p class="text-muted mb-0"><i class="fas fa-map-marker-alt"></i> Newyork, USA</p>
-										</div>
-									</div>
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-sm d-flex">
+                                                <div class="card flex-fill">
+
+                                                    <div class="card-header" style=" text-align : center;">
+                                                        <h4 class="card-title mb-0">Informations sur le médecin</h4>
+                                                    </div>
+                                                    <div class="card-body flex-fill">
+                                                        <div class="booking-doc-info">
+                                                            <a href="doctor-profile.html" class="booking-doc-img">
+                                                                <img src="{{asset('img/doctors/doctor-thumb-02.jpg')}}" class="img-fluid" alt="User Image">
+                                                            </a>
+                                                            <div class="booking-info">
+                                                                <h4><a href="doctor-profile.html">Dr Mokhat belmokhtare </a></h4>
+                                                                <div class="rating">
+                                                                    <i class="fas fa-star filled"></i>
+                                                                    <i class="fas fa-star filled"></i>
+                                                                    <i class="fas fa-star filled"></i>
+                                                                    <i class="fas fa-star filled"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <span class="d-inline-block average-rating">35</span>
+                                                                </div>
+                                                                <p class="text-muted mb-0"><i class="fas fa-map-marker-alt"></i> Newyork, USA</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm d-flex">
+                                                <!--Card-->
+
+                                                <div class="card flex-fill card-cascade narrower">
+
+                                                    <!--Card image-->
+                                                    <div class="view view-cascade card-header " style=" text-align : center;">
+                                                        <h5 class="card-title mb-0">Localisation du médecin</h5>
+                                                    </div>
+                                                    <!--/Card image-->
+
+                                                    <!--Card content-->
+                                                    <div class="card-body card-body-cascade text-center">
+
+                                                        <!--Google map-->
+                                                        <div id="map-container-google-8" class="z-depth-1-half map-container-5" style="height: 300px">
+                                                            <iframe src="https://maps.google.com/maps?q=Barcelona&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                                                                    frameborder="0" style="border:0" allowfullscreen></iframe>
+                                                        </div>
+
+                                                    </div>
+                                                    <!--/.Card content-->
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
 								</div>
-								<div class="widget business-widget">
-				<!-- here -->
-								</div>
+
 							</div>
                             <!-- Search Filter -->
 
@@ -160,6 +201,16 @@
 			@endsection
 @section('styles')
 <link rel="stylesheet" type="text/css" href="{{asset('css/pikaday.css')}}">
+<script type="text/javascript" src="{{asset('js/jquerymap.min.js')}}"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="{{asset('js/poppermap.min.js')}}"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="{{asset('js/bootstrapmap.min.js')}}"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="{{asset('js/mdb.min.js')}}"></script>
+
+<!--Google Maps-->
+<script src="https://maps.google.com/maps/api/js"></script>
 @endsection
 @section('scripts')
 	<script src="{{asset('js/pikaday.js')}}"></script>
