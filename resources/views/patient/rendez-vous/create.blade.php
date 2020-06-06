@@ -47,72 +47,20 @@
 									</div>
 								</div>
 								<div class="widget business-widget">
-												<div class="widget-content">
-													<div class="listing-hours">
-														<div class="listing-day current">
-															<div class="day">Today <span>5 Nov 2019</span></div>
-															<div class="time-items">
-																<span class="open-status"><span class="badge bg-success-light">Open Now</span></span>
-																<span class="time">07:00 AM - 09:00 PM</span>
-															</div>
-														</div>
-														<div class="listing-day">
-															<div class="day">Monday</div>
-															<div class="time-items">
-																<span class="time">07:00 AM - 09:00 PM</span>
-															</div>
-														</div>
-														<div class="listing-day">
-															<div class="day">Tuesday</div>
-															<div class="time-items">
-																<span class="time">07:00 AM - 09:00 PM</span>
-															</div>
-														</div>
-														<div class="listing-day">
-															<div class="day">Wednesday</div>
-															<div class="time-items">
-																<span class="time">07:00 AM - 09:00 PM</span>
-															</div>
-														</div>
-														<div class="listing-day">
-															<div class="day">Thursday</div>
-															<div class="time-items">
-																<span class="time">07:00 AM - 09:00 PM</span>
-															</div>
-														</div>
-														<div class="listing-day">
-															<div class="day">Friday</div>
-															<div class="time-items">
-																<span class="time">07:00 AM - 09:00 PM</span>
-															</div>
-														</div>
-														<div class="listing-day">
-															<div class="day">Saturday</div>
-															<div class="time-items">
-																<span class="time">07:00 AM - 09:00 PM</span>
-															</div>
-														</div>
-														<div class="listing-day closed">
-															<div class="day">Sunday</div>
-															<div class="time-items">
-																<span class="time"><span class="badge bg-danger-light">Closed</span></span>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
+				<!-- here -->
+								</div>
 							</div>
                             <!-- Search Filter -->
 
                             <div class="row">
-                                <div class="col-12 col-sm-8 col-md-5" class="card search-filter" style=" border: 1px solid #15558d;">
-                                    <div class="card-header">
-                                        <h4 class="card-title mb-0">Informations importantes pour la réservation</h4>
+                                <div class="col-12 col-sm-4 col-md-6" class="card search-filter" style=" border: 1px solid #15558d;">
+                                    <div class="card-header" style=" text-align : center;">
+                                        <h4 class="card-title mb-0">Remplir les informations de la réservation</h4>
                                     </div>
                                     <div class="card-body">
                                         <div class="filter-widget" >
-                                            <h4 class="mb-1">11 November 2019</h4>
-                                            <p class="text-muted">Monday</p>
+                                            <h4 class="mb-1">11 Novembre 2019</h4>
+                                            <p class="text-muted">Lundi</p>
                                         </div>
                                         <form id="form" action="{{route('patient.rendezvous.create')}}" method='post'>
                                             @csrf
@@ -147,7 +95,7 @@
                                         <br>
                                         <div class="row" id="other_section" class=".d-none">
                                             <div class="col-12 col-sm-4 col-md-4">
-                                                <span class="label label-primary">Veuillez saisir les informa- tions du patient</span> <label>*</label>
+                                                <span class="label label-primary">Veuillez saisir les informations du patient</span> <label>*</label>
 
                                             </div>
                                             <div class="col-12 col-sm-4 col-md-4">
@@ -166,13 +114,7 @@
 
                                     </div>
                                 </div>
-                                <div class="col-12 col-sm-4 col-md-6 ml-auto" class="card booking-schedule schedule-widget" style=" border: 1px solid #15558d;" >
-                                    <!--	 Schedule Header -->
-                                    <div class="schedule-header">
-                                        <div class="row">
-                                        </div>
-                                    </div>
-                                    <!-- /Schedule Header -->
+                                <div class="col-12 col-sm-4 col-md-6 ml-auto" class="card booking-schedule schedule-widget" style=" border-top: 1px solid #15558d; border-bottom: 1px solid #15558d; border-right: 1px solid #15558d;" >
                                     <!-- Schedule Content -->
                                     <div class="schedule-cont">
                                         <div class="row">
@@ -192,18 +134,12 @@
                                         </div>
                                     </div>
                                     <!-- /Schedule Content -->
-                                    <div class="submit-section proceed-btn text-right">
-                                        <button class="btn btn-primary submit-btn " type="submit">Enregistrer</button>
+                                    <div class="submit-section proceed-btn text-center">
+                                        <button class="btn btn-primary btn-md" type="submit">Enregistrer</button>
                                     </div>
                                     </form>
                                 </div>
                             </div>
-
-
-
-
-
-
                             </div>
 
 
