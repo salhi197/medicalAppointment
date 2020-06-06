@@ -6,8 +6,8 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"> {{ isset($url) ? ucwords($url) : ""}} {{ __('Register') }}</div>
-                
+                <div class="card-header"> {{ isset($url) ? ucwords($url) : ""}} {{ __("S'inscrire") }}</div>
+
                 <div class="card-body">
                     @isset($url)
                     <form method="POST" action='{{ url("register/$url") }}' aria-label="{{ __('Register') }}">
@@ -27,10 +27,11 @@
                                     </span>
                                 @endif
                             </div>
+                            <label>*</label>
                         </div>
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">prenom :</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">Prénom :</label>
                             <div class="col-md-6">
                                 <input id="prenom" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="prenom" value="{{ old('prenom') }}" required autofocus>
 
@@ -40,10 +41,11 @@
                                     </span>
                                 @endif
                             </div>
+                            <label>*</label>
                         </div>
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Gender :</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">Sexe :</label>
                             <div class="col-md-6">
                                 <select name="sexe" class="form-control">
                                     <option value="male">Male</option>
@@ -55,9 +57,10 @@
                                     </span>
                                 @endif
                             </div>
+                            <label>*</label>
                         </div>
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Gender :</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">Age :</label>
                             <div class="col-md-6">
                                 <input id="age" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="age" value="{{ old('age') }}" required autofocus>
                                 @if ($errors->has('age'))
@@ -66,10 +69,11 @@
                                     </span>
                                 @endif
                             </div>
+                            <label>*</label>
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Adresse Email') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
@@ -80,10 +84,11 @@
                                     </span>
                                 @endif
                             </div>
+                            <label>*</label>
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Mot de passe') }} </label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
@@ -94,20 +99,22 @@
                                     </span>
                                 @endif
                             </div>
+                            <label>*</label>
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirmer votre mot de passe') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
+                            <label>*</label>
                         </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{ __("S'inscrire") }}
                                 </button>
                             </div>
                         </div>

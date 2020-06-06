@@ -117,26 +117,27 @@
                                         <form id="form" action="{{route('patient.rendezvous.create')}}" method='post'>
                                             @csrf
                                             <div class="form-group">
-                                                <span class="label label-primary">Motif de la réservation</span>
+                                                <span class="label label-primary">Motif de la réservation</span> <label>*</label>
                                                 <select class="form-control" name="motif" id="motif">
 
                                                     @foreach($soins as $soin)
                                                         <option value="Consultation d'implantologie-1">{{$soin->nom}}</option>
                                                     @endforeach
                                                 </select>
+
                                             </div>
                                         </form>
                                         <div class="row">
                                             <div class="col-12 col-sm-8 col-md-4">
-                                                <h4 class="mb-1">Qui visite le medecin ?</h4>
+                                                <h4 class="mb-1">Qui visite le medecin ? *</h4>
                                             </div>
 
-                                            <div class="col-12 col-sm-12 col-md-2">
+                                            <div class="col-12 col-sm-12 col-md-3">
                                                 <button id="me" class="btn btn-primary btn-sm">
                                                     Moi meme
                                                 </button>
                                             </div>
-                                            <div class="col-12 col-sm-4 col-md-2">
+                                            <div class="col-12 col-sm-4 col-md-4">
                                                 <button id="other" class="btn btn-primary btn-sm">
                                                     Quelqu'un d'autre
                                                 </button>
@@ -146,7 +147,7 @@
                                         <br>
                                         <div class="row" id="other_section" class=".d-none">
                                             <div class="col-12 col-sm-4 col-md-4">
-                                                <span class="label label-primary">Veuillez saisir les informations du patient</span>
+                                                <span class="label label-primary">Veuillez saisir les informa- tions du patient</span> <label>*</label>
 
                                             </div>
                                             <div class="col-12 col-sm-4 col-md-4">
@@ -165,7 +166,7 @@
 
                                     </div>
                                 </div>
-                                <div class="col-12 col-sm-4 col-md-6" class="card booking-schedule schedule-widget" style=" border: 1px solid #15558d;" >
+                                <div class="col-12 col-sm-4 col-md-6 ml-auto" class="card booking-schedule schedule-widget" style=" border: 1px solid #15558d;" >
                                     <!--	 Schedule Header -->
                                     <div class="schedule-header">
                                         <div class="row">
@@ -183,7 +184,7 @@
                                             <div class="col-md-6">
                                                 <div class="time-slot">
                                                     <ul class="clearfix">
-													<span>Choisissez une date dans le calendrier .. <span>
+													<span class="text-info">Choisissez une date dans le calendrier .. <span>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -258,7 +259,7 @@
 					 */
 					crenauxDay = journees_creneaus[d.getDay()]
 					if(crenauxDay.length == 0){
-						$('.clearfix').append('<span>Pas de crénaux pour ce jour .. <span>')
+						$('.clearfix').append('<span class="text-danger">Pas de crénaux pour ce jour .. <span>')
 
 					}else{
 						crenauxDay.forEach(function(item,index){
