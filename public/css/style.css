@@ -7117,7 +7117,7 @@ html.menu-opened body {
 		padding: 1.25rem;
 	}
 	.card-header {
-		padding: .75rem 1.25rem;
+		padding: .75rem .25rem;
 	}
 	.card-footer {
 		padding: .75rem 1.25rem;
