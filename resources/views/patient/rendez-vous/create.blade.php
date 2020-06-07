@@ -46,6 +46,8 @@
                                                             </a>
                                                             <div class="booking-info">
                                                                 <h4><a href="doctor-profile.html">Dr Mokhat belmokhtare </a></h4>
+                                                                <p class="doc-speciality">BDS, MDS - Oral & Maxillofacial Surgery</p>
+                                                                <p class="doc-department"><img src="{{asset('img/specialities/specialities-05.png')}}" class="img-fluid" alt="Speciality">Dentist</p>
                                                                 <div class="rating">
                                                                     <i class="fas fa-star filled"></i>
                                                                     <i class="fas fa-star filled"></i>
@@ -54,7 +56,48 @@
                                                                     <i class="fas fa-star"></i>
                                                                     <span class="d-inline-block average-rating">35</span>
                                                                 </div>
-                                                                <p class="text-muted mb-0"><i class="fas fa-map-marker-alt"></i> Newyork, USA</p>
+                                                                <div class="clinic-details">
+                                                                    <ul class="clinic-gallery">
+                                                                        <li>
+                                                                            <a href="assets/img/features/feature-01.jpg" data-fancybox="gallery">
+                                                                              <img src="{{asset('img/features/feature-01.jpg')}}" alt="Feature">
+                                                                           </a>
+                                                                         </li>
+                                                                        <li>
+                                                                            <a href="assets/img/features/feature-02.jpg" data-fancybox="gallery">
+                                                                              <img  src="{{asset('img/features/feature-02.jpg')}}" alt="Feature Image">
+                                                                            </a>
+                                                                         </li>
+                                                                        <li>
+                                                                            <a href="assets/img/features/feature-03.jpg" data-fancybox="gallery">
+                                                                              <img src="{{asset('img/features/feature-03.jpg')}}" alt="Feature">
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="assets/img/features/feature-04.jpg" data-fancybox="gallery">
+                                                                              <img src="{{asset('img/features/feature-04.jpg')}}" alt="Feature">
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                        <div class="clinic-services">
+                                                            <span>Dental Fillings</span>
+                                                            <span>Teeth Whitneing</span>
+                                                        </div>
+                                                        <div class="doctor-action">
+                                                            <a href="javascript:void(0)" class="btn btn-white fav-btn">
+                                                              <i class="far fa-bookmark"></i>
+                                                            </a>
+                                                            <a href="chat.html" class="btn btn-white msg-btn">
+                                                              <i class="far fa-comment-alt"></i>
+                                                            </a>
+                                                            <a href="javascript:void(0)" class="btn btn-white call-btn" data-toggle="modal" data-target="#voice_call">
+                                                              <i class="fas fa-phone"></i>
+                                                             </a>
+                                                        </div>
+                                                         <div class="clinic-booking">
+                                                           <a class="apt-btn" href="http://127.0.0.1:8000/medecin/profile/2">Voir profil</a>
+                                                      </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -73,16 +116,13 @@
 
                                                     <!--Card content-->
                                                     <div class="card-body card-body-cascade text-center">
-
                                                         <!--Google map-->
                                                         <div id="map-container-google-8" class="z-depth-1-half map-container-5" style="height: 300px">
                                                             <iframe src="https://maps.google.com/maps?q=Barcelona&t=&z=13&ie=UTF8&iwloc=&output=embed"
                                                                     frameborder="0" style="border:0" allowfullscreen></iframe>
                                                         </div>
-
                                                     </div>
                                                     <!--/.Card content-->
-
                                                 </div>
                                             </div>
 

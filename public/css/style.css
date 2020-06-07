@@ -3089,6 +3089,7 @@ html.menu-opened body {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     margin-bottom: 15px;
+    margin-top: 15px;
 }
 .doctor-action a + a {
 	margin-left: 8px;
