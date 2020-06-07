@@ -99,7 +99,7 @@
 										</a>
 									</div>
 									<div class="clinic-booking">
-										<a class="apt-btn" href="booking.html">Prendre un rendez vous</a>
+										<a class="apt-btn" href="http://127.0.0.1:8000/patient/rendezvous/show/create/medecin/2">Prendre un rendez vous</a>
 									</div>
 								</div>
 							</div>
@@ -115,16 +115,16 @@
 							<nav class="user-tabs mb-4">
 								<ul class="nav nav-tabs nav-tabs-bottom nav-justified">
 									<li class="nav-item">
-										<a class="nav-link active" href="#doc_overview" data-toggle="tab">Overview</a>
+										<a class="nav-link active" href="#doc_overview" data-toggle="tab">Résumé</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="#doc_locations" data-toggle="tab">Locations</a>
+										<a class="nav-link" href="#doc_locations" data-toggle="tab">Position</a>
 									</li>
 									<li class="nav-item">
 										<a class="nav-link" href="#doc_reviews" data-toggle="tab">Reviews</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="#doc_business_hours" data-toggle="tab">Business Hours</a>
+										<a class="nav-link" href="#doc_business_hours" data-toggle="tab">Hueres de travail</a>
 									</li>
 								</ul>
 							</nav>
@@ -140,14 +140,14 @@
 
 											<!-- About Details -->
 											<div class="widget about-widget">
-												<h4 class="widget-title">About Me</h4>
+												<h4 class="widget-title">Sur Moi</h4>
 												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 											</div>
 											<!-- /About Details -->
 
 											<!-- Education Details -->
 											<div class="widget education-widget">
-												<h4 class="widget-title">Education</h4>
+												<h4 class="widget-title">Parcours universitaire</h4>
 												<div class="experience-box">
 													<ul class="experience-list">
 														<li>
@@ -181,7 +181,7 @@
 
 											<!-- Experience Details -->
 											<div class="widget experience-widget">
-												<h4 class="widget-title">Work & Experience</h4>
+												<h4 class="widget-title">Experiences </h4>
 												<div class="experience-box">
 													<ul class="experience-list">
 														<li>
@@ -224,7 +224,7 @@
 
 											<!-- Awards Details -->
 											<div class="widget awards-widget">
-												<h4 class="widget-title">Awards</h4>
+												<h4 class="widget-title">Diplomes</h4>
 												<div class="experience-box">
 													<ul class="experience-list">
 														<li>
@@ -284,7 +284,7 @@
 
 											<!-- Specializations List -->
 											<div class="service-list">
-												<h4>Specializations</h4>
+												<h4>Specialisations</h4>
 												<ul class="clearfix">
 													<li>Children Care</li>
 													<li>Dental Care</li>
@@ -303,10 +303,12 @@
 
 								<!-- Locations Content -->
 								<div role="tabpanel" id="doc_locations" class="tab-pane fade">
-
-
 									<!-- /Location List -->
-
+									<!--Google map-->
+                                     <div id="map-container-google-8" class="z-depth-1-half map-container-5" style="height: 300px">
+                                        <iframe src="https://maps.google.com/maps?q=Barcelona&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                                            frameborder="0" style="border:0" allowfullscreen></iframe>
+                                    </div>
 								</div>
 								<!-- /Locations Content -->
 
@@ -342,15 +344,15 @@
 														</p>
 														<div class="comment-reply">
 															<a class="comment-btn" href="#">
-																<i class="fas fa-reply"></i> Reply
+																<i class="fas fa-reply"></i> Commenter
 															</a>
 														   <p class="recommend-btn">
 															<span>Recommend?</span>
 															<a href="#" class="like-btn">
-																<i class="far fa-thumbs-up"></i> Yes
+																<i class="far fa-thumbs-up"></i> Oui
 															</a>
 															<a href="#" class="dislike-btn">
-																<i class="far fa-thumbs-down"></i> No
+																<i class="far fa-thumbs-down"></i> Non
 															</a>
 														</p>
 														</div>
@@ -382,15 +384,15 @@
 																</p>
 																<div class="comment-reply">
 																	<a class="comment-btn" href="#">
-																		<i class="fas fa-reply"></i> Reply
+																		<i class="fas fa-reply"></i> Commenter
 																	</a>
 																	<p class="recommend-btn">
 																		<span>Recommend?</span>
 																		<a href="#" class="like-btn">
-																			<i class="far fa-thumbs-up"></i> Yes
+																			<i class="far fa-thumbs-up"></i> Oui
 																		</a>
 																		<a href="#" class="dislike-btn">
-																			<i class="far fa-thumbs-down"></i> No
+																			<i class="far fa-thumbs-down"></i> Non
 																		</a>
 																	</p>
 																</div>
@@ -427,15 +429,15 @@
 														</p>
 														<div class="comment-reply">
 															<a class="comment-btn" href="#">
-																<i class="fas fa-reply"></i> Reply
+																<i class="fas fa-reply"></i> Commenter
 															</a>
 															<p class="recommend-btn">
 																<span>Recommend?</span>
 																<a href="#" class="like-btn">
-																	<i class="far fa-thumbs-up"></i> Yes
+																	<i class="far fa-thumbs-up"></i> Oui
 																</a>
 																<a href="#" class="dislike-btn">
-																	<i class="far fa-thumbs-down"></i> No
+																	<i class="far fa-thumbs-down"></i> Non
 																</a>
 															</p>
 														</div>
@@ -449,7 +451,7 @@
 										<!-- Show All -->
 										<div class="all-feedback text-center">
 											<a href="#" class="btn btn-primary btn-sm">
-												Show all feedback <strong>(167)</strong>
+												PLus de feedbacks <strong>(167)</strong>
 											</a>
 										</div>
 										<!-- /Show All -->
@@ -459,7 +461,7 @@
 
 									<!-- Write Review -->
 									<div class="write-review">
-										<h4>Write a review for <strong>Dr. Darren Elder</strong></h4>
+										<h4>Ecrire un review pour le <strong>Dr. Darren Elder</strong></h4>
 
 										<!-- Write Review Form -->
 										<form>
@@ -489,11 +491,11 @@
 												</div>
 											</div>
 											<div class="form-group">
-												<label>Title of your review</label>
+												<label>Titre de review</label>
 												<input class="form-control" type="text" placeholder="If you could say it in one sentence, what would you say?">
 											</div>
 											<div class="form-group">
-												<label>Your review</label>
+												<label>Text de review</label>
 												<textarea id="review_desc" maxlength="100" class="form-control"></textarea>
 
 											  <div class="d-flex justify-content-between mt-3"><small class="text-muted"><span id="chars">100</span> characters remaining</small></div>
@@ -503,12 +505,12 @@
 												<div class="terms-accept">
 													<div class="custom-checkbox">
 													   <input type="checkbox" id="terms_accept">
-													   <label for="terms_accept">I have read and accept <a href="#">Terms &amp; Conditions</a></label>
+													   <label for="terms_accept">J'ai lu et j'accepte les<a href="#">Terms &amp; Conditions</a></label>
 													</div>
 												</div>
 											</div>
 											<div class="submit-section">
-												<button type="submit" class="btn btn-primary submit-btn">Add Review</button>
+												<button type="submit" class="btn btn-primary submit-btn">Ajouter un Review</button>
 											</div>
 										</form>
 										<!-- /Write Review Form -->
