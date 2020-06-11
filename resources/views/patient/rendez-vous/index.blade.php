@@ -55,9 +55,10 @@
 																	<td><span class="badge badge-pill bg-success-light">{{$rdv->status}}</span></td>
 																	<td class="text-right">
 																		<div class="table-action">	
-																		<a href="{{route('patient.rendezvous.destroy',['id_rdv'=>$rdv->id])}}" 
-																		onclick="return confirm('etes vous sure ?')" 
-																		class="btn btn-sm bg-danger-light">
+																		<a  
+																		href="#" 
+																		data="{{$rdv->id}}"
+																		class="btn btn-sm bg-danger-light delete-rdv">
 																				<i class="fas fa-trash"></i> Annuler 
 																			</a>
 																			<a href="{{route('patient.rendezvous.edit',['id_rdv'=>$rdv->id])}}" class="btn btn-sm bg-info-light">
@@ -93,5 +94,85 @@
 
 @section('scripts')
 
+@section('modals')
 
+<div class="modal fade custom-modal" id="rdv_detail">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Supprimer Appointment </h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">                            
+							<div class="submit-section text-center">
+								<a href="" id="delete_link" class="btn btn-danger">Annuler </a>
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="modal fade custom-modal" id="delete-account">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Supprimer Votre Compte</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">                            
+							
+							<div class="submit-section text-center">
+
+								<a class="btn btn-danger"
+									onclick="event.preventDefault();
+													document.getElementById('delete-account-form').submit();">
+									<i class="fa fa-trash"></i>
+									supprimer mon compte
+								</a>
+								<form id="delete-account-form" action="{{ route('delete-account') }}" method="POST" style="display: none;">
+									@csrf
+								</form>
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+@endsection
+
+
+
+@section('scripts')
+
+<script>
+
+$(function(){
+			$('.delete-account').on('click',function(){
+				$("#delete-account").modal("show");				
+			})
+            $(".delete-rdv").click(function(){
+                var data = $(this).attr('data');
+                console.log(data)				
+                var lien  = 'http://localhost:8000/patient/rendezvous/destroy/'+data
+                $('#delete_link').attr('href',lien)
+                $("#rdv_detail").modal("show");
+            });
+        });	
+
+
+</script>
+@endsection
 @endsection

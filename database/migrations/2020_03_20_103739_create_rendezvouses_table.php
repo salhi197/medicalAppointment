@@ -15,11 +15,8 @@ class CreateRendezvousesTable extends Migration
     {
         Schema::create('rendezvouses', function (Blueprint $table) {
             $table->bigIncrements('id');
-            /**
-             * id_user => signifie id_patient 
-             */
-            $table->integer('id_user')->unsigned();
-            #$table->foreign('id_user')->references('id')->on('users');
+            $table->integer('patient_id')->unsigned();
+            $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');            
             $table->integer('id_medecin')->unsigned();
             #$table->foreign('id_medecin')->references('id')->on('medecins');
             $table->text('motif');

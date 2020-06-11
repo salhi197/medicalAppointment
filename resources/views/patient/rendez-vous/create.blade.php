@@ -285,7 +285,7 @@
 			$('#me').on('click',function(){
 				event.preventDefault()
 				$('#nom').val('moi-meme')
-				$('#prenom').val('moi-meme')
+				$('#prennom').val('moi-meme')
 				$('#other_section').hide()
 				
 				$('#other_section').hide()

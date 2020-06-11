@@ -8,7 +8,7 @@ use App\User;
 class Rendezvous extends Model
 {
     protected $fillable = [
-        'id_user',
+        'patient_id',
         'id_medecin',
         'motif',
         'remarque',
@@ -42,7 +42,7 @@ class Rendezvous extends Model
     public function createRendezvous($id_patient,$id_medecin,$motif,$date,$crenau)
     {
         $rdv = new Rendezvous([
-            'id_user'=>$id_patient,
+            'patient_id'=>$id_patient,
             'id_medecin'=>$id_medecin,
             'remarque'=>'null',
             'montant'=>'2000',
@@ -69,7 +69,7 @@ class Rendezvous extends Model
      */
     public function getPatient()
     {
-        return User::where('id',$this->id_user)->first();        
+        return User::where('id',$this->patient_id)->first();        
     } 
     
 }

@@ -3,7 +3,7 @@ use Illuminate\Http\Request;
 use App\Medecin;
 use App\Patient;
 
-Route::view('/', 'welcome');
+Route::view('/', 'welcome')->name('welcome');
 Auth::routes();
 
 Route::get('/login/admin', 'Auth\LoginController@showAdminLoginForm')->name('login.admin');

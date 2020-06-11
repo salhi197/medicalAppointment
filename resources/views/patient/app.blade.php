@@ -151,7 +151,7 @@
 												</a>
 											</li>
 											<li>
-												<a href="profile-settings.html">
+												<a href="{{route('profile.get')}}">
 													<i class="fas fa-user-cog"></i>
 													<span>Profile Settings</span>
 												</a>
@@ -160,6 +160,11 @@
 												<a href="{{route('password.get')}}">
 													<i class="fas fa-lock"></i>
 													<span>Change Password</span>
+												</a>
+											</li>
+											<li>
+												<a href="#" class="delete-account">
+												supprimer mon compte
 												</a>
 											</li>
 											<li>
@@ -172,21 +177,9 @@
 											<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 												@csrf
 											</form>
-											<li>
-											<a href="{{ route('logout') }}"
-												onclick="event.preventDefault();
-																document.getElementById('delete-account-form').submit();">
-												<i class="fa fa-trash"></i>
-												supprimer mon compte
-											</a>
-											<form id="delete-account-form" action="{{ route('delete-account') }}" method="POST" style="display: none;">
-												@csrf
-											</form>
-
 											</li>
 
 
-											</li>
 										</ul>
 									</nav>
 								</div>
@@ -209,6 +202,7 @@
    	   
 		</div>
 		<!-- /Main Wrapper -->
+		@yield('modals')
 	  
 		<!-- jQuery -->
 		<script src="{{asset('js/jquery.min.js')}}"></script>

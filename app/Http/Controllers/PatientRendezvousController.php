@@ -26,7 +26,7 @@ class PatientRendezvousController extends Controller
     public function index(Request $request)
     {
             $patient = Auth::guard('patient')->user();
-            $rdvs = Rendezvous::where('id_user',$patient->id)->get();
+            $rdvs = Rendezvous::where('patient_id',$patient->id)->get();
             $success = 'welcome to dash';
             return view('patient.rendez-vous.index', compact('rdvs'));
     }
@@ -78,7 +78,7 @@ class PatientRendezvousController extends Controller
         }
 
         $rdv = new Rendezvous([
-            'id_user'=>$patient->id,
+            'patient_id'=>$patient->id,
             'id_medecin'=>$id_medecin,
             'remarque'=>'null',//set this to null in db $request->get('remarque'),
             'montant'=>'2000',
@@ -93,7 +93,7 @@ class PatientRendezvousController extends Controller
             
         ]);
         $rdv->save();
-            Notification::send($patient,new RdvCreated);
+        //Notification::send($patient,new RdvCreated);
         return redirect()->route('patient.rendezvous.index')->with('success', 'le rendez-vosu a été enregostré avec succée -_- ');
 
     } 

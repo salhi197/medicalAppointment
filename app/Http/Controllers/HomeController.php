@@ -64,7 +64,7 @@ class HomeController extends Controller
         { $filter[] = 'age < '.$request->get('max_age');}
         
         $query = 'SELECT * FROM medecins WHERE '.implode(' AND ', $filter);
-//        $result = mysql_query($query);
+//       $result = mysql_query($query);
         return view('results',compact('query'));
 
     }

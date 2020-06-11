@@ -10,6 +10,12 @@ use Auth;
 
 class PatientController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth:patient');
+    }
+
     public function verifier(Request $request)
     {
         if ($request->isMethod('post')){
@@ -38,10 +44,15 @@ class PatientController extends Controller
 
     public function deleteAccount()
     {
-        /**
-         * toute une histoire
-         */
-        dd('hkaya kbira , lzm nsuprimi les rdvs ta3o et tt ..');
+        $patient = Auth::guard('patient')->user();
+
+        try {
+            $patient->delete();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('errors', $e);               
+        }
+        return redirect()->route('welcome')->with('success', 'le rendez-vous a été mis à jour ');
+
     }
 
     public function password(Request $request)
@@ -77,13 +88,40 @@ class PatientController extends Controller
 
     public function profile(Request $request)
     {
+        $patient = Auth::guard('patient')->user();
+
         if ($request->isMethod('get'))
         {
-            return view('patient.patient-profile');
+            return view('patient.patient-profile',compact('patient'));
         }
         else
         {
-            dd('ipdaye');
+
+            $patient->nom  = $request['nom'];
+            $patient->prenom  =$request['prenom'];
+            $patient->group_sang  =$request['group_sang'];
+            $patient->date_naissance = $request['date_naissance'];
+            $patient->telephone  = $request['telephone'];
+            $patient->adress  = $request['adress'];
+            $patient->email  = $request['email'];
+            if ($request->hasFile('profile_img')) {
+                $avatar = $request->file('profile_img');
+                $filename = $patient->nom.'-'.$patient->prenom . '.' . $avatar->getClientOriginalExtension();
+                Image::make($avatar)->resize(300, 300)->save(public_path('/uploads/avatars/'.$filename));
+                $avatarPath = '/uploads/avatars/'.$filename;
+                $patient->avatar = $avatarPath;
+        
+            }
+
+            try {
+    
+                $patient->save();
+              
+              } catch (\Exception $e) {
+                return redirect()->route('patient.rendezvous.index')->with('error', $e);
+            }
+              return redirect()->route('patient.rendezvous.index')->with('success', 'le rendez-vous a été mis à jour ');
+            
         }
 
     }

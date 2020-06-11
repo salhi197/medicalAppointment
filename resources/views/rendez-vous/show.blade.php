@@ -21,8 +21,8 @@
                                                 <div class="form-group">
                                                     <label>Séélctionner un patient : </label>
                                                     <select class="form-control select select2-hidden-accessible" name="id_patient" data-select2-id="1" tabindex="-1" aria-hidden="true">
-                                                        <option value="{{$rdv['id_user']}}">
-                                                            {{$rdv['id_user']}}
+                                                        <option value="{{$rdv['patient_id']}}">
+                                                            {{$rdv['patient_id']}}
                                                         </option>
                                                         @foreach(['1','2','3'] as $rdv)
                                                             <option>

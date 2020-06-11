@@ -21,7 +21,11 @@ class Patient extends Authenticatable
      */
 
     protected $fillable = [
-        'prenom', 'nom', 'email', 'password','age','sexe','telephone','email_verified','phone_verified','code_verified','email_code','phone_code'
+        'prenom', 'nom', 'email', 'password','age','sexe','telephone','email_verified','phone_verified','code_verified','email_code','phone_code',
+        'group_sanguin',
+        'adress',
+        'date_naissance',
+        'avatar'
     ];
 
     /**
@@ -41,7 +45,7 @@ class Patient extends Authenticatable
     public function hasRdv($id_rdv)
     {   
         $rdv= Rendezvous::where('id',$id_rdv)->first();
-        return $rdv->id_user == $this->id;
+        return $rdv->patien_id == $this->id;
 
     }
 }

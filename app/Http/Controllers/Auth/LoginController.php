@@ -155,7 +155,7 @@ class LoginController extends Controller
                 $user = Patient::where('email',$request['email'])->first();
                 $id_patient = $user->id;        
                     $rdv = new Rendezvous([
-                        'id_user'=>$id_patient,
+                        'patient_id'=>$id_patient,
                         'id_medecin'=>$id_medecin,
                         'remarque'=>'null',//set this to null in db $data['remarque'],
                         'montant'=>'2000',

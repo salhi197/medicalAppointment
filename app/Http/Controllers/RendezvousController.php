@@ -57,7 +57,7 @@ class RendezvousController extends Controller
         
         if (Auth::user()!= null) {   
             $user = Auth::user();
-            $rdvs = Rendezvous::where('id_user',$user->id)->paginate(10);
+            $rdvs = Rendezvous::where('patient_id',$user->id)->paginate(10);
             return view('patient.rendez-vous.index', compact('rdvs'));
     
         }
@@ -167,7 +167,7 @@ class RendezvousController extends Controller
         //$validated = $request->validated();
          //converts an array to JSON string
         $rdv = new Rendezvous([
-            'id_user'=>$id_patient,
+            'patient_id'=>$id_patient,
             'id_medecin'=>$id_medecin,
             'remarque'=>'null',//set this to null in db $request->get('remarque'),
             'montant'=>'2000',

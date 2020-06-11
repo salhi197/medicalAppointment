@@ -170,7 +170,7 @@
                             <div class="form-group">
 								<span class="title">Pateint concerné  :   </span>
 								<span class="text">
-                                    <a href="" id="id_user">
+                                    <a href="" id="patient_id">
                                     SALHI HAIDER ALI
                                     </a>
                                 </span>
