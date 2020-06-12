@@ -131,7 +131,7 @@
 						
 						<!-- Profile Sidebar -->
 						<div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar" >
-							<div class="profile-sidebar" style=" border: 1px solid #15558d;">
+							<div class="profile-sidebar" >
 								<div class="widget-profile pro-widget-content" >
 									<div class="profile-info-widget" >
 										<div class="profile-det-info">
@@ -146,25 +146,25 @@
 								<div class="dashboard-widget">
 									<nav class="dashboard-menu" >
 										<ul>
-										    <li class="active" style=" border-top: 1px solid #15558d;">
+										    <li class="active" >
 													<a href="{{route('patient.rendezvous.index')}}">
 													<i class="fas fa-bookmark"></i>
 													<span>Mes Rendez-vous</span>
 												</a>
 											</li>
-											<li style=" border-top: 1px solid #15558d;">
+											<li >
 												<a href="profile-settings.html">
 													<i class="fas fa-user-cog"></i>
 													<span>Profile Settings</span>
 												</a>
 											</li>
-											<li style=" border-top: 1px solid #15558d;">
+											<li >
 												<a href="change-password.html">
 													<i class="fas fa-lock"></i>
 													<span>Change Password</span>
 												</a>
 											</li>
-											<li style=" border-top: 1px solid #15558d;">
+											<li >
 											    <a href="{{ route('logout') }}"
 												   onclick="event.preventDefault();
 																document.getElementById('delete-account-form').submit();">
@@ -175,7 +175,7 @@
 												   @csrf
 											   </form>
 											</li>
-											<li style=" border-top: 1px solid #15558d;">
+											<li >
 											    <a href="{{ route('logout') }}"
 												   onclick="event.preventDefault();
 																document.getElementById('logout-form').submit();">
