@@ -36,9 +36,6 @@
                                             <div class="col-sm d-flex">
                                                 <div class="card flex-fill">
 
-                                                    <div class="card-header" style=" text-align : center;">
-                                                        <h4 class="card-title mb-0">Informations sur le médecin</h4>
-                                                    </div>
                                                     <div class="card-body flex-fill">
                                                         <div class="booking-doc-info">
                                                             <a href="doctor-profile.html" class="booking-doc-img">
@@ -103,28 +100,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-sm d-flex">
-                                                <!--Card-->
 
-                                                <div class="card flex-fill card-cascade narrower">
-
-                                                    <!--Card image-->
-                                                    <div class="view view-cascade card-header " style=" text-align : center;">
-                                                        <h5 class="card-title mb-0">Localisation du médecin</h5>
-                                                    </div>
-                                                    <!--/Card image-->
-
-                                                    <!--Card content-->
-                                                    <div class="card-body card-body-cascade text-center">
-                                                        <!--Google map-->
-                                                        <div id="map-container-google-8" class="z-depth-1-half map-container-5" style="height: 300px">
-                                                            <iframe src="https://maps.google.com/maps?q=Barcelona&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                                                                    frameborder="0" style="border:0" allowfullscreen></iframe>
-                                                        </div>
-                                                    </div>
-                                                    <!--/.Card content-->
-                                                </div>
-                                            </div>
 
                                         </div>
                                     </div>
