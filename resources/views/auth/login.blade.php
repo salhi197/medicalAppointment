@@ -29,12 +29,12 @@
                     @csrf
 
 					<div class="form-group form-focus">
-						<input type="email" name="email" class="form-control floating" style=" border: 1px solid #15558d;">
+						<input type="email" name="email" class="form-control floating" >
 						<label class="focus-label">Email </label>
 
 					</div>
 					<div class="form-group form-focus">
-						<input type="password" name="password" class="form-control floating" style=" border: 1px solid #15558d;">
+						<input type="password" name="password" class="form-control floating" >
 						<label class="focus-label">Mot de passe</label>
 
 					</div>
