@@ -48,7 +48,7 @@
                                         <h4>Code postal</h4>
                                         <div >
                                             <input type="text" class="form-control"
-                                                   
+
                                                      placeholder="Exemple : 16058 ">
                                         </div>
                                     </div>
