@@ -41,7 +41,7 @@
 						<div class="col-md-12 col-lg-4 col-xl-3 theiaStickySidebar">
 
 							<!-- Search Filter -->
-							<div class="card search-filter" style=" border: 1px solid #15558d;">
+							<div class="card search-filter" >
 								<div class="card-header">
 									<h4 class="card-title mb-0">Filtrer les résultats</h4>
 								</div>
@@ -121,7 +121,7 @@
 
 							<!-- Doctor Widget -->
 							@foreach(['2','2'] as $s)
-							<div class="card" style=" border: 1px solid #15558d;">
+							<div class="card" >
 								<div class="card-body">
 									<div class="doctor-widget">
 										<div class="doc-info-left">
