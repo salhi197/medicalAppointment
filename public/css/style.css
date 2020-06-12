@@ -2189,11 +2189,11 @@ html.menu-opened body {
 }
 .login-right {
 	background-color: #fff;
-	border: 1px solid #15558d;
+	border: 1px solid rgba(0,0,0,.125);
 	border-radius: 4px;
 	padding: 25px;
 	margin-top: 50px;
-	margin-bottom: 45px;
+	margin-bottom: 105px;
 }
 .login-header {
 	margin-bottom: 20px;
