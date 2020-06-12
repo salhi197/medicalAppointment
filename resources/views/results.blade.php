@@ -50,7 +50,7 @@
                                         <h4>Code postal</h4>
                                         <div >
                                             <input type="text" class="form-control"
-                                                   style=" border: 1px solid #15558d;"
+                                                   
                                                      placeholder="Exemple : 16058 ">
                                         </div>
                                     </div>
