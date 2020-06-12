@@ -134,7 +134,7 @@
                             <!-- Search Filter -->
 
                             <div class="row">
-                                <div class="col-12 col-sm-4 col-md-6" class="card search-filter" style=" border: 1px solid #15558d;">
+                                <div class="col-12 col-sm-4 col-md-6" class="card search-filter" >
                                     <div class="card-header" style=" text-align : center;">
                                         <h4 class="card-title mb-0">Remplir les informations de la réservation</h4>
                                     </div>
@@ -195,7 +195,7 @@
 
                                     </div>
                                 </div>
-                                <div class="col-12 col-sm-4 col-md-6 ml-auto" class="card booking-schedule schedule-widget" style=" border-top: 1px solid #15558d; border-bottom: 1px solid #15558d; border-right: 1px solid #15558d;" >
+                                <div class="col-12 col-sm-4 col-md-6 ml-auto" class="card booking-schedule schedule-widget"  >
                                     <!-- Schedule Content -->
                                     <div class="schedule-cont">
                                         <div class="row">
