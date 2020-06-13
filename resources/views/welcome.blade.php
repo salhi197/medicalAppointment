@@ -65,6 +65,10 @@
 							<li class="login-link">
 								<a href="{{route('login')}}">se connecter</a>
 							</li>
+
+							<li class="login-link">
+							    <a  href="{{route('login')}}">Vous êtes professionnel de santé ?</a>
+						    </li>
 						</ul>
 					</div>
 					<ul class="nav header-navbar-rht">
@@ -74,7 +78,7 @@
 							</div>
 							<div class="header-contact-detail">
 								<p class="contact-header">Contact</p>
-								<p class="contact-info-header"> +1 315 369 5943</p>
+								<p class="contact-info-header"> +213 666 666 666</p>
 							</div>
 						</li>
 

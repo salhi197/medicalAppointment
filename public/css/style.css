@@ -2281,7 +2281,7 @@ html.menu-opened body {
     background-size: 100% auto;
     position: relative;
     background-blend-mode: Darken;
-    padding: 80px 0;
+    padding: 60px 0;
 }
 .section-header {
     margin-bottom: 60px;
@@ -2309,7 +2309,7 @@ html.menu-opened body {
     width: 100%;
 }
 .banner-wrapper .banner-header {
-	margin-bottom: 30px;
+	margin-bottom: 15px;
 }
 .banner-wrapper .banner-header h1 {
     margin-bottom: 10px;
@@ -2338,9 +2338,10 @@ html.menu-opened body {
     margin-right: 12px;
     position: relative;
     width: 240px;
+
 }
 .search-location .form-control {
-	background: #fff url(../img/location.png) no-repeat 10px center;
+	background: #fff url(../img/location.png) no-repeat 15px center;
 }
 .search-box .search-info {
     -ms-flex: 0 0 490px;
@@ -2366,6 +2367,7 @@ html.menu-opened body {
 .search-box .form-text {
     color: #757575;
     font-size: 13px;
+    color: #272b41;
 }
 .section-specialities {
 	background-color: #fff;
