@@ -98,7 +98,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            
+
 
 
                                     </div>
@@ -136,12 +136,12 @@
                                             </div>
 
                                             <div class="col-12 col-sm-12 col-md-3">
-                                                <button id="me" class="btn btn-primary btn-sm">
+                                                <button id="me" class="btn btn-block btn-info btn-sm" onclick="updateB2();">
                                                     Moi meme
                                                 </button>
                                             </div>
                                             <div class="col-12 col-sm-4 col-md-4">
-                                                <button id="other" class="btn btn-primary btn-sm">
+                                                <button id="other" class="btn btn-block btn-outline-info btn-sm" onclick="updateB1();">
                                                     Quelqu'un d'autre
                                                 </button>
                                             </div>
@@ -190,7 +190,7 @@
                                     </div>
                                     <!-- /Schedule Content -->
                                     <div class="submit-section proceed-btn text-center">
-                                        <button class="btn btn-primary btn-md" type="submit">Enregistrer</button>
+                                        <button class="btn  btn-info btn-md" type="submit">Enregistrer</button>
                                     </div>
                                     </form>
                                 </div>
@@ -313,7 +313,15 @@
 				$('#other_section').show()
 			})
 
+            function updateB1(){
+                document.getElementById("me").className = "btn btn-block btn-outline-info btn-sm";
+                document.getElementById("other").className = "btn btn-block btn-info btn-sm";
+            }
 
+            function updateB2(){
+                document.getElementById("me").className = "btn btn-block btn-info btn-sm";
+                document.getElementById("other").className = "btn btn-block btn-outline-info btn-sm";
+            }
 
 
     </script>
