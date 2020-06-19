@@ -32,77 +32,75 @@
                                 </div>
 								<div class="card-body">
                                     <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-sm d-flex">
-                                                <div class="card flex-fill">
 
-                                                    <div class="card-body flex-fill">
-                                                        <div class="booking-doc-info">
-                                                            <a href="doctor-profile.html" class="booking-doc-img">
-                                                                <img src="{{asset('img/doctors/doctor-thumb-02.jpg')}}" class="img-fluid" alt="User Image">
-                                                            </a>
-                                                            <div class="booking-info">
-                                                                <h4><a href="doctor-profile.html">Dr Mokhat belmokhtare </a></h4>
-                                                                <p class="doc-speciality">BDS, MDS - Oral & Maxillofacial Surgery</p>
-                                                                <p class="doc-department"><img src="{{asset('img/specialities/specialities-05.png')}}" class="img-fluid" alt="Speciality">Dentist</p>
-                                                                <div class="rating">
-                                                                    <i class="fas fa-star filled"></i>
-                                                                    <i class="fas fa-star filled"></i>
-                                                                    <i class="fas fa-star filled"></i>
-                                                                    <i class="fas fa-star filled"></i>
-                                                                    <i class="fas fa-star"></i>
-                                                                    <span class="d-inline-block average-rating">35</span>
-                                                                </div>
-                                                                <div class="clinic-details">
-                                                                    <ul class="clinic-gallery">
-                                                                        <li>
-                                                                            <a href="assets/img/features/feature-01.jpg" data-fancybox="gallery">
-                                                                              <img src="{{asset('img/features/feature-01.jpg')}}" alt="Feature">
-                                                                           </a>
-                                                                         </li>
-                                                                        <li>
-                                                                            <a href="assets/img/features/feature-02.jpg" data-fancybox="gallery">
-                                                                              <img  src="{{asset('img/features/feature-02.jpg')}}" alt="Feature Image">
-                                                                            </a>
-                                                                         </li>
-                                                                        <li>
-                                                                            <a href="assets/img/features/feature-03.jpg" data-fancybox="gallery">
-                                                                              <img src="{{asset('img/features/feature-03.jpg')}}" alt="Feature">
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="assets/img/features/feature-04.jpg" data-fancybox="gallery">
-                                                                              <img src="{{asset('img/features/feature-04.jpg')}}" alt="Feature">
-                                                                            </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                        <div class="clinic-services">
-                                                            <span>Dental Fillings</span>
-                                                            <span>Teeth Whitneing</span>
+                                                <div class="doctor-widget">
+                                                    <div class="doc-info-left">
+                                                        <div class="doctor-img">
+                                                            <img src="{{asset('/img/doctors/doctor-thumb-02.jpg')}}" class="img-fluid" alt="User Image">
                                                         </div>
-                                                        <div class="doctor-action">
-                                                            <a href="javascript:void(0)" class="btn btn-white fav-btn">
-                                                              <i class="far fa-bookmark"></i>
-                                                            </a>
-                                                            <a href="chat.html" class="btn btn-white msg-btn">
-                                                              <i class="far fa-comment-alt"></i>
-                                                            </a>
-                                                            <a href="javascript:void(0)" class="btn btn-white call-btn" data-toggle="modal" data-target="#voice_call">
-                                                              <i class="fas fa-phone"></i>
-                                                             </a>
-                                                        </div>
-                                                         <div class="clinic-booking">
-                                                           <a class="apt-btn" href="http://127.0.0.1:8000/medecin/profile/2">Voir profil</a>
-                                                      </div>
+                                                        <div class="doc-info-cont">
+                                                            <h4 class="doc-name">Dr. Darren Elder</h4>
+                                                            <p class="doc-speciality">BDS, MDS - Oral & Maxillofacial Surgery</p>
+                                                            <p class="doc-department"><img src="{{asset('img/specialities/specialities-05.png')}}" class="img-fluid" alt="Speciality">Dentist</p>
+                                                            <div class="rating">
+                                                                <i class="fas fa-star filled"></i>
+                                                                <i class="fas fa-star filled"></i>
+                                                                <i class="fas fa-star filled"></i>
+                                                                <i class="fas fa-star filled"></i>
+                                                                <i class="fas fa-star"></i>
+                                                                <span class="d-inline-block average-rating">(35)</span>
+                                                            </div>
+                                                            <div class="clinic-details">
+                                                                <ul class="clinic-gallery">
+                                                                    <li>
+                                                                        <a href="assets/img/features/feature-01.jpg" data-fancybox="gallery">
+                                                                            <img src="{{asset('img/features/feature-01.jpg')}}" alt="Feature">
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="assets/img/features/feature-02.jpg" data-fancybox="gallery">
+                                                                            <img  src="{{asset('img/features/feature-02.jpg')}}" alt="Feature Image">
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="assets/img/features/feature-03.jpg" data-fancybox="gallery">
+                                                                            <img src="{{asset('img/features/feature-03.jpg')}}" alt="Feature">
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="assets/img/features/feature-04.jpg" data-fancybox="gallery">
+                                                                            <img src="{{asset('img/features/feature-04.jpg')}}" alt="Feature">
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="clinic-services">
+                                                                <span>Dental Fillings</span>
+                                                                <span>Teeth Whitneing</span>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="doc-info-right">
+                                                        <div class="doctor-action">
+                                                            <a href="javascript:void(0)" class="btn btn-white fav-btn">
+                                                                <i class="far fa-bookmark"></i>
+                                                            </a>
+                                                            <a href="chat.html" class="btn btn-white msg-btn">
+                                                                <i class="far fa-comment-alt"></i>
+                                                            </a>
+                                                            <a href="javascript:void(0)" class="btn btn-white call-btn" data-toggle="modal" data-target="#voice_call">
+                                                                <i class="fas fa-phone"></i>
+                                                            </a>
+                                                        </div>
+                                                        <div class="clinic-booking">
+                                                            <a class="apt-btn" href="http://127.0.0.1:8000/medecin/profile/2">Voir profil</a>
+
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            
 
 
-                                        </div>
                                     </div>
 								</div>
 
