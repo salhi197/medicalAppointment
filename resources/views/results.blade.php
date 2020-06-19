@@ -41,16 +41,16 @@
 						<div class="col-md-12 col-lg-4 col-xl-3 theiaStickySidebar">
 
 							<!-- Search Filter -->
-							<div class="card search-filter" style=" border: 2px solid #3f729b;">
+							<div class="card search-filter" style=" border: 1px solid #15558d;">
 								<div class="card-header">
-									<h4 class="card-title mb-0">Filtrer le résultat</h4>
+									<h4 class="card-title mb-0">Filtrer les résultats</h4>
 								</div>
 								<div class="card-body">
                                     <div class="filter-widget" >
                                         <h4>Code postal</h4>
                                         <div >
                                             <input type="text" class="form-control"
-                                                   style=" border: 2px solid #3f729b;"
+                                                   style=" border: 1px solid #15558d;"
                                                      placeholder="Exemple : 16058 ">
                                         </div>
                                     </div>
@@ -109,7 +109,7 @@
 									</div>
 								</div>
 									<div class="btn-search">
-										<button type="button" class="btn btn-rounded btn-secondary">Chercher</button>
+										<button type="button" class="btn btn-primary btn-sm">Chercher</button>
 									</div>
 								</div>
 							</div>
@@ -121,7 +121,7 @@
 
 							<!-- Doctor Widget -->
 							@foreach(['2','2'] as $s)
-							<div class="card" style=" border: 2px solid #3f729b;">
+							<div class="card" style=" border: 1px solid #15558d;">
 								<div class="card-body">
 									<div class="doctor-widget">
 										<div class="doc-info-left">
@@ -178,8 +178,6 @@
 												<ul>
 													<li><i class="far fa-thumbs-up"></i> 98%</li>
 													<li><i class="far fa-comment"></i> 17 Feedback</li>
-													<li><i class="fas fa-map-marker-alt"></i> Florida, USA</li>
-													<li><i class="far fa-money-bill-alt"></i> $300 - $1000 <i class="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum"></i> </li>
 												</ul>
 											</div>
 											<div class="clinic-booking">
@@ -193,7 +191,7 @@
 							@endforeach
 							<!-- /Doctor Widget -->
 							<div class="load-more text-center">
-								<a class="btn btn-primary btn-sm" href="javascript:void(0);">Load More</a>
+								<a class="btn btn-primary btn-sm" href="javascript:void(0);">Charger plus</a>
 							</div>
 						</div>
 					</div>

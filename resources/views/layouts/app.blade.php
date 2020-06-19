@@ -234,7 +234,6 @@
 
     <!-- Page Content -->
 @yield('content')
-<!-- /Page Content -->
 
     <!-- Footer --><footer class="page-footer font-small blue">
 
