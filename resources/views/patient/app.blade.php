@@ -1,26 +1,26 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
-	
+
 <!-- Mirrored from dreamguys.co.in/demo/doccure/template/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 20 Mar 2020 10:57:40 GMT -->
 <head>
 		<meta charset="utf-8">
 		<title>Doccure</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-		
+
 		<!-- Favicons -->
 		<link href="{{asset('img/favicon.png')}}" rel="icon">
 		<link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
-		
+
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-		
+
 		<!-- Fontawesome CSS -->
 		<link rel="stylesheet" href="{{asset('plugins/fontawesome/css/fontawesome.min.css')}}">
 		<link rel="stylesheet" href="{{asset('plugins/fontawesome/css/all.min.css')}}">
-		
+
 		<!-- Main CSS -->
 		<link rel="stylesheet" href="{{asset('css/style.css')}}">
-		
+
 		<link rel="stylesheet" href="{{asset('plugins/daterangepicker/daterangepicker.css')}}">
 
 	    <link href="{{asset('fullcalendar/core/main.min.css')}}" rel="stylesheet" />
@@ -34,13 +34,13 @@
 			<script src="{{asset('js/respond.min.js')}}"></script>
 		<![endif]-->
 		@yield('styles')
-	
+
 	</head>
 	<body class="account-page">
 
 		<!-- Main Wrapper -->
 		<div class="main-wrapper">
-		
+
 			<!-- Header -->
 			<header class="header">
 				<nav class="navbar navbar-expand-lg header-nav">
@@ -65,15 +65,15 @@
 								<i class="fas fa-times"></i>
 							</a>
 						</div>
-					</div>		 
+					</div>
 					<ul class="nav header-navbar-rht">
 						<li class="nav-item contact-item">
 							<div class="header-contact-img">
-								<i class="far fa-hospital"></i>							
+								<i class="far fa-hospital"></i>
 							</div>
 							<div class="header-contact-detail">
 								<p class="contact-header">Contact</p>
-								<p class="contact-info-header"> +1 315 369 5943</p>
+								<p class="contact-info-header"> +213 666 666 666</p>
 							</div>
 						</li>
 						<li class="nav-item">
@@ -83,7 +83,7 @@
 				</nav>
 			</header>
 			<!-- /Header -->
-			
+
 
 			<!-- Breadcrumb -->
 			<div class="breadcrumb-bar">
@@ -92,11 +92,11 @@
 						<div class="col-md-3 col-12 col-offset-2">
 							<nav aria-label="breadcrumb" class="page-breadcrumb">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+									<li class="breadcrumb-item"><a href="index.html">Accueil</a></li>
 									<li class="breadcrumb-item active" aria-current="page">Profile Settings</li>
 								</ol>
 							</nav>
-							<h2 class="breadcrumb-title">Profile Settings</h2>							
+							<h2 class="breadcrumb-title">Profile Settings</h2>
 						</div>
 						<div class="col-md-9">
 						<div class="search-box">
@@ -106,11 +106,16 @@
 										<option value="">----</option>
 									</select>
 
+									<span style=" color: white;">Ex: Alger,Bouira,Oran...</span>
+
 								</div>
 								<div class="form-group search-info">
 									<select class="js-example-basic-single" id="specialites" name="specialite" style="padding:10px;">>
 										<option value="">----</option>
 									</select>
+
+									<span style=" color: white;">Ex : Chirurgie Dentaire</span>
+
 								</div>
 								<button type="submit" class="btn btn-primary search-btn"><i class="fas fa-search"></i> <span>Search</span></button>
 							</form>
@@ -126,12 +131,12 @@
 				<div class="container-fluid">
 
 					<div class="row">
-						
+
 						<!-- Profile Sidebar -->
-						<div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
-							<div class="profile-sidebar">
-								<div class="widget-profile pro-widget-content">
-									<div class="profile-info-widget">
+						<div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar" >
+							<div class="profile-sidebar" style=" border: 1px solid #15558d;">
+								<div class="widget-profile pro-widget-content" >
+									<div class="profile-info-widget" >
 										<div class="profile-det-info">
 											<h3>Richard Wilson</h3>
 											<div class="patient-details">
@@ -142,43 +147,53 @@
 									</div>
 								</div>
 								<div class="dashboard-widget">
-									<nav class="dashboard-menu">
+									<nav class="dashboard-menu" >
 										<ul>
-										<li class="active">
+										    <li class="active" style=" border-top: 1px solid #15558d;">
 													<a href="{{route('patient.rendezvous.index')}}">
 													<i class="fas fa-bookmark"></i>
 													<span>Mes Rendez-vous</span>
 												</a>
 											</li>
-											<li>
+
+											<li style=" border-top: 1px solid #15558d;">
 												<a href="{{route('profile.get')}}">
+
 													<i class="fas fa-user-cog"></i>
 													<span>Profile Settings</span>
 												</a>
 											</li>
-											<li>
+
+											<li style=" border-top: 1px solid #15558d;">
 												<a href="{{route('password.get')}}">
+
 													<i class="fas fa-lock"></i>
 													<span>Change Password</span>
 												</a>
 											</li>
-											<li>
-												<a href="#" class="delete-account">
-												supprimer mon compte
-												</a>
+
+											<li style=" border-top: 1px solid #15558d;">
+											    <a href="{{ route('logout') }}"
+												   onclick="event.preventDefault();
+																document.getElementById('delete-account-form').submit();">
+												    <i class="fa fa-trash"></i>
+												    <span>supprimer mon compte<span>
+											   </a>
+											   <form id="delete-account-form" action="{{ route('delete-account') }}" method="POST" style="display: none;">
+												   @csrf
+											   </form>
 											</li>
-											<li>
-											<a href="{{ route('logout') }}"
-												onclick="event.preventDefault();
+											<li style=" border-top: 1px solid #15558d;">
+											    <a href="{{ route('logout') }}"
+												   onclick="event.preventDefault();
 																document.getElementById('logout-form').submit();">
-												{{ __('Logout') }}
-											</a>
-
-											<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-												@csrf
-											</form>
+												    <i class="fa fa-sign-out-alt"></i>
+												   {{ __('Logout') }}
+											    </a>
+											    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+												   @csrf
+											    </form>
 											</li>
-
 
 										</ul>
 									</nav>
@@ -188,25 +203,25 @@
 						</div>
 						<!-- / Profile Sidebar -->
 					@yield('content')
-						
+
 					</div>
 
 				</div>
 
-			</div>		
+			</div>
 			<!-- /Page Content -->
 
 
 			<!-- Page Content -->
 			<!-- /Page Content -->
-   	   
+
 		</div>
 		<!-- /Main Wrapper -->
 		@yield('modals')
-	  
+
 		<!-- jQuery -->
 		<script src="{{asset('js/jquery.min.js')}}"></script>
-		
+
 		<script src="{{asset('js/moment.min.js')}}"></script>
 		<script src="{{asset('plugins/daterangepicker/daterangepicker.js')}}"></script>
 
@@ -214,7 +229,7 @@
 		<!-- Bootstrap Core JS -->
 		<script src="{{asset('js/popper.min.js')}}"></script>
 		<script src="{{asset('js/bootstrap.min.js')}}"></script>
-		
+
 		<!-- Custom JS -->
 		<script src="{{asset('js/script.js')}}"></script>
 		<script src="{{asset('js/toastr.min.js')}}"></script>
@@ -268,14 +283,14 @@ var specialites =[{"nom":"Allergologue"},{"nom":"Anatomo cyto-pathologiste"},{"n
 					text : value.nom
 				}));
 			})
-			
+
 			specialites.map(function(value, index, wilaya){
 				$('#specialites').append($('<option>', {
 					value: value.nom,
 					text : value.nom
 				}));
 			})
-		
+
 
 
 	})
