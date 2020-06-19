@@ -156,6 +156,7 @@
 												</a>
 											</li>
 
+
 											<li >
 												<a href="{{route('profile.get')}}">
 
@@ -164,8 +165,10 @@
 												</a>
 											</li>
 
+
 											<li >
 												<a href="{{route('password.get')}}">
+
 
 													<i class="fas fa-lock"></i>
 													<span>Change Password</span>
