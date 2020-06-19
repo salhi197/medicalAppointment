@@ -928,7 +928,8 @@ button.bg-danger:hover {
 	outline: 0 none;
 }
 .form-group {
-	margin-bottom: 1.25rem;
+	margin-bottom: 0.25rem;
+	margin-top: 0.25rem;
 }
 
 /*-----------------
@@ -2356,6 +2357,7 @@ html.menu-opened body {
     -ms-flex: 0 0 46px;
     flex: 0 0 46px;
     height: 46px;
+    margin: 0.25rem 0;
 }
 .search-box .search-btn span {
 	display: none;
@@ -2745,7 +2747,7 @@ html.menu-opened body {
 
 .breadcrumb-bar {
     background-color: #15558d;
-    padding: 15px 0;
+    padding: 10px 0;
 }
 .breadcrumb-bar .breadcrumb-title {
     color: #fff;
@@ -5061,7 +5063,7 @@ html.menu-opened body {
 
 .profile-sidebar {
     background-color: #fff;
-	border: 1px solid #f0f0f0;
+	border: 1px solid rgba(0,0,0,.125);
     border-radius: 4px;
 	margin-bottom:30px;
 	overflow: hidden;
@@ -5121,7 +5123,7 @@ html.menu-opened body {
 	line-height: inherit;
 }
 .dashboard-menu > ul > li {
-	border-bottom:1px solid #f0f0f0;
+	border-bottom:1px solid rgba(0,0,0,.125);
 	position: relative;
 }
 .dashboard-menu > ul > li:last-child {
@@ -5200,7 +5202,7 @@ html.menu-opened body {
 
 .widget-profile {
     background-color: #fff;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid rgba(0,0,0,.125);
 }
 .widget-profile .profile-info-widget {
 	display: block;
