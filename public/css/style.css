@@ -7115,6 +7115,13 @@ html.menu-opened body {
 	}
 }
 
+@media only screen and (max-width:595px) {
+	.speicality-img {
+		width: 100px;
+		height: 100px;
+	}
+}
+
 @media only screen and (max-width: 575.98px) {
 	body {
 		font-size: 0.8125rem;
