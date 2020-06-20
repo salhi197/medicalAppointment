@@ -171,7 +171,7 @@
 
 
 													<i class="fas fa-lock"></i>
-													<span>Change Password</span>
+													<span>Changer Password</span>
 												</a>
 											</li>
 
