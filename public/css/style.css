@@ -7106,6 +7106,15 @@ html.menu-opened body {
 	}
 }
 
+@media only screen and (max-width:779px) {
+    .header-navbar-rht {
+		display: none;
+	}    
+	.main-nav li.login-link {
+		display: block;
+	}
+}
+
 @media only screen and (max-width: 575.98px) {
 	body {
 		font-size: 0.8125rem;
@@ -7143,12 +7152,6 @@ html.menu-opened body {
 	.header-nav {
 		padding-left: 15px;
 		padding-right: 15px;
-	}
-	.header-navbar-rht {
-		display: none;
-	}
-	.main-nav li.login-link {
-		display: block;
 	}
 	.navbar-header {
 		width: 100%;
