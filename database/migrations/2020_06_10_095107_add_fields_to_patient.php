@@ -14,12 +14,12 @@ class AddFieldsToPatient extends Migration
     public function up()
     {
         Schema::table('patients', function (Blueprint $table) {
-            $table->string('group_sanguin'); 
-            $table->string('adress'); 
-            $table->date('date_naissance'); 
-            $table->string('avatar');                        
+            $table->string('group_sanguin');
+            $table->string('adress');
+            $table->date('date_naissance');
+            $table->string('avatar');
         });
-n 
+
     }
 
     /**
