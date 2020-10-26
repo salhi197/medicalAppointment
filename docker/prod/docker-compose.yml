@@ -1,0 +1,38 @@
+version: "3.7"
+services:
+  app:
+    image: ${NAME}_app
+    container_name: ${NAME}_app
+    build:
+      context: ../..
+      dockerfile: docker/prod/app/Dockerfile
+      args:
+        FRONT_HOST: ${FRONT_HOST}
+        NAME: ${NAME}
+    ports:
+      - ${NGINX_PORT}:80
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      MAILER_DSN: ${MAILER_DSN}
+      NAME: ${NAME}
+    links:
+      - "db"
+      - "db:database"
+      - "db:mysql"
+
+  db:
+    container_name: ${NAME}_mysql
+    image: mariadb:10.1.44
+    ports:
+      - ${MYSQL_PORT}:3306
+    environment:
+      MYSQL_DATABASE: gestion_projet
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_USER: root
+      MYSQL_PASSWORD: null
+
+    volumes:
+      - data-volume:/var/lib/mysql
+
+volumes:
+      data-volume:

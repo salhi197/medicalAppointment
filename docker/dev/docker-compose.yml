@@ -1,0 +1,42 @@
+version: '3.7'
+services:
+
+  app-dev:
+    image: ${NAME}_app-dev
+    container_name: ${NAME}_app-dev
+    build:
+      context: app
+      args:
+        FRONT_HOST: ${FRONT_HOST}
+        NAME: ${NAME}
+    ports:
+      - ${NGINX_PORT}:80
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      NAME: ${NAME}
+      MAILER_DSN: ${MAILER_DSN}
+      APP_ENV: dev
+    volumes:
+      - ../../:/www/${NAME}:rw
+    links:
+      - "db"
+      - "db:database"
+      - "db:mysql"
+
+
+
+  db:
+    container_name: ${NAME}_mysql-dev
+    image: mariadb:10.1.44
+    ports:
+      - ${MYSQL_PORT}:3306
+    environment:
+      MYSQL_DATABASE: tebibe
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_USER: root
+      MYSQL_PASSWORD: null
+    volumes:
+      - data-volume:/var/lib/mysql
+
+volumes:
+    data-volume:
