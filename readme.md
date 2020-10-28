@@ -46,6 +46,21 @@ php artisan serve
 #create a medecin or an admin or a user so you can test the app 
 127.0.0.1:8000/register/[admin|user|medecin]
 ``````
+## Docker
+
+### Dev
+Lunch app (in the folder of the project):
+```
+make dev
+```
+Lunch console
+```
+make console-dev
+```
+In the console lunch the usuel commands that allow you to start the dev (like composer install,
+ Run Migrations... ), we do that just for the first time.
+
+Start the app in browser with : http://localhost:8081/ 
 
 
 ## Supported Languages
