@@ -58,13 +58,13 @@ Lunch console
 make console-dev
 ```
 In the console lunch the usuel commands that allow you to start the dev :
- ###Install Dependencies
+ 
  * composer install
-  ###generer la clé 
+  
  * php artisan key:generate
- ### Run Migrations
+ 
  * php artisan migrate
- ###generer la clé 
+ 
  * php artisan key:generate
 
 
