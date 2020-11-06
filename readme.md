@@ -58,10 +58,14 @@ Lunch console
 make console-dev
 ```
 In the console lunch the usuel commands that allow you to start the dev :
- composer install
- php artisan key:generate
- php artisan migrate
- php artisan key:generate
+ ###Install Dependencies
+ * composer install
+  ###generer la clé 
+ * php artisan key:generate
+ ### Run Migrations
+ * php artisan migrate
+ ###generer la clé 
+ * php artisan key:generate
 
 
 Start the app in browser with : http://localhost:8081/ 
